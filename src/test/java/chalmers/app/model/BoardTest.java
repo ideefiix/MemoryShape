@@ -22,7 +22,7 @@ public class BoardTest {
 
     @Test
     public void generateBoard() {
-        assertTrue(board.getShapeList().size() == board.getNumberOfShapes() );
+        assertTrue(board.getShapeSelector().getShapeList().size() == board.getNumberOfShapes() );
     }
 
     @Test
@@ -33,12 +33,16 @@ public class BoardTest {
         assertTrue(oldselected.getShapeSelected() == false);
 
         //A new shape is selected
+        boolean foundSelectedShape = false;
         for (int i = 0; i < board.getShapeList().size(); i++){
             if(board.getShapeList().get(i).getShapeSelected() == true){
-                assertTrue(true);
-            }else{
-                assertTrue(false);
+                foundSelectedShape = true;
             }
+        }
+        if (foundSelectedShape){
+            assertTrue(true);
+        }else{
+            assertTrue(false);
         }
     }
 }

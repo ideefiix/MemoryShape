@@ -15,10 +15,19 @@ public class ShapeSelector {
      */
     public ShapeSelector(List<Shape> shapeList, int listLength) {
 
+        //Gets indexoutofbounds if the number of images < the requirment for that level
+    try{
         for(int i = 0; i < listLength; i++){
             this.shapeList.add(shapeList.get(i));
         }
         Collections.shuffle(shapeList);
+    }
+    catch (IndexOutOfBoundsException e) {
+        System.err.println("IndexOutOfBoundsException: " + e.getMessage());
+        System.out.println("Add more images!!");
+    }
+
+
     }
 
     /**

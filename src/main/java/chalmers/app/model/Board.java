@@ -53,7 +53,7 @@ public class Board {
     }
 
     public void generateBoard(int currentlevel){
-        numberOfShapes = 6 + (currentlevel * 1);
+        numberOfShapes = 3 + (currentlevel * 1);
         Collections.shuffle(shapeList);
         /**
          * ShapeSelector copies the list but only saves the shapes currently on the board
