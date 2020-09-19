@@ -37,7 +37,7 @@ public class Board {
 
     public void fillShapeList(){
         shapeList = new ArrayList<Shape>();
-        File dir = new File("D:\\Java-Time\\MemoryShape\\MemoryShape\\src\\main\\java\\chalmers\\app\\model\\images");
+        File dir = new File("src/main/java/chalmers/app/model/images");
 
         if(dir.isDirectory()){
             for (File imgFile: dir.listFiles()){
