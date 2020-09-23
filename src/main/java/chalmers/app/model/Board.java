@@ -103,4 +103,8 @@ public class Board {
     public int getNumberOfShapes() {
         return numberOfShapes;
     }
+
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
 }
