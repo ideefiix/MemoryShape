@@ -33,7 +33,7 @@ public class Player {
     }
 
     /**
-     * Visar game over vyn och anropar metoden som uppdaterar leaderboarden
+     * Visar game-over vyn och anropar metoden som uppdaterar leaderboarden
      * OBS! Parametrarna är ej nödvändiga så länge metoden ligger i den här klassen. De lades till i förebyggande syfte
      * @param score Resultatet från den förlorade rundan
      * @param highScores Spelarens bästa resultat hittills
