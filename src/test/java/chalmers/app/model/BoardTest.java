@@ -1,5 +1,7 @@
 package chalmers.app.model;
 
+import chalmers.app.model.enums.Color;
+import chalmers.app.model.enums.Shape;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -7,42 +9,27 @@ import static org.junit.Assert.*;
 public class BoardTest {
 
     /**
-     * Tests methods in Board
-     * Tests will fail if number of images is changed!
+     * Tests methods for Board
      */
 
     Board board = new Board(1);
 
 
-    @Test
-    public void fillShapeList() {
-        assertTrue(board.getShapeList().size() == 4);
+    /**
+     * All shapes is created
+     */
+   @Test
+   public void createShapeList(){
+       int colors = Color.values().length;
+       int shapes = Shape.values().length;
+       assertTrue(board.getCardList().size() == (colors*shapes));
+   }
 
-    }
 
     @Test
     public void generateBoard() {
-        assertTrue(board.getShapeSelector().getShapeList().size() == board.getNumberOfShapes() );
+
     }
 
-    @Test
-    public void changeSelectedShape() {
-        //Old selectedShape is no longer selected
-        Shape oldselected = board.getShapeSelector().getSelectedShape();
-        board.changeSelectedShape(board.getShapeSelector().getSelectedShape());
-        assertTrue(oldselected.getShapeSelected() == false);
 
-        //A new shape is selected
-        boolean foundSelectedShape = false;
-        for (int i = 0; i < board.getShapeList().size(); i++){
-            if(board.getShapeList().get(i).getShapeSelected() == true){
-                foundSelectedShape = true;
-            }
-        }
-        if (foundSelectedShape){
-            assertTrue(true);
-        }else{
-            assertTrue(false);
-        }
-    }
 }
