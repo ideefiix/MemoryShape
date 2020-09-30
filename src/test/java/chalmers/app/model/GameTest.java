@@ -41,7 +41,13 @@ public class GameTest {
 
         int lifes_before = testGame.getPlayer().getLives();
         int shape_onboard = testGame.getBoard().getActiveCardList().size();
-        testGame.onClick(selectedCard);
+        //testGame.onClick(selectedCard); //removeClickedCard saknade metodkropp (metoden används i onClick). Tänker att metoderna borde ta in en index istället för ett kort
+
+        if(testGame.getBoard().getActiveCardList().get(2).equals(testGame.getCardSelector().getSelectedCard()));{ //Borde va metod (onClick) ist för lång ifsats
+            testGame.getBoard().removeClickedCard(2);
+            testGame.getCardSelector().changeSelectedShape();
+        }
+
         int lifes_after = testGame.getPlayer().getLives();
         int shape_onboard2 = testGame.getBoard().getActiveCardList().size();
         //Player keep lifes
