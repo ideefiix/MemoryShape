@@ -75,6 +75,10 @@ public class Board {
         hideCards = true;
     }
 
+    public boolean getHideCards(){
+        return hideCards;
+    }
+
     public List<Card> getActiveCardList() {
         return activeCardList;
     }

@@ -1,5 +1,13 @@
 package chalmers.app.model;
 
+import com.sun.prism.shader.Solid_TextureYV12_AlphaTest_Loader;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 public class Game {
     private Board board;
     private Player player;
@@ -41,28 +49,93 @@ public class Game {
     }
 
 
-    private void runGame(){    //Ska brytas upp i submetoder
-        int guessedIndex = 0; //temporär init
+
+    /**
+     * Runs the main gameplay-loop of the game
+     */
+    public void runGame() throws InterruptedException, IOException {    //Ska brytas upp i submetoder
+        int guessedIndex; //temporär init
         level = 1; //max 22, ska man ha levelselect i menyn?
         while(level < 23 && player.lives > 0) {
             board.generateBoard(level);
             cardSelector.restartList(board.getActiveCardList());
             board.showCards();
-            //Delay
+            displayInTerminal();
+            TimeUnit.SECONDS.sleep(4 + level);      //Temporär lösning för delay. Ha istället så det byter när man klickar "ready"
             board.hideCards();
-            while (board.getActiveCardList().size() > 0) { //Kommer inte kunna gå efter size sen om "space" finns!
+            displayInTerminal();
+            while (board.getActiveCardList().size() > 0 && player.lives > 0) { //Kommer inte kunna gå efter size sen om "space" finns!
                 //input för guessedIndex, just nu gissas alltid den första
-                if (board.getActiveCardList().get(guessedIndex).equals(cardSelector.getSelectedCard())) {
-                    board.removeClickedCard(guessedIndex);
-                    cardSelector.changeSelectedShape();
-                    //Displaya att det är rätt?
-                } else {
-                    player.lives = player.lives - 1;     //private på lives
-                    //Displaya att det är fel?
-                }
+                guessedIndex = takeTerminalInput();
+                guessCard(guessedIndex);
             }
             //Borde ha ge något grattis (bara respons) på att man klarat av en nivå. Ska man få tillbaka ett liv om det förlorats? Kan ha "tomma" hjärtan och olika max HP
             level++;
+        }
+        System.out.print("Game over!");
+    }
+
+    /**
+     * Takes the position of the guessed card and matches it to the cardSelector.
+     * If it's a match the card is cleared from the board, otherwise the player loses one health.
+     *
+     */
+    private void guessCard(int index){
+        if(index >= board.getActiveCardList().size()){
+            index = board.getActiveCardList().size() - 1;
+        }
+
+        if (board.getActiveCardList().get(index).equals(cardSelector.getSelectedCard())) {
+            board.removeClickedCard(index);
+
+            if(board.getActiveCardList().size() > 0) {  //onödigt?
+                cardSelector.changeSelectedShape();
+            }
+
+
+            //Displaya att det är rätt?
+            System.out.print("Guessed right");
+            displayInTerminal();
+        } else {
+            player.lives = player.lives - 1;     //private på lives
+            System.out.print("Oof");
+            //Displaya att det är fel?
+        }
+    }
+    /**
+     *  Temporary method to be able to run the game using the terminal
+     */
+    private int takeTerminalInput() throws IOException {
+        System.out.println();
+        System.out.println("Enter your guess (position)");
+        Scanner myInput = new Scanner( System.in );
+            return myInput.nextInt();
+        //System.out.println(name);
+    }
+
+    /**
+     *  Temporary method to be able to run the game using the terminal
+     */
+    private void displayInTerminal(){
+        for( int i = 0; i < 20; i++){ //Clearar terminalen med 20 rader
+            System.out.println();
+        }
+        Card displayCard = cardSelector.getSelectedCard();
+
+        if(board.getHideCards()){
+            System.out.println("Lives: " + player.lives);
+            System.out.println("Display:" + displayCard.getColor() + displayCard.getShape());
+            System.out.print("Board:  ");
+            for(int i = 0; i < board.getActiveCardList().size(); i++){
+                System.out.print("---" + "   ");
+            }
+        } else {
+            System.out.println("Lives: " + player.lives);
+            System.out.println("Display: ---");
+            System.out.print("Board:  ");
+            for (Card c : board.getActiveCardList()) {
+                System.out.print("" + c.getColor() + c.getShape() + "   ");
+            }
         }
     }
 

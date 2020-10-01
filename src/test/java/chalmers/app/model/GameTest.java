@@ -1,6 +1,9 @@
 package chalmers.app.model;
 
 import org.junit.Test;
+
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 public class GameTest {
 
@@ -56,5 +59,11 @@ public class GameTest {
         assertEquals(1, shape_onboard - shape_onboard2);
 
 
+    }
+
+
+    @Test
+    public void testRungame() throws InterruptedException, IOException {
+        testGame.runGame();
     }
 }
