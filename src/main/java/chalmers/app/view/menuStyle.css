@@ -24,8 +24,13 @@
     -fx-font-size: 96;
     -fx-font-family:"Baloo Bhai";
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+    -fx-fill: #3254CD;
+    -fx-stroke: #ffffff;
+    -fx-stroke-width:5;
 
 }
+
+
 
 .outline.logoText .text{
     -fx-fill:lightseagreen;
