@@ -17,6 +17,7 @@ public class Board {
    private int numberOfActiveShapes;
    private Color[] allColors = Color.values();
    private Shape[] allShapes = Shape.values();
+   private boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
 
     /**
      *
@@ -62,10 +63,21 @@ public class Board {
 
     }
 
-    public void removeClickedCard(Card card){
-
+    public void removeClickedCard(int index){ //kommer behövas ändras så att kortet ersätts med ett "space" (space och kort borde ha samma interface!)
+        activeCardList.remove(index);
     }
 
+    public void showCards(){
+        hideCards = false;
+    }
+
+    public void hideCards(){
+        hideCards = true;
+    }
+
+    public boolean getHideCards(){
+        return hideCards;
+    }
 
     public List<Card> getActiveCardList() {
         return activeCardList;
