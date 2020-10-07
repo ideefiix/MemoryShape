@@ -9,7 +9,7 @@
    <children>
       <AnchorPane layoutY="1.0" prefHeight="200.0" prefWidth="200.0" styleClass="background" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="1.0">
          <children>
-            <Pane fx:id="menuStartButton" layoutX="250.0" layoutY="207.0" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
+            <Pane fx:id="playButton" layoutX="250.0" layoutY="207.0" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="250.0">
                <children>
                   <Label alignment="CENTER" layoutX="132.0" layoutY="-2.0" prefHeight="40.0" prefWidth="137.0" styleClass="whiteMenuText" text="Start" textAlignment="CENTER">
                      <font>
@@ -17,7 +17,7 @@
                      </font></Label>
                </children>
             </Pane>
-            <Pane fx:id="menuExitButton" layoutX="463.0" layoutY="461.0" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
+            <Pane fx:id="exitButton" layoutX="463.0" layoutY="461.0" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
                <children>
                   <Label alignment="CENTER" layoutX="25.0" layoutY="-1.0" prefHeight="40.0" prefWidth="137.0" styleClass="whiteMenuText" text="Exit" textAlignment="CENTER">
                      <font>
@@ -26,7 +26,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="menuOptionsButton" layoutX="250.0" layoutY="461.0" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
+            <Pane fx:id="optionsButton" layoutX="250.0" layoutY="461.0" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
                <children>
                   <Label alignment="CENTER" layoutX="29.0" layoutY="-1.0" prefHeight="40.0" prefWidth="137.0" styleClass="whiteMenuText" text="Options" textAlignment="CENTER">
                      <font>
@@ -35,7 +35,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="menuLeaderboardButton" layoutX="250.0" layoutY="379.0" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
+            <Pane fx:id="leaderboardButton" layoutX="250.0" layoutY="379.0" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
                <children>
                   <Label alignment="CENTER" layoutX="73.0" layoutY="-1.0" prefHeight="63.0" prefWidth="254.0" styleClass="whiteMenuText" text="Leaderboard" textAlignment="CENTER">
                      <font>
@@ -44,7 +44,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="menuCustomButton" layoutX="250.0" layoutY="293.0" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
+            <Pane fx:id="customButton" layoutX="250.0" layoutY="293.0" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
                <children>
                   <Label alignment="CENTER" layoutX="132.0" layoutY="-1.0" prefHeight="40.0" prefWidth="137.0" styleClass="whiteMenuText" text="Custom" textAlignment="CENTER">
                      <font>

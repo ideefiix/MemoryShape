@@ -1,23 +1,28 @@
 package chalmers.app.controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.layout.Pane;
 
 import java.awt.*;
 
 public class MenuController {
 
-    @FXML
-    Panel menuStartButton;
-    @FXML
-    Panel menuCustomButton;
-    @FXML
-    Panel menuLeaderboardButton;
-    @FXML
-    Panel menuOptionsButton;
-    @FXML
-    Panel menuExitButton;
 
-    private void startButtonPressed(){
+
+    @FXML
+    Pane playButton;
+    @FXML
+    Pane customButton;
+    @FXML
+    Pane leaderboardButton;
+    @FXML
+    Pane optionsButton;
+    @FXML
+    Pane exitButton;
+
+    private void startButtonPressed() throws Exception{
     }
 
     private void customButtonPressed(){

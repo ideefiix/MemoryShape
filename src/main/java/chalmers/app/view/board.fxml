@@ -7,8 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="chalmers.app.controller.BoardController">
    <children>
       <AnchorPane layoutY="12.0" prefHeight="576.0" prefWidth="900.0" styleClass="background">
          <children>
@@ -32,7 +31,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="824.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="824.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
-            <FlowPane layoutX="203.0" layoutY="332.0" prefHeight="230.0" prefWidth="462.0" />
+            <FlowPane layoutX="87.0" layoutY="332.0" prefHeight="230.0" prefWidth="747.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="359.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/Rectangle%207.jpg" />

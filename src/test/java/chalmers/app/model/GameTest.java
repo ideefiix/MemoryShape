@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class GameTest {
 
     /**
-     * Test run for the game
+     * chalmers.app.Test run for the game
      */
 
     Game testGame = new Game(new Player("Nappe",3),1);

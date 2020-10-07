@@ -1,23 +1,35 @@
 package chalmers.app;
 
-import chalmers.app.model.Game;
-import chalmers.app.model.Player;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 /**
- * Hello world!
- *
+ * Starts the application
  */
-public class App 
+public class App extends Application
 {
-    public static void main( String[] args ) throws IOException, InterruptedException {
-        System.out.println( "Hello World!!" );
 
-        Game testGame = new Game(new Player("Nappe",3),1);
-        testGame.runGame();
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
+        Scene scene = new Scene(root, 1000, 800);
+
+        stage.setTitle("MemoryShape");
+        stage.setScene(scene);
+        stage.show();
 
 
     }
 
+
+
+    public static void main( String[] args ) {
+        launch(args);
+    }
 }
