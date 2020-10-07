@@ -3,13 +3,14 @@ package chalmers.app.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-
-import java.awt.*;
-
-public class MenuController {
+import javafx.stage.Stage;
 
 
+public class MenuController implements ISceneController {
+
+    private MainController mainController;
 
     @FXML
     Pane playButton;
@@ -22,7 +23,15 @@ public class MenuController {
     @FXML
     Pane exitButton;
 
-    private void startButtonPressed() throws Exception{
+    //Done from the maincontroller
+    @Override
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
+    @FXML
+     void startButtonPressed() throws Exception{
+        mainController.setBoardScene();
     }
 
     private void customButtonPressed(){

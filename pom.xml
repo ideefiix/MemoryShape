@@ -39,7 +39,7 @@
 
 
   <build>
-    <resources>
+    <!--<resources>
       <resource>
         <filtering>false</filtering>
         <directory>src/main/java</directory>
@@ -52,7 +52,7 @@
           <include>**/*.jpg</include>
         </includes>
       </resource>
-    </resources>
+    </resources>-->
 
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
