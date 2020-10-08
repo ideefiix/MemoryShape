@@ -46,6 +46,24 @@ public class Board {
         }
     }
 
+    /**
+     * Returns the IDs of the activecards
+     * @return
+     */
+    public List<String> getIds(){
+        List < String > colorShape = new ArrayList<>();
+        for(int i = 0; i < activeCardList.size(); i++){
+            String id = activeCardList.get(i).getColor().name() + activeCardList.get(i).getShape().name();
+            colorShape.add(id);
+        }
+        return colorShape;
+    }
+
+    /**
+     * Create a board
+     * @param currentlevel
+     */
+
     public void generateBoard(int currentlevel){
         numberOfActiveShapes = 3 + (currentlevel * 1);
         Collections.shuffle(cardList);

@@ -1,5 +1,7 @@
 package chalmers.app.controller;
 
+import chalmers.app.model.Game;
+import chalmers.app.model.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +18,7 @@ public class MainController {
     final Stage stage = new Stage();
     Scene menuScene;
     Scene boardScene;
+    Game game;
 
     public MainController(){
         menuScene = initComponents("/view/menu.fxml");
@@ -51,5 +54,10 @@ public class MainController {
 
     public void setBoardScene(){
         sceneSwitcher.setScene(boardScene);
+    }
+
+    public void createGame() {
+        //Hardcoded values for now
+        game = new Game(new Player("Nappe", 3), 1);
     }
 }

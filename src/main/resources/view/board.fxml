@@ -31,7 +31,7 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="824.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="824.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
-            <FlowPane layoutX="87.0" layoutY="332.0" prefHeight="230.0" prefWidth="747.0" />
+            <FlowPane fx:id="flowPane" layoutX="87.0" layoutY="332.0" prefHeight="230.0" prefWidth="747.0" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="359.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/Rectangle%207.jpg" />

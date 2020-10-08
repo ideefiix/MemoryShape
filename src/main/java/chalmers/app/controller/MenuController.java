@@ -31,6 +31,7 @@ public class MenuController implements ISceneController {
 
     @FXML
      void startButtonPressed() throws Exception{
+        mainController.createGame();
         mainController.setBoardScene();
     }
 
