@@ -26,7 +26,8 @@ public class App extends Application
         stage.show();*/
 
         MainController mainController = new MainController();
-
+        mainController.getStage().show();
+        mainController.getStage().setTitle("MemoryShape");
 
     }
 

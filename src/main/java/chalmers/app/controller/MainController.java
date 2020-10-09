@@ -14,50 +14,57 @@ import java.io.IOException;
  * Responsibility: Load components for scenes and control the Stage
  */
 public class MainController {
-    SceneSwitcher sceneSwitcher;
+
     final Stage stage = new Stage();
-    Scene menuScene;
-    Scene boardScene;
     Game game;
 
     public MainController(){
-        menuScene = initComponents("/view/menu.fxml");
-        boardScene = initComponents("/view/board.fxml");
-        sceneSwitcher = new SceneSwitcher(stage, menuScene);
+        setMenuScene();
     }
 
-    private Scene initComponents(String url) {
 
-        //Load the FXML
-        FXMLLoader loader;
-        loader = new FXMLLoader(getClass().getResource(url));
+    public void setMenuScene(){
 
-        // Trying to return scene from FXML url
-        // And giving the scene-controller acces to the main-controller
         try {
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
+            loader.setController(new MenuController(this));
+
             Parent parent;
             parent = loader.load();
-            ISceneController controller = loader.getController();
-            controller.setMainController(this);
-            return new Scene(parent);
+            stage.setScene(new Scene(parent));
 
         } catch (IOException e) {
             System.err.println("Error in initComponent method: " + e.getMessage());
             e.printStackTrace();
-            return null;
         }
     }
 
-    public void setMenuScene(){
-        sceneSwitcher.setScene(menuScene);
-    }
-
     public void setBoardScene(){
-        sceneSwitcher.setScene(boardScene);
+
+        createGame();
+
+        try {
+            FXMLLoader loader;
+            loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
+            loader.setController(new BoardController(this, game));
+
+            Parent parent;
+            parent = loader.load();
+            stage.setScene(new Scene(parent));
+
+        } catch (IOException e) {
+            System.err.println("Error in initComponent method: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void createGame() {
         //Hardcoded values for now
         game = new Game(new Player("Nappe", 3), 1);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

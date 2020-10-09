@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 
-public class MenuController implements ISceneController {
+public class MenuController {
 
     private MainController mainController;
 
@@ -23,9 +23,7 @@ public class MenuController implements ISceneController {
     @FXML
     Pane exitButton;
 
-    //Done from the maincontroller
-    @Override
-    public void setMainController(MainController mainController) {
+    public MenuController(MainController mainController) {
         this.mainController = mainController;
     }
 
