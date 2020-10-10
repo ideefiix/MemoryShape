@@ -23,11 +23,12 @@ public class Game {
 
     public void newCardSelector(){
         cardSelector.restartList(board.getActiveCardList());
+        cardSelector.setBoardCleared(false);
     }
 
     public void newBoard(){
         board.generateBoard(level);
-
+        newCardSelector();
     }
 
     /**
@@ -137,6 +138,10 @@ public class Game {
                 System.out.print("" + c.getColor() + c.getShape() + "   ");
             }
         }
+    }
+
+    public void incLevel(){
+        level++;
     }
 
     private void hideCards(){}

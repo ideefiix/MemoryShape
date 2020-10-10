@@ -15,18 +15,18 @@ public class Player {
     /**
     *Anropas varje gång spelaren väljer rätt kort
      */
-    void incScore(){
+    public void incScore(){
         currentScore++;
     }
 
     /**
      * Anropas varje gång spelaren väljer fel kort
      */
-    void decLife(){
+    public void decLife(){
         lives--;
     }
 
-    boolean IsAlive(){
+    public boolean IsAlive(){
         if(lives<1){
             currentScore = 0;
             return false;

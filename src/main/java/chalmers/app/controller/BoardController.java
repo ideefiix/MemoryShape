@@ -4,6 +4,8 @@ import chalmers.app.model.Card;
 import chalmers.app.model.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 
@@ -22,7 +24,9 @@ public class BoardController implements Initializable {
 
 
     @FXML
-   FlowPane flowPane;
+    FlowPane flowPane;
+    @FXML
+    ImageView selectedCard;
 
     public BoardController(MainController mainController, Game game) {
         this.mainController = mainController;
@@ -35,19 +39,27 @@ public class BoardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createCards();
         updateBoard();
+        setSelectedCard();
+        hideCards();
     }
 
+    /**
+     * Create the cards FXMLs
+     */
     public void createCards (){
         List<Card> cardList = game.getBoard().getActiveCardList();
-        List< String > IDList = game.getBoard().getIds();
 
         for(int i = 0; i < cardList.size(); i ++){
-            cardControllers.add( new CardController(this));
-            assignImages(IDList.get(i), cardControllers.get(i));
+            cardControllers.add( new CardController(this, cardList.get(i)));
+            assignImage(cardList.get(i).getID(), cardControllers.get(i));
         }
     }
 
-    public void assignImages(String id, CardController cc){
+    /**
+     * Is called by createCards()
+     * Sets the cards Images on the board.
+     */
+    public void assignImage(String id, CardController cc){
         for(File file: dir.listFiles()){
 
             //Remove .JPG extension
@@ -62,6 +74,9 @@ public class BoardController implements Initializable {
 
     }
 
+    /**
+     * Fills the board with cards
+     */
     public void updateBoard(){
          flowPane.getChildren().clear();
         for(CardController cardController: cardControllers){
@@ -69,4 +84,68 @@ public class BoardController implements Initializable {
         }
     }
 
+    /**
+     * Sets the image for selectedcard
+     */
+    public void setSelectedCard(){
+        Card selected = game.getCardSelector().getSelectedCard();
+        assignImageCardSelector(selected.getID());
+
+    }
+
+    /**
+     * Is called by ↑
+     */
+
+    public void assignImageCardSelector(String id){
+        for(File file: dir.listFiles()){
+
+            //Remove .JPG extension
+            String str = file.getName();
+            int pos = str.lastIndexOf(".");
+
+            if(str.substring(0,pos).equals(id)){
+                selectedCard.setImage(new Image(file.toURI().toString()));
+                break;
+            }
+        }
+
+    }
+
+    /**
+     * Makes the cardshapes invincible
+     */
+
+    public void hideCards(){
+        for(CardController cc: cardControllers){
+            cc.hideImage();
+        }
+
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void incScore(){
+        game.getPlayer().incScore();
+    }
+
+    public void bcDecLife(){
+        game.getPlayer().decLife();
+    }
+
+    public void isLevelCompleted(){
+        if(game.getCardSelector().isBoardCleared()){
+            game.incLevel();
+            game.newBoard();
+
+            cardControllers = new ArrayList<>();
+            createCards();
+            updateBoard();
+            setSelectedCard();
+            hideCards();
+
+        }
+    }
 }

@@ -37,13 +37,20 @@
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
 
 }
+.displaySelectedCard{
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+
+}
 
 .displayCard:hover{
-  -fx-background-color:#FCFCFC;
+    -fx-background-color:#b3b3b3;
 }
 
 .displayCard:pressed{
-  -fx-background-color:#FCFCFC;
+  -fx-background-color:#595757;
 }
 
 .titleText{

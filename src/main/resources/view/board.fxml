@@ -34,9 +34,9 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3360cc" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsRect" width="56.0" />
             <AnchorPane layoutX="65.0" layoutY="121.0" prefHeight="429.0" prefWidth="793.0" styleClass="boardAnchorPane">
                <children>
-                  <AnchorPane layoutX="300.0" layoutY="21.0" prefHeight="142.0" prefWidth="179.0" styleClass="displayCard">
+                  <AnchorPane layoutX="300.0" layoutY="21.0" prefHeight="142.0" prefWidth="179.0" styleClass="displaySelectedCard">
                      <children>
-                        <ImageView fitHeight="129.0" fitWidth="151.0" layoutX="25.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="25.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/shapes/YELLOWCIRCLE.png" />
                            </image>

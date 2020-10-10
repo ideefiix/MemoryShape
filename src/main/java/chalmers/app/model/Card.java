@@ -39,4 +39,8 @@ public class Card {
     public Shape getShape() {
         return shape;
     }
+
+    public String getID(){
+        return (color.toString() + shape.toString());
+    }
 }

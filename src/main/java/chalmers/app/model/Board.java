@@ -74,10 +74,6 @@ public class Board {
             activeCardList.add(cardList.get(i));
         }
 
-        for(int i = 0; i < numberOfActiveShapes; i++){
-            //TODO Call a method in the controller to create GUI cards with the shapes
-        }
-
 
     }
 

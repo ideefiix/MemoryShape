@@ -1,6 +1,5 @@
 package chalmers.app.model;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,6 +8,7 @@ public class CardSelector {
     private List<Card> cardList;
     private int selectedCardIndex = 0;
     private Card selectedCard;
+    private boolean boardCleared = false;
 
     /**
      *
@@ -24,11 +24,12 @@ public class CardSelector {
      */
 
     public void changeSelectedShape(){
-        if(selectedCardIndex < cardList.size()){
+        if(selectedCardIndex + 1 < cardList.size()){
             selectedCardIndex++;
             selectedCard = cardList.get(selectedCardIndex);
         } else {
-            System.out.println("SelectedShapeIndex is out of bounds!!");
+            //The player has completed the level
+            boardCleared = true;
         }
         //TODO Change the GUI image of selectedshape
 
@@ -61,5 +62,13 @@ public class CardSelector {
 
     public List<Card> getCardList() {
         return cardList;
+    }
+
+    public boolean isBoardCleared(){
+        return boardCleared;
+    }
+
+    public void setBoardCleared(Boolean state){
+        boardCleared = state;
     }
 }

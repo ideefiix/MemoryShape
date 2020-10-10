@@ -6,7 +6,7 @@
 
 <fx:root stylesheets="@menuStyle.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane styleClass="displayCard">
+      <AnchorPane fx:id="backgroundPane" onMouseClicked="#onClick" styleClass="displayCard" stylesheets="@menuStyle.css">
          <children>
             <ImageView fx:id="image" fitHeight="100.0" fitWidth="100.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
