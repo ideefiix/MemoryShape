@@ -5,6 +5,7 @@ import chalmers.app.model.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.net.URL;
@@ -19,8 +20,9 @@ public class BoardController implements Initializable {
 
 
 
+
     @FXML
-    FlowPane flowPane;
+   FlowPane flowPane;
 
     public BoardController(MainController mainController, Game game) {
         this.mainController = mainController;
@@ -61,7 +63,7 @@ public class BoardController implements Initializable {
     }
 
     public void updateBoard(){
-        flowPane.getChildren().clear();
+         flowPane.getChildren().clear();
         for(CardController cardController: cardControllers){
             flowPane.getChildren().add(cardController);
         }

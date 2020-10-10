@@ -11,6 +11,10 @@
     -fx-background-size: 100% 100%;
 }
 
+.backgroundBoard{
+    -fx-background-image: url(images/background3.jpg);
+    -fx-background-size: 100% 100%;
+}
 
 .whiteMenuText{
     -fx-text-fill:white;
@@ -19,14 +23,37 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
 }
 
-.logoText{
-    -fx-text-fill:#3254CD;
-    -fx-font-size: 96;
-    -fx-font-family:"Baloo Bhai";
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
-    -fx-fill: #3254CD;
-    -fx-stroke: #ffffff;
-    -fx-stroke-width:5;
+
+.boardAnchorPane{
+   -fx-background-color: #3254CD;
+   -fx-background-radius: 30;
+   -fx-border-radius: 10px;
+}
+
+.displayCard{
+  -fx-background-color: white;
+  -fx-background-radius: 10;
+  -fx-border-radius: 5px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+
+}
+
+.displayCard:hover{
+  -fx-background-color:#FCFCFC;
+}
+
+.displayCard:pressed{
+  -fx-background-color:#FCFCFC;
+}
+
+.titleText{
+  -fx-text-fill:#3254CD;
+  -fx-font-size:96;
+  -fx-font-family :"Baloo Bhai";
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+  -fx-stroke: #ffffff;
+  -fx-stroke-width:5;
+  -fx-fill: #3254CD;
 
 }
 
@@ -52,3 +79,24 @@
     -fx-background-color:#2D4BB8;
 }
 
+.logo{
+  -fx-fill:#45aca5;
+  -fx-stroke: #ffffff;
+  -fx-stroke-width:5;
+
+}
+
+.optionsButton{
+  -fx-background-color:#3254CD;
+  -fx-border-width: 2px;
+  -fx-border-radius: 2px;
+  -fx-background-radius: 2px;
+}
+
+.optionsButton:hover{
+ -fx-background-color:#4665D2;
+}
+
+.optionsButton:pressed{
+  -fx-background-color:#2D4BB8;
+}
