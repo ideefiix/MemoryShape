@@ -69,7 +69,7 @@ public class CardController extends AnchorPane  {
         if(card.getID().equals(rightID)){
             backgroundPane.setStyle("-fx-background-color: #" + "73ba70");
             parentController.incScore();
-            parentController.getGame().getCardSelector().changeSelectedShape();
+            parentController.getGame().getCardSelector().changeSelectedCard();
             parentController.setSelectedCard();
             // Will create a new board if the board is completed
 

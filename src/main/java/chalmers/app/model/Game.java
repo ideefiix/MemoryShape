@@ -38,7 +38,7 @@ public class Game {
         if(card.getColor() == cardSelector.getSelectedCard().getColor() && card.getShape() == cardSelector.getSelectedCard().getShape()){
 
             board.removeClickedCard(0); //Ändrat till index. Metoden saknade metodkropp innan också
-            cardSelector.changeSelectedShape();
+            cardSelector.changeSelectedCard();
             //TODO Give player score,
 
         }else{
@@ -90,7 +90,7 @@ public class Game {
             board.removeClickedCard(index);
 
             if(board.getActiveCardList().size() > 0) {  //onödigt?
-                cardSelector.changeSelectedShape();
+                cardSelector.changeSelectedCard();
             }
 
 

@@ -48,7 +48,7 @@ public class GameTest {
 
         if(testGame.getBoard().getActiveCardList().get(2).equals(testGame.getCardSelector().getSelectedCard()));{ //Borde va metod (onClick) ist för lång ifsats
             testGame.getBoard().removeClickedCard(2);
-            testGame.getCardSelector().changeSelectedShape();
+            testGame.getCardSelector().changeSelectedCard();
         }
 
         int lifes_after = testGame.getPlayer().getLives();

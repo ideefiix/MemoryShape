@@ -1,40 +1,38 @@
 package chalmers.app.model;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
- * Klass för den display som visar upp Cards
+ * Klass för den display som visar upp sekvensen av Cards i Simon Says game modet
  */
-public class CardSelector implements ICardSelector{
+public class SimonSaysCardSelector implements ICardSelector {
     private List<Card> cardList;
     private int selectedCardIndex = 0;
     private Card selectedCard;
-    private boolean boardCleared = false;
 
     /**
      * Constructor
+     * @param cardList lista med Cards som ska visas upp
      */
-    public CardSelector(List<Card> cardList) {
+    public SimonSaysCardSelector(List<Card> cardList) {
 
         restartList(cardList);
     }
 
     /**
-     * Should be called after player scores
+     * Visar sekvensen kort på displayen
      */
     @Override
-    public void changeSelectedCard(){
-        if(selectedCardIndex < cardList.size()){
+    public void changeSelectedCard() {
+        while(selectedCardIndex < cardList.size()) {
             selectedCardIndex++;
             selectedCard = cardList.get(selectedCardIndex);
-        } else {
-            System.out.println("SelectedShapeIndex is out of bounds!!");
+            wait(1000);
         }
-        //TODO Change the GUI image of selectedshape
-
+        //selectedCard = visa ett blankt kort
     }
 
     /**
@@ -42,7 +40,7 @@ public class CardSelector implements ICardSelector{
      * @param activeCardList
      */
     @Override
-    public void restartList(List<Card> activeCardList){
+    public void restartList(List<Card> activeCardList) {
         cardList = new ArrayList<>();
 
         for(Card card: activeCardList){
@@ -54,23 +52,25 @@ public class CardSelector implements ICardSelector{
         selectedCard = cardList.get(selectedCardIndex);
     }
 
+    public static void wait(int ms)
+    {
+        try
+        {
+            Thread.sleep(ms);
+        }
+        catch(InterruptedException ex)
+        {
+            Thread.currentThread().interrupt();
+        }
+    }
 
-    public Card getSelectedCard(){
+    @Override
+    public Card getSelectedCard() {
         return selectedCard;
     }
 
+    @Override
     public void setSelectedCard(Card selectedCard) {
         this.selectedCard = selectedCard;
-    }
-
-    public List<Card> getCardList() {
-        return cardList;
-    }
-    public boolean isBoardCleared(){
-        return boardCleared;
-    }
-
-    public void setBoardCleared(Boolean state){
-        boardCleared = state;
     }
 }
