@@ -27,11 +27,11 @@ public class CardSelector implements ICardSelector{
      */
     @Override
     public void changeSelectedCard(){
-        if(selectedCardIndex < cardList.size()){
+        if(selectedCardIndex + 1 < cardList.size()){
             selectedCardIndex++;
             selectedCard = cardList.get(selectedCardIndex);
         } else {
-            System.out.println("SelectedShapeIndex is out of bounds!!");
+            boardCleared = true;
         }
         //TODO Change the GUI image of selectedshape
 

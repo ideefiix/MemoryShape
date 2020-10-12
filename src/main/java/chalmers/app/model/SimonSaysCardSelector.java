@@ -30,7 +30,16 @@ public class SimonSaysCardSelector implements ICardSelector {
         while(selectedCardIndex < cardList.size()) {
             selectedCardIndex++;
             selectedCard = cardList.get(selectedCardIndex);
-            wait(1000);
+            Thread thread = new Thread(){
+                public void run(){
+                    try{
+                        Thread.sleep(5000);
+                    }catch (Exception e){
+
+                    }
+                }
+            };
+            thread.start();
         }
         //selectedCard = visa ett blankt kort
     }
