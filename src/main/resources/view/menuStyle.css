@@ -37,6 +37,9 @@
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
 
 }
+/**
+Har ingen hover effect
+ */
 .displaySelectedCard{
     -fx-background-color: white;
     -fx-background-radius: 10;
