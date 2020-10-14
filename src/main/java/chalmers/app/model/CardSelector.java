@@ -12,7 +12,7 @@ public class CardSelector implements ICardSelector{
     private List<Card> cardList;
     private int selectedCardIndex = 0;
     private Card selectedCard;
-    private boolean boardCleared = false;
+    private boolean PlayerGuessedAllCards = false;
 
     /**
      * Constructor
@@ -31,7 +31,7 @@ public class CardSelector implements ICardSelector{
             selectedCardIndex++;
             selectedCard = cardList.get(selectedCardIndex);
         } else {
-            boardCleared = true;
+            PlayerGuessedAllCards = true;
         }
         //TODO Change the GUI image of selectedshape
 
@@ -66,11 +66,11 @@ public class CardSelector implements ICardSelector{
     public List<Card> getCardList() {
         return cardList;
     }
-    public boolean isBoardCleared(){
-        return boardCleared;
+    public boolean getPlayerGuessedAllCards(){
+        return PlayerGuessedAllCards;
     }
 
-    public void setBoardCleared(Boolean state){
-        boardCleared = state;
+    public void setPlayerGuessedAllCards(Boolean state){
+        PlayerGuessedAllCards = state;
     }
 }

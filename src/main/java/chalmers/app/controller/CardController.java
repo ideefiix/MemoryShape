@@ -64,38 +64,8 @@ public class CardController extends AnchorPane  {
 
     @FXML
     public void onClick(){
-        showImage();
-        String rightID = parentController.getGame().getCardSelector().getSelectedCard().getID();
-        if(card.getID().equals(rightID)){
-            backgroundPane.setStyle("-fx-background-color: #" + "73ba70");
-            parentController.incScore();
-            parentController.getGame().getCardSelector().changeSelectedCard();
-            parentController.setSelectedCard();
-            // Will create a new board if the board is completed
-
-            // TODO FIX this method
-            parentController.isLevelCompleted();
-        }
-        else{
-            backgroundPane.setStyle("-fx-background-color: #" + "c75a5a");
-            parentController.bcDecLife();
-
-            Thread thread = new Thread(){
-                public void run(){
-                    try{
-                        Thread.sleep(5000);
-                        hideImage();
-                        backgroundPane.setStyle("-fx-background-color: #" + "ffffff");
-                    }catch (Exception e){
-
-                    }
-                }
-            };
-            thread.start();
-        }
-
+        parentController.onclick(card);
     }
-
 
 }
 

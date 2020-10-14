@@ -3,13 +3,11 @@ package chalmers.app.model;
 import chalmers.app.model.enums.Color;
 import chalmers.app.model.enums.Shape;
 
-import java.util.Objects;
-
 public class Card {
 
     private Color color;
     private Shape shape;
-    private boolean isSelected = false;
+    private boolean isFlipped = false;
     int size = 1;
 
     public Card(Color color, Shape shape) {
@@ -24,12 +22,12 @@ public class Card {
 
 
 
-    public boolean getShapeSelected(){
-        return isSelected;
+    public boolean getFlipped(){
+        return isFlipped;
     }
 
-    public void setShapeSelected(boolean setting){
-        isSelected = setting;
+    public void setFlipped(boolean state){
+        isFlipped = state;
     }
 
     public Color getColor() {

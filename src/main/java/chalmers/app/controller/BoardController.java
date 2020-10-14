@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.net.URL;
@@ -19,9 +18,6 @@ public class BoardController implements Initializable {
     private Game game;
     private List<CardController> cardControllers = new ArrayList<CardController>();
     File dir = new File("src/main/resources/view/images/shapes");
-
-
-
 
     @FXML
     FlowPane flowPane;
@@ -136,7 +132,7 @@ public class BoardController implements Initializable {
     }
 
     public void isLevelCompleted(){
-        if(game.getCardSelector().isBoardCleared()){
+        if(game.getCardSelector().getPlayerGuessedAllCards()){
             game.incLevel();
             game.newBoard();
 
@@ -147,5 +143,9 @@ public class BoardController implements Initializable {
             hideCards();
 
         }
+    }
+
+    public void onclick(Card card) {
+        mainController.onClick(card);
     }
 }

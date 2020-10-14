@@ -1,5 +1,6 @@
 package chalmers.app.controller;
 
+import chalmers.app.model.Card;
 import chalmers.app.model.Game;
 import chalmers.app.model.Player;
 import javafx.fxml.FXMLLoader;
@@ -66,5 +67,14 @@ public class MainController {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public void onClick(Card card) {
+        cardColorUpdater(card);
+        game.boardUpdater();
+    }
+
+    public void cardColorUpdater(Card card){
+
     }
 }
