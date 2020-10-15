@@ -4,9 +4,6 @@ package chalmers.app.model;
 import chalmers.app.model.enums.Color;
 import chalmers.app.model.enums.Shape;
 
-import javax.swing.*;
-import java.awt.*;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,7 +14,6 @@ public class Board {
    private int numberOfActiveShapes;
    private Color[] allColors = Color.values();
    private Shape[] allShapes = Shape.values();
-   private boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
 
     /**
      *
@@ -69,8 +65,10 @@ public class Board {
         Collections.shuffle(cardList);
 
         activeCardList = new ArrayList<>();
-        // Only shapes on the board is active
+        // Add shapes to the boardlist
         for (int i = 0; i < numberOfActiveShapes; i++){
+            //Reset their removed property
+            cardList.get(i).setisRemoved(false);
             activeCardList.add(cardList.get(i));
         }
 
@@ -81,17 +79,6 @@ public class Board {
         activeCardList.remove(index);
     }
 
-    public void showCards(){
-        hideCards = false;
-    }
-
-    public void hideCards(){
-        hideCards = true;
-    }
-
-    public boolean getHideCards(){
-        return hideCards;
-    }
 
     public List<Card> getActiveCardList() {
         return activeCardList;

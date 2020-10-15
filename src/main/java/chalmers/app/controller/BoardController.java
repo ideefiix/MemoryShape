@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.GridPane;
 
 import java.io.File;
 import java.net.URL;
@@ -19,18 +18,18 @@ public class BoardController implements Initializable {
     private Game game;
     private List<CardController> cardControllers = new ArrayList<CardController>();
     File dir = new File("src/main/resources/view/images/shapes");
-
-
-
+    private List<Card> displayCards;
+    private int indexImage = 0;
 
     @FXML
     FlowPane flowPane;
     @FXML
     ImageView selectedCard;
 
-    public BoardController(MainController mainController, Game game) {
+    public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
         this.mainController = mainController;
         this.game = game;
+        displayCards = DisplayCards;
 
 
     }
@@ -39,8 +38,8 @@ public class BoardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         createCards();
         updateBoard();
-        setSelectedCard();
         hideCards();
+        setNextDisplayImage();
     }
 
     /**
@@ -71,7 +70,6 @@ public class BoardController implements Initializable {
                 break;
             }
         }
-
     }
 
     /**
@@ -84,31 +82,39 @@ public class BoardController implements Initializable {
         }
     }
 
-    /**
-     * Sets the image for selectedcard
-     */
-    public void setSelectedCard(){
-        Card selected = game.getCardSelector().getSelectedCard();
-        assignImageCardSelector(selected.getID());
 
+    /**
+     * Creates a list of Images from a list of card IDs
+     */
+
+    public void setNextDisplayImage(){
+        if(indexImage < displayCards.size()){
+            selectedCard.setImage(assignImageCardDisplay());
+            indexImage++;
+        }
     }
 
-    /**
-     * Is called by ↑
-     */
+    public Image assignImageCardDisplay(){
+        Image i = null;
+        Card c = displayCards.get(indexImage);
 
-    public void assignImageCardSelector(String id){
         for(File file: dir.listFiles()){
-
             //Remove .JPG extension
             String str = file.getName();
             int pos = str.lastIndexOf(".");
 
-            if(str.substring(0,pos).equals(id)){
-                selectedCard.setImage(new Image(file.toURI().toString()));
+            if(str.substring(0,pos).equals(c.getID())){
+                i = new Image(file.toURI().toString());
+
                 break;
             }
+
         }
+        if(i == null){
+            System.out.println("Something ain't right in BC cardDisplay");
+            System.out.println(c.getID());
+        }
+        return  i;
 
     }
 
@@ -135,16 +141,28 @@ public class BoardController implements Initializable {
         game.getPlayer().decLife();
     }
 
-    public void isLevelCompleted(){
-        if(game.getCardSelector().isBoardCleared()){
+
+    public void onclick(Card card) {
+        mainController.onClick(card);
+    }
+
+    public List<CardController> getCardControllers() {
+        return cardControllers;
+    }
+
+    public void isBoardCleared() {
+        if(game.getBoardCleared()){
             game.incLevel();
             game.newBoard();
-
+            game.setBoardCleared(false);
             cardControllers = new ArrayList<>();
             createCards();
             updateBoard();
-            setSelectedCard();
             hideCards();
+            // Fix cardDisplay
+            displayCards = game.getCardSelector().getCardList();
+            indexImage = 0;
+            setNextDisplayImage();
 
         }
     }

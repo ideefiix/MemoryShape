@@ -30,13 +30,39 @@
    -fx-border-radius: 10px;
 }
 
-.displayCard{
+.card_Default{
   -fx-background-color: white;
   -fx-background-radius: 10;
   -fx-border-radius: 5px;
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
 
 }
+
+.card_Default:hover{
+    -fx-background-color:#b3b3b3;
+}
+
+.card_Default:pressed{
+  -fx-background-color:#595757;
+}
+
+.card_Green{
+    -fx-background-color: #73ba70;
+    -fx-background-radius: 10;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+
+}
+
+.card_Red{
+    -fx-background-color: #c75a5a;
+    -fx-background-radius: 10;
+    -fx-border-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+
+}
+
+
 /**
 Har ingen hover effect
  */
@@ -46,14 +72,6 @@ Har ingen hover effect
     -fx-border-radius: 5px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
 
-}
-
-.displayCard:hover{
-    -fx-background-color:#b3b3b3;
-}
-
-.displayCard:pressed{
-  -fx-background-color:#595757;
 }
 
 .titleText{

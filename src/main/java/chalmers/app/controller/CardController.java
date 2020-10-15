@@ -54,37 +54,47 @@ public class CardController extends AnchorPane  {
 
     @FXML
     public void onClick(){
+        // You can't click on removed cards
+        if(card.getisRemoved() == false){
+            parentController.onclick(card);
+
+
+        // Hide the previosly wrong guess
+        for(CardController cc: parentController.getCardControllers()){
+            if (cc.getCard().getFlipped() && cc.getCard().getisRemoved() == false){
+                cc.hideImage();
+                cc.getBackgroundPane().getStyleClass().clear();
+                cc.getBackgroundPane().getStyleClass().add("card_Default");
+            }
+        }
+        card.setFlipped(true);
+
+        //Manipulate the clicked card
+        if(card.getisRemoved()){
+            backgroundPane.getStyleClass().clear();
+            backgroundPane.getStyleClass().add("card_Green");
+        }else{
+            backgroundPane.getStyleClass().clear();
+            backgroundPane.getStyleClass().add("card_Red");
+        }
+
         showImage();
-        String rightID = parentController.getGame().getCardSelector().getSelectedCard().getID();
-        if(card.getID().equals(rightID)){
-            backgroundPane.setStyle("-fx-background-color: #" + "73ba70");
-            parentController.incScore();
-            parentController.getGame().getCardSelector().changeSelectedCard();
-            parentController.setSelectedCard();
 
-            // Will create a new board if the board is completed
-            parentController.isLevelCompleted();
+        //Update Selectedcard if right
+            if(card.getisRemoved()){
+                parentController.setNextDisplayImage();
+            }
         }
-        else{
-            backgroundPane.setStyle("-fx-background-color: #" + "c75a5a");
-            parentController.bcDecLife();
-
-            Thread thread = new Thread(){
-                public void run(){
-                    try{
-                        Thread.sleep(5000);
-                        hideImage();
-                        backgroundPane.setStyle("-fx-background-color: #" + "ffffff");
-                    }catch (Exception e){
-
-                    }
-                }
-            };
-            thread.start();
-        }
-
+        //Is game over?
+        parentController.isBoardCleared();
     }
 
+    public AnchorPane getBackgroundPane() {
+        return backgroundPane;
+    }
 
+    public Card getCard() {
+        return card;
+    }
 }
 
