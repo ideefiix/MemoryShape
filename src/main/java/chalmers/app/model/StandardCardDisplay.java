@@ -10,18 +10,22 @@ import java.util.List;
  */
 public class StandardCardDisplay extends AbstractCardDisplay {
 
+    //Osynliga instansvariabler:
+    //cardsToDisplay
+    //nextDisplayCards
+    //expectedCard
+    //correctCardSelected
 
-    public StandardCardDisplay(List<Card> cardsToDisplay) {
-        restartList(cardsToDisplay);
-    }
+
+
 
     @Override
-    public void cardSelected(Card card) {
+    public void cardSelected(Card selectedCard) {
 
     }
 
     @Override
     public boolean isCorrectCardSelected() {
-        return false;
+        return correctCardSelected;
     }
 }

@@ -4,16 +4,14 @@ import java.util.List;
 
 interface ICardDisplay {
 
+    void loadCardsToDisplay(List<Card> cards);
+    void cardSelected(Card card);
+    boolean isCorrectCardSelected();
+    //get iterator
 
 
 
-   /* Gamla metoder
-   void changeSelectedCard();
-   void restartList(List<Card> activeCardList);
-   Card getSelectedCard();
-   void setSelectedCard(Card selectedCard);
-   List<Card> getCardList();
-    */
+
 
 
 
