@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Klass för den display som visar upp Cards
  */
-public class CardSelector implements ICardSelector{
+public class CardSelector{
     private List<Card> cardList;
     private int selectedCardIndex = 0;
     private Card selectedCard;
@@ -25,7 +25,7 @@ public class CardSelector implements ICardSelector{
     /**
      * Should be called after player scores
      */
-    @Override
+
     public void changeSelectedCard(){
         if(selectedCardIndex + 1 < cardList.size()){
             selectedCardIndex++;
@@ -41,7 +41,7 @@ public class CardSelector implements ICardSelector{
      * Tar in en lista med Cards som den byter ut den gamla listan mot och sen shufflar
      * @param activeCardList
      */
-    @Override
+
     public void restartList(List<Card> activeCardList){
         cardList = new ArrayList<>();
 
