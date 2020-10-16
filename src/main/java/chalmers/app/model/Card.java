@@ -18,12 +18,15 @@ public class Card {
         this.shape = shape;
     }
 
+    public Card(CardState state, Color color, Shape shape) {
+        this.state = state;
+        this.color = color;
+        this.shape = shape;
+    }
 
     public boolean equals(Card other) {
         return (this.color == other.color && this.shape == other.shape);
     }
-
-
 
     public boolean getisRemoved(){
         return removed;
@@ -51,5 +54,13 @@ public class Card {
 
     public String getID(){
         return (color.toString() + shape.toString());
+    }
+
+    public void setState(CardState state) {
+        this.state = state;
+    }
+
+    public CardState getState() {
+        return state;
     }
 }

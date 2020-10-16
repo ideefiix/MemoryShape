@@ -1,6 +1,5 @@
 package chalmers.app.model.Boards;
 
-import chalmers.app.model.Boards.AbstractBoard;
 import chalmers.app.model.Card;
 
 import java.util.ArrayList;
@@ -19,15 +18,6 @@ public class FrenzyBoard extends AbstractBoard {
         generateBoard(level);
     }
 
-    @Override
-    public void correctCard() {
-
-    }
-
-    @Override
-    public void incorrectCard() {
-
-    }
 
     /**
      * Method for generating a board for the frenzy gamemode. Creates a list of cards, with several of the same kind.
@@ -35,11 +25,11 @@ public class FrenzyBoard extends AbstractBoard {
      */
     @Override
     public void generateBoard(int currentLevel) {
-        numberOfActiveShapes = 2 + currentLevel / 3;
+        nActiveCards = 2 + currentLevel / 3;
         activeCardList = new ArrayList<>();
         int remainder = currentLevel + 5;
         // Only shapes on the board are active
-        for (int i = 0; i < numberOfActiveShapes; i++) {
+        for (int i = 0; i < nActiveCards; i++) {
             int j = 0;
 
             while(j < 3){

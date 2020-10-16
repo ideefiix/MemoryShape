@@ -1,6 +1,8 @@
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.Boards.AbstractBoard;
+import chalmers.app.model.Card;
+import chalmers.app.model.enums.CardState;
 
 public class SimonSaysBoard extends AbstractBoard {
 
@@ -15,14 +17,15 @@ public class SimonSaysBoard extends AbstractBoard {
         generateBoard(level);
     }
 
-    @Override
-    public void correctCard() {
-
-    }
 
     @Override
-    public void incorrectCard() {
-
+    public void flipIncorrectCards() {
+        for(Card c: activeCardList){
+            if(c.getState().equals(CardState.INCORRECT)){
+                c.setState(CardState.FACEUP);
+                break;
+            }
+        }
     }
 
     @Override

@@ -1,32 +1,28 @@
 package chalmers.app.model.Boards;
 
+import chalmers.app.model.Card;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 interface IBoard {
-/*
-    void createShapeList();
-
-    List<String> getIds();
 
     void generateBoard(int currentLevel);
 
-    void removeClickedCard(int index);
+    void flipIncorrectCards();
 
-    void showCards();
-
-    void hideCards();
-
-    boolean getHideCards();
-
+    boolean isLevelComplete();
+     
     List<Card> getActiveCardList();
-
-    List<Card> getAllCardsList();
 
     int getNumberOfShapes();
 
+    void correctCard(Card selectedCard);
+
+    void incorrectCard(Card selectedCard);
+
+    void fillAllCardsList();
 
 
- */
 }

@@ -1,5 +1,5 @@
 package chalmers.app.model.enums;
 
 public enum CardState {
-    BLANK, CORRECT, INCORRECT, SELECTED;
+    FACEDOWN, FACEUP, CORRECT, INCORRECT, SELECTED;
 }
