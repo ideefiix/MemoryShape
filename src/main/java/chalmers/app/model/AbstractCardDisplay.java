@@ -8,7 +8,7 @@ import java.util.List;
  * A class to hold common code between the different CardDisplay classes
  */
 
-abstract class AbstractCardDisplay implements ICardDisplay {
+abstract class AbstractCardDisplay implements ICardDisplay,IteratbleCards {
 
     protected List<Card> cardsToDisplay;
     protected List<Card> nextDisplayCards;
@@ -31,13 +31,29 @@ abstract class AbstractCardDisplay implements ICardDisplay {
         Collections.shuffle(cardsToDisplay);
     }
 
+    public void loadNextDisplayCards(List<Card> cards){
+        for(Card card: cards){
+            nextDisplayCards.add(new Card(card.getColor(),card.getShape()));
+        }
+    }
+
+
+
     /**
      * Takes in the card selected by the player and updates the conditions within the CardDisplay
      * @param card: The card selected by the player
      */
     public abstract void cardSelected(Card card);
 
-    public abstract boolean isCorrectCardSelected();
+    public abstract void setUp(List<Card> cardsToDisplay);
+
+
+
+    public boolean isCorrectCardSelected(){
+        return correctCardSelected;
+    }
+
+
 
     //public ?abstract? Iterator getIterator();
 

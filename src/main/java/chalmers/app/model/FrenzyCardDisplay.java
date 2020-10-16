@@ -15,10 +15,26 @@ class FrenzyCardDisplay extends AbstractCardDisplay {
     @Override
     public void cardSelected(Card selectedCard) {
 
+
+
     }
 
     @Override
-    public boolean isCorrectCardSelected() {
-        return correctCardSelected;
+    public void setUp(List<Card> cardsToDisplay) {
+
+        /*
+        Ska jämföra selectedCard med expectedCard.
+        Om det är rätt så ska expectedCard bli nästa förväntade kort och correctCardSelected ska sättas till true
+        i simon says behöver inte nextDisplayCards updateras förrän leveln är avklarad.
+
+
+         */
+
+    }
+
+
+    @Override
+    public CardIterator createIterator() {
+        return null;
     }
 }

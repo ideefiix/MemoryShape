@@ -29,8 +29,13 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
     }
 
     @Override
-    public boolean isCorrectCardSelected() {
-        return correctCardSelected;
+    public void setUp(List<Card> cardsToDisplay) {
+
+    }
+
+    @Override
+    public CardIterator createIterator() {
+        return null;
     }
 
 
