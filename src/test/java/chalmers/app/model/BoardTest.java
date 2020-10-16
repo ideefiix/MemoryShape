@@ -1,7 +1,7 @@
 package chalmers.app.model;
 
-import chalmers.app.model.enums.Color;
-import chalmers.app.model.enums.Shape;
+import chalmers.app.model.CardEnums.Color;
+import chalmers.app.model.CardEnums.Shape;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

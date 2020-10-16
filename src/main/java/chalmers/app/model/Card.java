@@ -1,8 +1,8 @@
 package chalmers.app.model;
 
-import chalmers.app.model.enums.CardState;
-import chalmers.app.model.enums.Color;
-import chalmers.app.model.enums.Shape;
+import chalmers.app.model.CardEnums.CardState;
+import chalmers.app.model.CardEnums.Color;
+import chalmers.app.model.CardEnums.Shape;
 
 public class Card {
 
@@ -18,7 +18,7 @@ public class Card {
         this.shape = shape;
     }
 
-    public Card(CardState state, Color color, Shape shape) {
+    public Card(Color color, Shape shape, CardState state) {
         this.state = state;
         this.color = color;
         this.shape = shape;

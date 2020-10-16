@@ -1,8 +1,8 @@
 package chalmers.app.model;
 
 
-import chalmers.app.model.enums.Color;
-import chalmers.app.model.enums.Shape;
+import chalmers.app.model.CardEnums.Color;
+import chalmers.app.model.CardEnums.Shape;
 
 import java.util.ArrayList;
 import java.util.Collections;

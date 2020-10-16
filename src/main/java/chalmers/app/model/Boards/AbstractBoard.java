@@ -1,9 +1,9 @@
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
-import chalmers.app.model.enums.CardState;
-import chalmers.app.model.enums.Color;
-import chalmers.app.model.enums.Shape;
+import chalmers.app.model.CardEnums.CardState;
+import chalmers.app.model.CardEnums.Color;
+import chalmers.app.model.CardEnums.Shape;
 
 import java.util.ArrayList;
 import java.util.List;

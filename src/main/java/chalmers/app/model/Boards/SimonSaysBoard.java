@@ -1,8 +1,7 @@
 package chalmers.app.model.Boards;
 
-import chalmers.app.model.Boards.AbstractBoard;
 import chalmers.app.model.Card;
-import chalmers.app.model.enums.CardState;
+import chalmers.app.model.CardEnums.CardState;
 
 public class SimonSaysBoard extends AbstractBoard {
 

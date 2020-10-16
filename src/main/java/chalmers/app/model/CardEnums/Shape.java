@@ -1,4 +1,4 @@
-package chalmers.app.model.enums;
+package chalmers.app.model.CardEnums;
 
 public enum Shape {
     DIAMOND, CIRCLE, TRIANGLE, RECTANGLE, STAR;
