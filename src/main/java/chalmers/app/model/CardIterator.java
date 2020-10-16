@@ -2,7 +2,7 @@ package chalmers.app.model;
 
 public interface CardIterator {
 
-    void hasNext();
+    boolean hasNext();
     void getNext();
     Card getCard();
 
