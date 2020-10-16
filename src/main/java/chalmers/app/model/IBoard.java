@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 interface IBoard {
-
+/*
     void createShapeList();
 
     List<String> getIds();
@@ -26,4 +26,7 @@ interface IBoard {
 
     int getNumberOfShapes();
 
+
+
+ */
 }

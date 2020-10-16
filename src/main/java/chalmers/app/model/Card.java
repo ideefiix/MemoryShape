@@ -1,10 +1,12 @@
 package chalmers.app.model;
 
+import chalmers.app.model.enums.CardState;
 import chalmers.app.model.enums.Color;
 import chalmers.app.model.enums.Shape;
 
 public class Card {
 
+    private CardState state;
     private Color color;
     private Shape shape;
     private boolean isFlipped = false;

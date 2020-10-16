@@ -1,5 +1,5 @@
 package chalmers.app.model;
 
-public interface IteratbleCards {
+public interface IterableCards {
     CardIterator createIterator();
 }

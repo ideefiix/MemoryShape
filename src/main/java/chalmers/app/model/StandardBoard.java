@@ -1,12 +1,8 @@
 package chalmers.app.model;
 
 
-import chalmers.app.model.enums.Color;
-import chalmers.app.model.enums.Shape;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class StandardBoard extends AbstractBoard {
     /**
@@ -15,8 +11,18 @@ public class StandardBoard extends AbstractBoard {
      * Shuffles the list and creates a board with the first X shapes
      */
     public StandardBoard(int level) {
-        createShapeList();
+        fillAllCardsList();
         generateBoard(level);
+    }
+
+    @Override
+    public void correctCard() {
+        
+    }
+
+    @Override
+    public void incorrectCard() {
+
     }
 
     @Override

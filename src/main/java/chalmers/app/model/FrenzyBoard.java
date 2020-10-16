@@ -12,10 +12,24 @@ public class FrenzyBoard extends AbstractBoard {
      * Shuffles the list and creates a board with the first X shapes
      */
     public FrenzyBoard(int level) {
-        createShapeList();
+        fillAllCardsList();
         generateBoard(level);
     }
 
+    @Override
+    public void correctCard() {
+
+    }
+
+    @Override
+    public void incorrectCard() {
+
+    }
+
+    /**
+     * Method for generating a board for the frenzy gamemode. Creates a list of cards, with several of the same kind.
+     * @param currentLevel
+     */
     @Override
     public void generateBoard(int currentLevel) {
         numberOfActiveShapes = 2 + currentLevel / 3;
@@ -38,4 +52,6 @@ public class FrenzyBoard extends AbstractBoard {
         }
         Collections.shuffle(activeCardList);
     }
+
+
 }

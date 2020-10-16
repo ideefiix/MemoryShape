@@ -9,8 +9,18 @@ public class SimonSaysBoard extends AbstractBoard {
      * Shuffles the list and creates a board with the first X shapes
      */
     public SimonSaysBoard(int level) {
-        createShapeList();
+        fillAllCardsList();
         generateBoard(level);
+    }
+
+    @Override
+    public void correctCard() {
+
+    }
+
+    @Override
+    public void incorrectCard() {
+
     }
 
     @Override

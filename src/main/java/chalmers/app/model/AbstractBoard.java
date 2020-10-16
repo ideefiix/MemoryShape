@@ -13,7 +13,7 @@ abstract class AbstractBoard implements IBoard {
     List<Card> activeCardList;
     int numberOfActiveShapes = 0;
     boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
-
+    boolean levelComplete = false;
 
     //Methods
 
@@ -21,8 +21,8 @@ abstract class AbstractBoard implements IBoard {
     /**
      * Initalizes the list with ALL cards
      */
-    @Override
-    public void createShapeList(){
+    //@Override
+    public void fillAllCardsList(){
         for(Color color: Color.values()){
             for(Shape shape: Shape.values()){
                 Card card = new Card(color,shape);
@@ -31,12 +31,19 @@ abstract class AbstractBoard implements IBoard {
         }
     }
 
+    public abstract void correctCard();
+
+    public abstract void incorrectCard();
+
+    public boolean isLevelComplete(){
+        return levelComplete;
+    }
 
     /**
      * Returns the IDs of the activecards
      * @return
      */
-    @Override
+    //@Override
     public List<String> getIds(){
         List < String > colorShape = new ArrayList<>();
         for(int i = 0; i < activeCardList.size(); i++){
@@ -50,40 +57,40 @@ abstract class AbstractBoard implements IBoard {
      * Create a board
      * @param currentLevel
      */
-    @Override
+    //@Override
     public abstract void generateBoard(int currentLevel);
 
-    @Override
+    //@Override
     public void removeClickedCard(int index){ //kommer behövas ändras så att kortet ersätts med ett "space" (space och kort borde ha samma interface!)
         activeCardList.remove(index);
     }
 
-    @Override
+    //@Override
     public void showCards(){
         hideCards = false;
     }
 
-    @Override
+    //@Override
     public void hideCards(){
         hideCards = true;
     }
 
-    @Override
+    //@Override
     public boolean getHideCards(){
         return hideCards;
     }
 
-    @Override
+    //@Override
     public List<Card> getActiveCardList() {
         return activeCardList;
     }
 
-    @Override
+    //@Override
     public List<Card> getAllCardsList() {
         return allCardsList;
     }
 
-    @Override
+    //@Override
     public int getNumberOfShapes() {
         return numberOfActiveShapes;
     }
