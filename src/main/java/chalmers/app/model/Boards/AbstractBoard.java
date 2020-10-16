@@ -1,5 +1,7 @@
-package chalmers.app.model;
+package chalmers.app.model.Boards;
 
+import chalmers.app.model.Card;
+import chalmers.app.model.Boards.IBoard;
 import chalmers.app.model.enums.Color;
 import chalmers.app.model.enums.Shape;
 

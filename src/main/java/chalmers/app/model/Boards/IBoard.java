@@ -1,4 +1,4 @@
-package chalmers.app.model;
+package chalmers.app.model.Boards;
 
 import java.util.ArrayList;
 import java.util.Collections;

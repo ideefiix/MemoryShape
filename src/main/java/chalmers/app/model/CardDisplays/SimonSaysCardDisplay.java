@@ -1,7 +1,7 @@
-package chalmers.app.model;
+package chalmers.app.model.CardDisplays;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import chalmers.app.model.Card;
+
 import java.util.List;
 
 /**
@@ -33,10 +33,7 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
 
     }
 
-    @Override
-    public CardIterator createIterator() {
-        return null;
-    }
+
 
 
     /**

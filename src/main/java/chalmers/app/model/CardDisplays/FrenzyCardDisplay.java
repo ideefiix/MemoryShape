@@ -1,4 +1,6 @@
-package chalmers.app.model;
+package chalmers.app.model.CardDisplays;
+
+import chalmers.app.model.Card;
 
 import java.util.List;
 
@@ -33,8 +35,5 @@ class FrenzyCardDisplay extends AbstractCardDisplay {
     }
 
 
-    @Override
-    public CardIterator createIterator() {
-        return null;
-    }
+
 }

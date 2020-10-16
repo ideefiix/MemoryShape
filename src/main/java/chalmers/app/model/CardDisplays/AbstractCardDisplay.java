@@ -1,4 +1,6 @@
-package chalmers.app.model;
+package chalmers.app.model.CardDisplays;
+
+import chalmers.app.model.Card;
 
 import java.util.Collections;
 import java.util.List;
@@ -7,7 +9,7 @@ import java.util.List;
  * A class to hold common code between the different CardDisplay classes
  */
 
-abstract class AbstractCardDisplay implements ICardDisplay, IterableCards {
+abstract class AbstractCardDisplay implements ICardDisplay {
 
     protected List<Card> cardsToDisplay;
     protected List<Card> nextDisplayCards;
