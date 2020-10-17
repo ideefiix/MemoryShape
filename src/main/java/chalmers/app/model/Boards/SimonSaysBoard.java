@@ -2,6 +2,7 @@ package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
+import chalmers.app.model.ICardIterator;
 
 public class SimonSaysBoard extends AbstractBoard {
 
@@ -31,4 +32,6 @@ public class SimonSaysBoard extends AbstractBoard {
     public void generateBoard(int currentLevel) {
 
     }
+
+
 }

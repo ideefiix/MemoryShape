@@ -19,7 +19,6 @@ public class FrenzyMode implements IGameMode {
 
     @Override
     public void startUp() {
-
         //board.fillFrenzy(int level) level kan va 1
         //display.fill(Board board) behöver inte heta fill
         //currentCard = display.getList.get(displayIndex) <-- Första kortet i listan.
