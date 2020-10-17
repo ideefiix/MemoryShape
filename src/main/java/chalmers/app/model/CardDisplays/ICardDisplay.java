@@ -9,6 +9,7 @@ public interface ICardDisplay {
     void loadCardsToDisplay(List<Card> cards);
     void cardSelected(Card card);
     boolean isCorrectCardSelected();
+    void setUp(List<Card> cardsToDisplay);
     //get iterator
 
 

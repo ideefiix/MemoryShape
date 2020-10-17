@@ -9,6 +9,10 @@ import java.util.List;
 
 public class Game {
 
+    public enum GameMode{
+        STANDARD, SIMONSAYS, FRENZY;
+    }
+
     private IBoard board2;
     private ICardDisplay cardDisplay2;
 
@@ -16,9 +20,18 @@ public class Game {
     private boolean boardCleared = false;
     private Player player;
     private CardDisplay cardDisplay;
-    private int level;
+    private int level = 0;
+    private GameMode mode;
 
-    public Game(Player player, int level) {
+    public Game(Player player, GameMode mode) {
+        this.player = player;
+        this.mode = mode;
+        //skapa Board beroende på mode
+        //skapa Display beroende på mode
+        initLevel(level);
+    }
+
+    public Game(Player player, int level) {//gammal konstruktor
         this.player = player;
         this.level = level;
         board = new Board(level);
@@ -52,9 +65,6 @@ public class Game {
         }
     }
 
-    public void initGame(){
-
-    }
 
     public void onClick2(Card selectedCard){
         cardDisplay2.cardSelected(selectedCard);
@@ -64,7 +74,7 @@ public class Game {
                 if(isGameComplete()){
                     gameComplete();
                 }
-                nextLevel(level);
+                initLevel(level);
             }
         } else {
             board2.incorrectCard(selectedCard);
@@ -77,11 +87,14 @@ public class Game {
         //observer.notify()
     }
 
-    public void nextLevel(int level){
+    public void initLevel(int level){
         level++;
+        board2.generateBoard(level);
+        cardDisplay2.setUp(board2.getActiveCardList()); //frenzydisplay ska bara ha en av varje card som används i activecardslist
     }
 
     public boolean isGameComplete(){
+
         return false;
     }
 
