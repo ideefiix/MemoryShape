@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-interface IBoard {
+public interface IBoard {
 
     void generateBoard(int currentLevel);
 

@@ -4,7 +4,7 @@ import chalmers.app.model.Card;
 
 import java.util.List;
 
-interface ICardDisplay {
+public interface ICardDisplay {
 
     void loadCardsToDisplay(List<Card> cards);
     void cardSelected(Card card);

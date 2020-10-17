@@ -8,7 +8,7 @@ import chalmers.app.model.CardEnums.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class AbstractBoard implements IBoard {
+public abstract class AbstractBoard implements IBoard {
 
     List<Card> allCardsList = new ArrayList<>();
     List<Card> activeCardList;

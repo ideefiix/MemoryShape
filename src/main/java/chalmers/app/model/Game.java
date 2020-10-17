@@ -1,8 +1,17 @@
 package chalmers.app.model;
 
+
+
+import chalmers.app.model.Boards.IBoard;
+import chalmers.app.model.CardDisplays.ICardDisplay;
+
 import java.util.List;
 
 public class Game {
+
+    private IBoard board2;
+    private ICardDisplay cardDisplay2;
+
     private Board board;
     private boolean boardCleared = false;
     private Player player;
@@ -30,8 +39,6 @@ public class Game {
      * Call with a card from the board!
      */
     public void onClick(Card card){
-
-
         // Was it a good card?
         if (didUserFindTheCard(card)) {
             //Yes
@@ -43,8 +50,50 @@ public class Game {
             //No
             player.decLife();
         }
+    }
+
+    public void initGame(){
+        
+    }
+
+    public void onClick2(Card selectedCard){
+        cardDisplay2.cardSelected(selectedCard);
+        if(cardDisplay2.isCorrectCardSelected()){
+            board2.correctCard(selectedCard);
+            if(board2.isLevelComplete()){
+                if(isGameComplete()){
+                    gameComplete();
+                }
+                nextLevel(level);
+            }
+        } else {
+            board2.incorrectCard(selectedCard);
+            player.lives = player.lives - 1; //Skapa decLife funktion. Gör lives private
+            if(!player.IsAlive()){
+                gameOver();
+            }
+        }
+        board2.flipIncorrectCards();
+        //observer.notify()
+    }
+
+    public void nextLevel(int level){
+        level++;
+    }
+
+    public boolean isGameComplete(){
+        return false;
+    }
+
+    public void gameComplete(){
 
     }
+
+    public void gameOver(){
+
+    }
+
+
 
     public boolean didUserFindTheCard(Card card){
         Card cc = cardDisplay.getSelectedCard();
