@@ -53,7 +53,7 @@ public class Game {
     }
 
     public void initGame(){
-        
+
     }
 
     public void onClick2(Card selectedCard){
