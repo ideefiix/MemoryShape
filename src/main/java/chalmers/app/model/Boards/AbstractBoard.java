@@ -4,11 +4,14 @@ import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
+import chalmers.app.model.CardIterator;
+import chalmers.app.model.ICardIterator;
+import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractBoard implements IBoard {
+public abstract class AbstractBoard implements IBoard, IterableCards {
 
     List<Card> allCardsList = new ArrayList<>();
     List<Card> activeCardList;
@@ -86,6 +89,11 @@ public abstract class AbstractBoard implements IBoard {
      */
     @Override
     public abstract void generateBoard(int currentLevel);
+
+    @Override
+    public ICardIterator createIterator() {
+        return new CardIterator(activeCardList);
+    }
 
 
     /*@Override

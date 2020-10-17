@@ -84,7 +84,7 @@ public class Game {
             }
         }
         board2.flipIncorrectCards();
-        //observer.notify()
+        //observer.update()
     }
 
     public void initLevel(int level){
