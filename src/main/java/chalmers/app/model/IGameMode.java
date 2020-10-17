@@ -5,10 +5,11 @@ package chalmers.app.model;
  */
 
 public interface IGameMode {
-    public void startUp(); //initsialiserar gamemodet
-    public void updateSelector();
-    public void updateBoard();
-    public void takeInput(); //Tar in input från användaren.
+    void startUp();
+    void cardSelected(int index);
+    boolean isCorrectCard();
+    boolean levelCompleted();
+    void nextLevel();
 
 
 

@@ -22,7 +22,7 @@ public class GameTest {
         Card selectedCard = testGame.getBoard().getActiveCardList().get(0);
         Card clickedCard = testGame.getBoard().getActiveCardList().get(1);
 
-        testGame.getCardSelector().setSelectedCard(selectedCard);
+        testGame.getCardDisplay().setSelectedCard(selectedCard);
 
         int lifes_before = testGame.getPlayer().getLives();
         testGame.onClick(clickedCard);
@@ -40,15 +40,15 @@ public class GameTest {
     public void testRightCard(){
         Card selectedCard = testGame.getBoard().getActiveCardList().get(2);
 
-        testGame.getCardSelector().setSelectedCard(selectedCard);
+        testGame.getCardDisplay().setSelectedCard(selectedCard);
 
         int lifes_before = testGame.getPlayer().getLives();
         int shape_onboard = testGame.getBoard().getActiveCardList().size();
         //testGame.onClick(selectedCard); //removeClickedCard saknade metodkropp (metoden används i onClick). Tänker att metoderna borde ta in en index istället för ett kort
 
-        if(testGame.getBoard().getActiveCardList().get(2).equals(testGame.getCardSelector().getSelectedCard()));{ //Borde va metod (onClick) ist för lång ifsats
+        if(testGame.getBoard().getActiveCardList().get(2).equals(testGame.getCardDisplay().getSelectedCard()));{ //Borde va metod (onClick) ist för lång ifsats
             testGame.getBoard().removeClickedCard(2);
-            testGame.getCardSelector().changeSelectedCard();
+            testGame.getCardDisplay().changeSelectedCard();
         }
 
         int lifes_after = testGame.getPlayer().getLives();

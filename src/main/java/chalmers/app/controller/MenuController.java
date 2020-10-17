@@ -1,11 +1,15 @@
 package chalmers.app.controller;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+
+import javax.swing.text.html.ImageView;
 
 
 public class MenuController {
@@ -13,37 +17,66 @@ public class MenuController {
     private MainController mainController;
 
     @FXML
-    Pane playButton;
+    AnchorPane menuAnchorPane;
     @FXML
-    Pane customButton;
+    AnchorPane leaderboardAnchorPane;
     @FXML
-    Pane leaderboardButton;
+    AnchorPane playerNameAnchorPane;
     @FXML
-    Pane optionsButton;
+    AnchorPane modeAnchorPane;
     @FXML
-    Pane exitButton;
+    AnchorPane soundOptionsPane;
+
+
+
+
 
     public MenuController(MainController mainController) {
         this.mainController = mainController;
     }
 
     @FXML
-     void startButtonPressed() throws Exception{
+     void startButtonPressed( ) throws Exception{ //
         mainController.createGame();
+        modeAnchorPane.toFront();
+
+    }
+
+
+
+    @FXML
+    private void optionsButtonPressed(){ //
+         soundOptionsPane.toFront();
+    }
+
+
+    @FXML
+    void modeStartButtonPressed(){
         mainController.setBoardScene();
+    } //
+
+    @FXML
+    void leaderboardButtonPressed(){ //
+        leaderboardAnchorPane.toFront();
     }
 
-    private void customButtonPressed(){
-    }
-
-    private void leaderboardButtonPressed(){
-    }
-
-    private void optionsButtonPressed(){
-    }
-
+    @FXML
     private void exitButtonPressed(){
+        mainController.getStage().close();
     }
+
+
+    @FXML
+    void  backButtonPressed(){
+        menuAnchorPane.toFront();
+    }
+
+
+    @FXML
+    void newPlayerButtonPressed(){
+        playerNameAnchorPane.toFront();
+    }
+
 
 
 }

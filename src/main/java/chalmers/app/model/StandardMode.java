@@ -13,17 +13,23 @@ public class StandardMode implements IGameMode {
     }
 
     @Override
-    public void updateSelector() {
+    public void cardSelected(int index) {
 
     }
 
     @Override
-    public void updateBoard() {
-
+    public boolean isCorrectCard() {
+        return false;
     }
 
     @Override
-    public void takeInput() {
+    public boolean levelCompleted() {
+        return false;
+    }
+
+    @Override
+    public void nextLevel() {
 
     }
+
 }

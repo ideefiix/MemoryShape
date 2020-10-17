@@ -12,6 +12,7 @@ public class Card {
     private boolean isFlipped = false;
     private boolean removed = false;
     int size = 1;
+    private boolean revealed;
 
     public Card(Color color, Shape shape) {
         this.color = color;
@@ -55,12 +56,18 @@ public class Card {
     public String getID(){
         return (color.toString() + shape.toString());
     }
-
     public void setState(CardState state) {
         this.state = state;
     }
 
     public CardState getState() {
         return state;
+    }
+    public boolean isRevealed() {
+        return revealed;
+    }
+
+    public void setRevealed(boolean revealed) {
+        this.revealed = revealed;
     }
 }

@@ -6,19 +6,19 @@ public class Game {
     private Board board;
     private boolean boardCleared = false;
     private Player player;
-    private CardSelector cardSelector;
+    private CardDisplay cardDisplay;
     private int level;
 
     public Game(Player player, int level) {
         this.player = player;
         this.level = level;
         board = new Board(level);
-        cardSelector = new CardSelector(board.getActiveCardList());
+        cardDisplay = new CardDisplay(board.getActiveCardList());
     }
 
     public void newCardSelector(){
-        cardSelector.restartList(board.getActiveCardList());
-        cardSelector.setPlayerGuessedAllCards(false);
+        cardDisplay.restartList(board.getActiveCardList());
+        cardDisplay.setPlayerGuessedAllCards(false);
     }
 
     public void newBoard(){
@@ -32,22 +32,22 @@ public class Game {
     public void onClick(Card card){
 
 
-                // Was it a good card?
-                if (didUserFindTheCard(card)) {
-                    //Yes
-                    cardSelector.changeSelectedCard();
-                    boardCleared = cardSelector.getPlayerGuessedAllCards();
-                    card.setisRemoved(true);
-                    player.incScore();
-                }else{
-                    //No
-                    player.decLife();
-                }
+        // Was it a good card?
+        if (didUserFindTheCard(card)) {
+            //Yes
+            cardDisplay.changeSelectedCard();
+            boardCleared = cardDisplay.getPlayerGuessedAllCards();
+            card.setisRemoved(true);
+            player.incScore();
+        }else{
+            //No
+            player.decLife();
+        }
 
     }
 
     public boolean didUserFindTheCard(Card card){
-        Card cc = cardSelector.getSelectedCard();
+        Card cc = cardDisplay.getSelectedCard();
         /**
          * Now Check the flipped card
          */
@@ -79,8 +79,8 @@ public class Game {
         return level;
     }
 
-    public CardSelector getCardSelector() {
-        return cardSelector;
+    public CardDisplay getCardDisplay() {
+        return cardDisplay;
     }
 
     public List<Card> getCardsOnTheBoard(){
@@ -100,7 +100,7 @@ public class Game {
     }
 
     public List< String  > getCardDisplayIDs(){
-        return cardSelector.getIds();
+        return cardDisplay.getIds();
     }
 
 }

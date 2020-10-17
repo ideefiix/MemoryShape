@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Klass för den display som visar upp Cards
  */
-public class CardSelector{
+public class CardDisplay{
     private List<Card> cardList;
     private int selectedCardIndex = 0;
     private Card selectedCard;
@@ -17,7 +17,7 @@ public class CardSelector{
     /**
      * Constructor
      */
-    public CardSelector(List<Card> cardList) {
+    public CardDisplay(List<Card> cardList) {
 
         restartList(cardList);
     }

@@ -52,6 +52,7 @@ public class CardController extends AnchorPane  {
         image.setVisible(true);
     }
 
+
     @FXML
     public void onClick(){
         // You can't click on removed cards
@@ -59,28 +60,28 @@ public class CardController extends AnchorPane  {
             parentController.onclick(card);
 
 
-        // Hide the previosly wrong guess
-        for(CardController cc: parentController.getCardControllers()){
-            if (cc.getCard().getFlipped() && cc.getCard().getisRemoved() == false){
-                cc.hideImage();
-                cc.getBackgroundPane().getStyleClass().clear();
-                cc.getBackgroundPane().getStyleClass().add("card_Default");
+            // Hide the previosly wrong guess
+            for(CardController cc: parentController.getCardControllers()){
+                if (cc.getCard().getFlipped() && cc.getCard().getisRemoved() == false){
+                    cc.hideImage();
+                    cc.getBackgroundPane().getStyleClass().clear();
+                    cc.getBackgroundPane().getStyleClass().add("card_Default");
+                }
             }
-        }
-        card.setFlipped(true);
+            card.setFlipped(true);
 
-        //Manipulate the clicked card
-        if(card.getisRemoved()){
-            backgroundPane.getStyleClass().clear();
-            backgroundPane.getStyleClass().add("card_Green");
-        }else{
-            backgroundPane.getStyleClass().clear();
-            backgroundPane.getStyleClass().add("card_Red");
-        }
+            //Manipulate the clicked card
+            if(card.getisRemoved()){
+                backgroundPane.getStyleClass().clear();
+                backgroundPane.getStyleClass().add("card_Green");
+            }else{
+                backgroundPane.getStyleClass().clear();
+                backgroundPane.getStyleClass().add("card_Red");
+            }
 
-        showImage();
+            showImage();
 
-        //Update Selectedcard if right
+            //Update Selectedcard if right
             if(card.getisRemoved()){
                 parentController.setNextDisplayImage();
             }
@@ -89,10 +90,10 @@ public class CardController extends AnchorPane  {
         parentController.isBoardCleared();
     }
 
+
     public AnchorPane getBackgroundPane() {
         return backgroundPane;
     }
-
     public Card getCard() {
         return card;
     }

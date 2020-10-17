@@ -48,7 +48,7 @@ public class MainController {
         try {
             FXMLLoader loader;
             loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
-            loader.setController(new BoardController(this, game, game.getCardSelector().getCardList()));
+            loader.setController(new BoardController(this, game, game.getCardDisplay().getCardList()));
 
             Parent parent;
             parent = loader.load();

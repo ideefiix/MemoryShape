@@ -4,9 +4,12 @@ import chalmers.app.model.Card;
 import chalmers.app.model.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 
 import java.io.File;
 import java.net.URL;
@@ -22,9 +25,27 @@ public class BoardController implements Initializable {
     private int indexImage = 0;
 
     @FXML
+    AnchorPane pausedAnchorPane;
+    @FXML
+    AnchorPane boardAnchorPane;
+    @FXML
+    AnchorPane soundOptionsAnchorPane;
+
+    @FXML
     FlowPane flowPane;
     @FXML
     ImageView selectedCard;
+    @FXML
+    AnchorPane gameOverAnchorPane;
+    @FXML
+    Label gameOverLabel;
+    @FXML
+    ImageView imageLife1;
+    @FXML
+    ImageView imageLife2;
+    @FXML
+    ImageView imageLife3;
+
 
     public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
         this.mainController = mainController;
@@ -86,84 +107,157 @@ public class BoardController implements Initializable {
     /**
      * Creates a list of Images from a list of card IDs
      */
-
-    public void setNextDisplayImage(){
-        if(indexImage < displayCards.size()){
-            selectedCard.setImage(assignImageCardDisplay());
-            indexImage++;
-        }
+    public void setSelectedCard() {
+        Card selected = game.getCardDisplay().getSelectedCard();
+        assignImageCardDisplay();
     }
 
-    public Image assignImageCardDisplay(){
-        Image i = null;
-        Card c = displayCards.get(indexImage);
+        public void setNextDisplayImage () {
+            if (indexImage < displayCards.size()) {
+                selectedCard.setImage(assignImageCardDisplay());
+                indexImage++;
+            }
+        }
 
-        for(File file: dir.listFiles()){
-            //Remove .JPG extension
-            String str = file.getName();
-            int pos = str.lastIndexOf(".");
+        public Image assignImageCardDisplay () {
+            Image i = null;
+            Card c = displayCards.get(indexImage);
 
-            if(str.substring(0,pos).equals(c.getID())){
-                i = new Image(file.toURI().toString());
+            for (File file : dir.listFiles()) {
+                //Remove .JPG extension
+                String str = file.getName();
+                int pos = str.lastIndexOf(".");
 
-                break;
+                if (str.substring(0, pos).equals(c.getID())) {
+                    i = new Image(file.toURI().toString());
+
+                    break;
+                }
+
+            }
+            if (i == null) {
+                System.out.println("Something ain't right in BC cardDisplay");
+                System.out.println(c.getID());
+            }
+            return i;
+
+        }
+
+        /**
+         * Makes the cardshapes invincible
+         */
+
+        public void hideCards () {
+            for (CardController cc : cardControllers) {
+                cc.hideImage();
             }
 
         }
-        if(i == null){
-            System.out.println("Something ain't right in BC cardDisplay");
-            System.out.println(c.getID());
-        }
-        return  i;
 
-    }
-
-    /**
-     * Makes the cardshapes invincible
-     */
-
-    public void hideCards(){
-        for(CardController cc: cardControllers){
-            cc.hideImage();
+        public Game getGame () {
+            return game;
         }
 
-    }
+        public void incScore () {
+            game.getPlayer().incScore();
+        }
 
-    public Game getGame() {
-        return game;
-    }
+        public void bcDecLife () {
+            game.getPlayer().decLife();
+        }
 
-    public void incScore(){
-        game.getPlayer().incScore();
-    }
+        public void onclick (Card card){
+            mainController.onClick(card);
+        }
 
-    public void bcDecLife(){
-        game.getPlayer().decLife();
-    }
+        public List<CardController> getCardControllers () {
+            return cardControllers;
+        }
 
+        public void isBoardCleared () {
+            if (game.getBoardCleared()) {
+                game.incLevel();
+                game.newBoard();
+                game.setBoardCleared(false);
+                cardControllers = new ArrayList<>();
+                createCards();
+                updateBoard();
+                hideCards();
+                // Fix cardDisplay
+                displayCards = game.getCardDisplay().getCardList();
+                indexImage = 0;
+                setNextDisplayImage();
 
-    public void onclick(Card card) {
-        mainController.onClick(card);
-    }
+            }
+        }
 
-    public List<CardController> getCardControllers() {
-        return cardControllers;
-    }
+        @FXML
+        private void pausedButtonPressed () { //
+            pausedAnchorPane.toFront();
+        }
 
-    public void isBoardCleared() {
-        if(game.getBoardCleared()){
-            game.incLevel();
-            game.newBoard();
-            game.setBoardCleared(false);
-            cardControllers = new ArrayList<>();
-            createCards();
-            updateBoard();
-            hideCards();
-            // Fix cardDisplay
-            displayCards = game.getCardSelector().getCardList();
-            indexImage = 0;
-            setNextDisplayImage();
+        @FXML
+        private void resumeButtonPressed () {
+            boardAnchorPane.toFront();
+        }
+
+        @FXML
+        private void optionsButtonPressed () {
+            soundOptionsAnchorPane.toFront();
+        }
+
+        @FXML
+        private void quitButtonPressed () {
+            mainController.getStage().close();
+        }
+
+        @FXML
+        private void quitToMenuPressed () {
+            mainController.setMenuScene();
+        }
+
+        @FXML
+        private void backButtonPressed () {
+            pausedAnchorPane.toFront();
+        }
+
+        public void gameOver () {
+            int lives = game.getPlayer().getLives();
+            if (lives <= 0) {
+                populateGameOverLabel();
+                gameOverAnchorPane.toFront();
+
+            }
+        }
+
+        @FXML
+        private void mainMenuButtonPressed () {
+            mainController.setMenuScene();
+        }
+
+        @FXML
+        private void newGameButtonPressed () {
+            mainController.setBoardScene();
+        }
+
+        public void populateGameOverLabel () {
+            gameOverLabel.setText(" You reached level " + String.valueOf(game.getLevel()) + " and you scored " + String.valueOf(game.getPlayer().getCurrentScore()) + " points ");
+        }
+
+        public void removeLifeImage () {
+            int calls = 3;
+            switch (calls) {
+                case 3:
+                    imageLife1.setImage(null);
+                case 2:
+                    imageLife2.setImage(null);
+                case 1:
+                    imageLife1.setImage(null);
+
+            }
+            calls--;
+
 
         }
-    }
+
 }
