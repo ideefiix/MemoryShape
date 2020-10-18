@@ -13,6 +13,7 @@ public class Game {
         STANDARD, SIMONSAYS, FRENZY;
     }
 
+    private GameObserver observer;
     private IBoard board2;
     private ICardDisplay cardDisplay2;
 
@@ -108,6 +109,10 @@ public class Game {
 
     public void gameOver(){
 
+    }
+
+    public void setGameObserver(GameObserver observer){
+        this.observer = observer;
     }
 
 
