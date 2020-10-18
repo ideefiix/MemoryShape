@@ -9,12 +9,13 @@ import chalmers.app.model.ICardIterator;
 import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class AbstractBoard implements IBoard {
 
     List<Card> allCardsList = new ArrayList<>();
-    List<Card> activeCardList;
+    List<Card> activeCardList = new ArrayList<>();;
     int nActiveCards = 0;
     boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
     boolean levelComplete = false;
@@ -29,10 +30,11 @@ public abstract class AbstractBoard implements IBoard {
     public void fillAllCardsList(){
         for(Color color: Color.values()){
             for(Shape shape: Shape.values()){
-                Card card = new Card(color,shape);
+                Card card = new Card(color,shape, CardState.FACEUP);
                 allCardsList.add(card);
             }
         }
+        Collections.shuffle(allCardsList);
     }
 
     @Override

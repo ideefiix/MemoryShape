@@ -5,6 +5,7 @@ import chalmers.app.model.CardIterator;
 import chalmers.app.model.ICardIterator;
 import chalmers.app.model.IterableCards;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,8 +15,8 @@ import java.util.List;
 
 public abstract class AbstractCardDisplay implements ICardDisplay {
 
-    protected List<Card> cardsToDisplay;
-    protected List<Card> nextDisplayCards;
+    protected List<Card> cardsToDisplay = new ArrayList<>();
+    protected List<Card> nextDisplayCards = new ArrayList<>();;
     protected Card expectedCard;
     protected boolean correctCardSelected;
 

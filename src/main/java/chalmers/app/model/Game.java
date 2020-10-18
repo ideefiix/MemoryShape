@@ -2,8 +2,13 @@ package chalmers.app.model;
 
 
 
+import chalmers.app.model.Boards.FrenzyBoard;
 import chalmers.app.model.Boards.IBoard;
+import chalmers.app.model.Boards.SimonSaysBoard;
+import chalmers.app.model.Boards.StandardBoard;
 import chalmers.app.model.CardDisplays.ICardDisplay;
+import chalmers.app.model.CardDisplays.SimonSaysCardDisplay;
+import chalmers.app.model.CardDisplays.StandardCardDisplay;
 
 import java.util.List;
 
@@ -39,12 +44,29 @@ public class Game {
         cardDisplay = new CardDisplay(board.getActiveCardList());
     }
 
-    public Game(Player player, int level, GameObserver observer) {//gammal konstruktor
+    public Game(Player player, int level, GameMode mode) {
         this.player = player;
         this.level = level;
         board = new Board(level);
         cardDisplay = new CardDisplay(board.getActiveCardList());
-        this.observer = observer;
+
+        this.mode = mode;
+
+        switch (mode){
+            case STANDARD:{
+                board2 = new StandardBoard(level);
+                cardDisplay2 = new StandardCardDisplay();
+            }
+            case FRENZY:{
+                board2 = new FrenzyBoard(level);
+                cardDisplay2 = new StandardCardDisplay();
+            }
+            case SIMONSAYS:{
+                board2 = new StandardBoard(level);          //BORDE VARA SIMONSAYSMODE
+                cardDisplay2 = new StandardCardDisplay();   //HÄR OCKSÅ
+            }
+        }
+        initLevel(level);
     }
 
     public void newCardSelector(){

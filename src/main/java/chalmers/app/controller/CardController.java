@@ -103,6 +103,7 @@ public class CardController extends AnchorPane  {
 
     public void updateCardState(){
         backgroundPane.getStyleClass().clear();
+        showImage();
         switch (card.getState()){
             case INCORRECT:{
                 backgroundPane.getStyleClass().add("card_Green");

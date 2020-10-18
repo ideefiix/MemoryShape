@@ -157,6 +157,12 @@ public class BoardController implements Initializable, GameObserver {
 
         }
 
+        public void showCards(){
+            for(CardController cc: cardControllers){
+                cc.showImage();
+            }
+        }
+
         public Game getGame () {
             return game;
         }
@@ -282,10 +288,13 @@ public class BoardController implements Initializable, GameObserver {
         }
 
         public void updateCardDisplay(ICardIterator displayIterator){
+            displayCards.clear();
             while (displayIterator.hasNext()){
                 Card card = displayIterator.getCard();
                 displayCards.add(new Card(card.getColor(), card.getShape(), card.getState()));
+                displayIterator.getNext();
             }
+            displayCardDisplay();
         }
 
         public void displayCardDisplay(){
