@@ -31,6 +31,10 @@ public class SimonSaysBoard extends AbstractBoard {
     @Override
     public void generateBoard(int currentLevel) {
 
+        /*
+        När level är 1 genereras 4 kort, sedan + 1 kort per level. Korten ska börja som faceup.
+         */
+
     }
 
 
