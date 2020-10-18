@@ -12,7 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import sun.java2d.windows.GDIWindowSurfaceData;
+
 
 import java.io.File;
 import java.net.URL;
@@ -299,6 +299,7 @@ public class BoardController implements Initializable, GameObserver {
     @Override
     public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
         updateCardControllers(boardIterator);
+        updateCardDisplay(diplayIterator);
     }
 
     @Override

@@ -39,6 +39,14 @@ public class Game {
         cardDisplay = new CardDisplay(board.getActiveCardList());
     }
 
+    public Game(Player player, int level, GameObserver observer) {//gammal konstruktor
+        this.player = player;
+        this.level = level;
+        board = new Board(level);
+        cardDisplay = new CardDisplay(board.getActiveCardList());
+        this.observer = observer;
+    }
+
     public void newCardSelector(){
         cardDisplay.restartList(board.getActiveCardList());
         cardDisplay.setPlayerGuessedAllCards(false);
@@ -68,6 +76,7 @@ public class Game {
 
 
     public void onClick2(Card selectedCard){
+        board2.flipIncorrectCards();
         cardDisplay2.cardSelected(selectedCard);
         if(cardDisplay2.isCorrectCardSelected()){
             board2.correctCard(selectedCard);
@@ -84,8 +93,7 @@ public class Game {
                 gameOver();
             }
         }
-        board2.flipIncorrectCards();
-        //observer.update()
+        observer.update(cardDisplay2.createIterator(), board2.createIterator());
     }
 
     public void initLevel(int level){

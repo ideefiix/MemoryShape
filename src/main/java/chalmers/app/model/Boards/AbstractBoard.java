@@ -11,7 +11,7 @@ import chalmers.app.model.IterableCards;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractBoard implements IBoard, IterableCards {
+public abstract class AbstractBoard implements IBoard {
 
     List<Card> allCardsList = new ArrayList<>();
     List<Card> activeCardList;

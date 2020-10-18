@@ -12,7 +12,7 @@ import java.util.List;
  * A class to hold common code between the different CardDisplay classes
  */
 
-public abstract class AbstractCardDisplay implements ICardDisplay, IterableCards {
+public abstract class AbstractCardDisplay implements ICardDisplay {
 
     protected List<Card> cardsToDisplay;
     protected List<Card> nextDisplayCards;
