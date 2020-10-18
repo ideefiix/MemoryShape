@@ -104,11 +104,11 @@ public class Game {
     }
 
     public void gameComplete(){
-
+        observer.update("game_complete");
     }
 
     public void gameOver(){
-
+        observer.update("game_over");
     }
 
     public void setGameObserver(GameObserver observer){
