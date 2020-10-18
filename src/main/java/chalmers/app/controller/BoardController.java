@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import sun.java2d.windows.GDIWindowSurfaceData;
 
 import java.io.File;
 import java.net.URL;
@@ -262,13 +263,46 @@ public class BoardController implements Initializable, GameObserver {
 
         }
 
-    @Override
-    public void update(ICardIterator diplayIterator, ICardIterator boardIterator) {
 
+
+        public void updateCardControllers(ICardIterator boardIterator){
+            int i = 0;
+            while (boardIterator.hasNext()){
+                Card card = boardIterator.getCard();
+                if(i < cardControllers.size()){
+                    cardControllers.get(i).setCard(card);
+                } else{
+                    cardControllers.add(new CardController(this, card));
+                }
+                cardControllers.get(i).updateCardState();
+                boardIterator.getNext();
+                i++;
+            }
+            updateBoard();
+        }
+
+        public void updateCardDisplay(ICardIterator displayIterator){
+            while (displayIterator.hasNext()){
+                Card card = displayIterator.getCard();
+                displayCards.add(new Card(card.getColor(), card.getShape(), card.getState()));
+            }
+        }
+
+        public void displayCardDisplay(){
+            for(int i = 0; i < displayCards.size(); i++){
+                //DELAAAAYY
+                setNextDisplayImage();
+            }
+        }
+
+
+    @Override
+    public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
+        updateCardControllers(boardIterator);
     }
 
     @Override
     public void update(String message) {
-            //Switch-sats för olika messages som gameover och gamecomplete.
+            //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
     }
 }
