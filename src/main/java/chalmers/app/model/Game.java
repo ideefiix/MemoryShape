@@ -13,6 +13,7 @@ public class Game {
         STANDARD, SIMONSAYS, FRENZY;
     }
 
+    private GameObserver observer;
     private IBoard board2;
     private ICardDisplay cardDisplay2;
 
@@ -94,8 +95,12 @@ public class Game {
     }
 
     public boolean isGameComplete(){
-
-        return false;
+        if(mode == GameMode.FRENZY){
+            return level >= 25;
+        }
+        else{
+            return level >= 22;
+        }
     }
 
     public void gameComplete(){
@@ -104,6 +109,10 @@ public class Game {
 
     public void gameOver(){
 
+    }
+
+    public void setGameObserver(GameObserver observer){
+        this.observer = observer;
     }
 
 

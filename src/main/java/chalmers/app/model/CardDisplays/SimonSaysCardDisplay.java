@@ -30,6 +30,9 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
 
     @Override
     public void setUp(List<Card> cardsToDisplay) {
+        /*
+        Sätter expected card
+         */
 
     }
 

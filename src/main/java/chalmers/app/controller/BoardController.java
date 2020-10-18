@@ -2,6 +2,8 @@ package chalmers.app.controller;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.Game;
+import chalmers.app.model.GameObserver;
+import chalmers.app.model.ICardIterator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -15,7 +17,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class BoardController implements Initializable {
+public class BoardController implements Initializable, GameObserver {
 
     private MainController mainController;
     private Game game;
@@ -260,4 +262,13 @@ public class BoardController implements Initializable {
 
         }
 
+    @Override
+    public void update(ICardIterator diplayIterator, ICardIterator boardIterator) {
+
+    }
+
+    @Override
+    public void update(String message) {
+            //Switch-sats för olika messages som gameover och gamecomplete.
+    }
 }
