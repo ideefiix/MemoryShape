@@ -1,6 +1,9 @@
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.CardIterator;
+import chalmers.app.model.ICardIterator;
+import chalmers.app.model.IterableCards;
 
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +12,7 @@ import java.util.List;
  * A class to hold common code between the different CardDisplay classes
  */
 
-public abstract class AbstractCardDisplay implements ICardDisplay {
+public abstract class AbstractCardDisplay implements ICardDisplay, IterableCards {
 
     protected List<Card> cardsToDisplay;
     protected List<Card> nextDisplayCards;
@@ -31,6 +34,11 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
             cardsToDisplay.add(new Card(card.getColor(),card.getShape()));
         }
         Collections.shuffle(cardsToDisplay);
+    }
+
+    @Override
+    public ICardIterator createIterator() {
+        return new CardIterator(nextDisplayCards);
     }
 
 
