@@ -94,8 +94,12 @@ public class Game {
     }
 
     public boolean isGameComplete(){
-
-        return false;
+        if(mode == GameMode.FRENZY){
+            return level >= 25;
+        }
+        else{
+            return level >= 22;
+        }
     }
 
     public void gameComplete(){
