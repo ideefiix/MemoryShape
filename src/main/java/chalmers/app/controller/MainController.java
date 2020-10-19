@@ -48,18 +48,30 @@ public class MainController {
         try {
             FXMLLoader loader;
             loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
-            loader.setController(new BoardController(this, game, game.getCardDisplay().getCardList()));
+            BoardController bC = new BoardController(this, game, game.getCardDisplay().getCardList());
+            loader.setController(bC);
 
             Parent parent;
             parent = loader.load();
             stage.setScene(new Scene(parent));
 
+
         } catch (IOException e) {
             System.err.println("Error in initComponent method: " + e.getMessage());
             e.printStackTrace();
         }
+
     }
 
+    private void delay(){
+        try{
+            Thread.sleep(4000);
+        }
+        catch(InterruptedException ex){
+            Thread.currentThread().interrupt();
+        }
+
+    }
     public void createGame() {
         //Hardcoded values for now
         game = new Game(new Player("Nappe", 3), 1);

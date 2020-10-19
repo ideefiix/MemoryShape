@@ -61,7 +61,11 @@ public class BoardController implements Initializable {
         updateBoard();
         hideCards();
         setNextDisplayImage();
+
     }
+
+
+
 
     /**
      * Create the cards FXMLs
@@ -259,5 +263,7 @@ public class BoardController implements Initializable {
 
 
         }
+
+
 
 }

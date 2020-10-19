@@ -26,7 +26,7 @@ abstract class AbstractBoard implements IBoard {
     public void fillAllCardsList(){
         for(Color color: Color.values()){
             for(Shape shape: Shape.values()){
-                Card card = new Card(color,shape);
+                Card card = new Card(color,shape,CardState.FACEUP);
                 allCardsList.add(card);
             }
         }
