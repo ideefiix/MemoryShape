@@ -25,39 +25,33 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
          */
 
 
-
     @Override
+
     public void cardSelected(Card selectedCard) {
 
-        int i= 0;
-            expectedCard = getCardsToDisplay().get(i);
-            if (selectedCard.equals(expectedCard)) {
-                correctCardSelected = true;
-                getCardsToDisplay().remove(0);
-            }else{
-                correctCardSelected = false;
-            }
-
-    }
-
-    public boolean isSequenceCompleted(){
-     if(getCardsToDisplay().isEmpty()){
-        return true;
+        int i = 0;
+        expectedCard = getCardsToDisplay().get(i);
+        if (selectedCard.equals(expectedCard)) {
+            correctCardSelected = true;
+            getCardsToDisplay().remove(0);
+        } else {
+            correctCardSelected = false;
         }
-        return false;
     }
 
+        public boolean isSequenceCompleted () {
+            if (getCardsToDisplay().isEmpty()) {
+                return true;
+            }
+            return false;
+        }
 
 
-
-    @Override
-    public void setUp(List<Card> cardsToDisplay) {
-       loadCardsToDisplay(cardsToDisplay);
-    }
-
-
-
-
+        @Override
+        public void setUp (List < Card > cardsToDisplay) {
+            loadCardsToDisplay(cardsToDisplay);
+            expectedCard = getCardsToDisplay().get(0);
+        }
 
 
 

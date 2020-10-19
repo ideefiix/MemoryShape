@@ -4,14 +4,18 @@ import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
+import chalmers.app.model.CardIterator;
+import chalmers.app.model.ICardIterator;
+import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-abstract class AbstractBoard implements IBoard {
+public abstract class AbstractBoard implements IBoard {
 
     List<Card> allCardsList = new ArrayList<>();
-    List<Card> activeCardList;
+    List<Card> activeCardList = new ArrayList<>();;
     int nActiveCards = 0;
     boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
     boolean levelComplete = false;
@@ -30,6 +34,7 @@ abstract class AbstractBoard implements IBoard {
                 allCardsList.add(card);
             }
         }
+        Collections.shuffle(allCardsList);
     }
 
     @Override
@@ -86,6 +91,11 @@ abstract class AbstractBoard implements IBoard {
      */
     @Override
     public abstract void generateBoard(int currentLevel);
+
+    @Override
+    public ICardIterator createIterator() {
+        return new CardIterator(activeCardList);
+    }
 
 
     /*@Override

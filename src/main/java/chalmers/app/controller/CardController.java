@@ -1,6 +1,7 @@
 package chalmers.app.controller;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.CardEnums.CardState;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -88,6 +89,36 @@ public class CardController extends AnchorPane  {
         }
         //Is game over?
         parentController.isBoardCleared();
+    }
+
+    public void onClick2(){
+        if(card.getState() != CardState.INCORRECT && card.getState() != CardState.CORRECT){
+            parentController.onclick(card);
+        }
+    }
+
+    public void setCard(Card card){
+        this.card = card;
+    }
+
+    public void updateCardState(){
+        backgroundPane.getStyleClass().clear();
+        showImage();
+        switch (card.getState()){
+            case INCORRECT:{
+                backgroundPane.getStyleClass().add("card_Green");
+            }
+            case CORRECT:{
+                backgroundPane.getStyleClass().add("card_Red");
+            }
+            case FACEUP:{
+                backgroundPane.getStyleClass().add("card_Default");
+            }
+            case FACEDOWN:{
+                backgroundPane.getStyleClass().add("card_Default");
+                hideImage();
+            }
+        }
     }
 
 

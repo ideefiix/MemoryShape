@@ -1,7 +1,11 @@
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.CardIterator;
+import chalmers.app.model.ICardIterator;
+import chalmers.app.model.IterableCards;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,10 +13,10 @@ import java.util.List;
  * A class to hold common code between the different CardDisplay classes
  */
 
-abstract class AbstractCardDisplay implements ICardDisplay {
+public abstract class AbstractCardDisplay implements ICardDisplay {
 
-    protected List<Card> cardsToDisplay;
-    protected List<Card> nextDisplayCards;
+    protected List<Card> cardsToDisplay = new ArrayList<>();
+    protected List<Card> nextDisplayCards = new ArrayList<>();;
     protected Card expectedCard;
     protected boolean correctCardSelected;
 
@@ -25,6 +29,7 @@ abstract class AbstractCardDisplay implements ICardDisplay {
      * @param cards: List containing the cards to be displayed.
      */
 
+    @Override
     public void loadCardsToDisplay(List<Card> cards){
         for(Card card: cards){
             cardsToDisplay.add(new Card(card.getColor(),card.getShape()));
@@ -32,24 +37,24 @@ abstract class AbstractCardDisplay implements ICardDisplay {
         Collections.shuffle(cardsToDisplay);
     }
 
-    public void loadNextDisplayCards(List<Card> cards){
-        for(Card card: cards){
-            nextDisplayCards.add(new Card(card.getColor(),card.getShape()));
-        }
+    @Override
+    public ICardIterator createIterator() {
+        return new CardIterator(nextDisplayCards);
     }
-
 
 
     /**
      * Takes in the card selected by the player and updates the conditions within the CardDisplay
      * @param card: The card selected by the player
      */
+    @Override
     public abstract void cardSelected(Card card);
 
+    @Override
     public abstract void setUp(List<Card> cardsToDisplay);
 
 
-
+    @Override
     public boolean isCorrectCardSelected(){
         return correctCardSelected;
     }

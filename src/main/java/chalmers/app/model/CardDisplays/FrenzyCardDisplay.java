@@ -4,7 +4,7 @@ import chalmers.app.model.Card;
 
 import java.util.List;
 
-class FrenzyCardDisplay extends AbstractCardDisplay {
+public class FrenzyCardDisplay extends AbstractCardDisplay {
 
     //Osynliga instansvariabler:
     //cardsToDisplay

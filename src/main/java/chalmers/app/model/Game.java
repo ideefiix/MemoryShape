@@ -1,19 +1,72 @@
 package chalmers.app.model;
 
+
+
+import chalmers.app.model.Boards.FrenzyBoard;
+import chalmers.app.model.Boards.IBoard;
+import chalmers.app.model.Boards.SimonSaysBoard;
+import chalmers.app.model.Boards.StandardBoard;
+import chalmers.app.model.CardDisplays.ICardDisplay;
+import chalmers.app.model.CardDisplays.SimonSaysCardDisplay;
+import chalmers.app.model.CardDisplays.StandardCardDisplay;
+
 import java.util.List;
 
 public class Game {
+
+    public enum GameMode{
+        STANDARD, SIMONSAYS, FRENZY;
+    }
+
+    private GameObserver observer;
+    private IBoard board2;
+    private ICardDisplay cardDisplay2;
+
     private Board board;
     private boolean boardCleared = false;
     private Player player;
     private CardDisplay cardDisplay;
-    private int level;
+    private int level = 0;
+    private GameMode mode;
 
-    public Game(Player player, int level) {
+    public Game(Player player, GameMode mode) {
+        this.player = player;
+        this.mode = mode;
+        //skapa Board beroende på mode
+        //skapa Display beroende på mode
+        initLevel(level);
+    }
+
+    public Game(Player player, int level) {//gammal konstruktor
         this.player = player;
         this.level = level;
         board = new Board(level);
         cardDisplay = new CardDisplay(board.getActiveCardList());
+    }
+
+    public Game(Player player, int level, GameMode mode) {
+        this.player = player;
+        this.level = level;
+        board = new Board(level);
+        cardDisplay = new CardDisplay(board.getActiveCardList());
+
+        this.mode = mode;
+
+        switch (mode){
+            case STANDARD:{
+                board2 = new StandardBoard(level);
+                cardDisplay2 = new StandardCardDisplay();
+            }
+            case FRENZY:{
+                board2 = new FrenzyBoard(level);
+                cardDisplay2 = new StandardCardDisplay();
+            }
+            case SIMONSAYS:{
+                board2 = new StandardBoard(level);          //BORDE VARA SIMONSAYSMODE
+                cardDisplay2 = new StandardCardDisplay();   //HÄR OCKSÅ
+            }
+        }
+        initLevel(level);
     }
 
     public void newCardSelector(){
@@ -30,8 +83,6 @@ public class Game {
      * Call with a card from the board!
      */
     public void onClick(Card card){
-
-
         // Was it a good card?
         if (didUserFindTheCard(card)) {
             //Yes
@@ -43,8 +94,58 @@ public class Game {
             //No
             player.decLife();
         }
-
     }
+
+
+    public void onClick2(Card selectedCard){
+        board2.flipIncorrectCards();
+        cardDisplay2.cardSelected(selectedCard);
+        if(cardDisplay2.isCorrectCardSelected()){
+            board2.correctCard(selectedCard);
+            if(board2.isLevelComplete()){
+                if(isGameComplete()){
+                    gameComplete();
+                }
+                initLevel(level);
+            }
+        } else {
+            board2.incorrectCard(selectedCard);
+            player.lives = player.lives - 1; //Skapa decLife funktion. Gör lives private
+            if(!player.IsAlive()){
+                gameOver();
+            }
+        }
+        observer.update(cardDisplay2.createIterator(), board2.createIterator());
+    }
+
+    public void initLevel(int level){
+        level++;
+        board2.generateBoard(level);
+        cardDisplay2.setUp(board2.getActiveCardList()); //frenzydisplay ska bara ha en av varje card som används i activecardslist
+    }
+
+    public boolean isGameComplete(){
+        if(mode == GameMode.FRENZY){
+            return level >= 25;
+        }
+        else{
+            return level >= 22;
+        }
+    }
+
+    public void gameComplete(){
+        observer.update("game_complete");
+    }
+
+    public void gameOver(){
+        observer.update("game_over");
+    }
+
+    public void setGameObserver(GameObserver observer){
+        this.observer = observer;
+    }
+
+
 
     public boolean didUserFindTheCard(Card card){
         Card cc = cardDisplay.getSelectedCard();

@@ -2,6 +2,8 @@ package chalmers.app.controller;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.Game;
+import chalmers.app.model.GameObserver;
+import chalmers.app.model.ICardIterator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,11 +13,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 
+
 import java.io.File;
 import java.net.URL;
 import java.util.*;
 
-public class BoardController implements Initializable {
+public class BoardController implements Initializable, GameObserver {
 
     private MainController mainController;
     private Game game;
@@ -158,6 +161,12 @@ public class BoardController implements Initializable {
 
         }
 
+        public void showCards(){
+            for(CardController cc: cardControllers){
+                cc.showImage();
+            }
+        }
+
         public Game getGame () {
             return game;
         }
@@ -265,5 +274,51 @@ public class BoardController implements Initializable {
         }
 
 
+
+
+        public void updateCardControllers(ICardIterator boardIterator){
+            int i = 0;
+            while (boardIterator.hasNext()){
+                Card card = boardIterator.getCard();
+                if(i < cardControllers.size()){
+                    cardControllers.get(i).setCard(card);
+                } else{
+                    cardControllers.add(new CardController(this, card));
+                }
+                cardControllers.get(i).updateCardState();
+                boardIterator.getNext();
+                i++;
+            }
+            updateBoard();
+        }
+
+        public void updateCardDisplay(ICardIterator displayIterator){
+            displayCards.clear();
+            while (displayIterator.hasNext()){
+                Card card = displayIterator.getCard();
+                displayCards.add(new Card(card.getColor(), card.getShape(), card.getState()));
+                displayIterator.getNext();
+            }
+            displayCardDisplay();
+        }
+
+        public void displayCardDisplay(){
+            for(int i = 0; i < displayCards.size(); i++){
+                //DELAAAAYY
+                setNextDisplayImage();
+            }
+        }
+
+
+    @Override
+    public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
+        updateCardControllers(boardIterator);
+        updateCardDisplay(diplayIterator);
+    }
+
+    @Override
+    public void update(String message) {
+            //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
+    }
 
 }
