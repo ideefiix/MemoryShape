@@ -105,19 +105,21 @@ public class CardController extends AnchorPane  {
         backgroundPane.getStyleClass().clear();
         showImage();
         switch (card.getState()){
-            case INCORRECT:{
+            case INCORRECT:
                 backgroundPane.getStyleClass().add("card_Green");
-            }
-            case CORRECT:{
+                break;
+
+            case CORRECT:
                 backgroundPane.getStyleClass().add("card_Red");
-            }
-            case FACEUP:{
+                break;
+            case FACEUP:
                 backgroundPane.getStyleClass().add("card_Default");
-            }
-            case FACEDOWN:{
+                break;
+            case FACEDOWN:
                 backgroundPane.getStyleClass().add("card_Default");
                 hideImage();
-            }
+                break;
+
         }
     }
 

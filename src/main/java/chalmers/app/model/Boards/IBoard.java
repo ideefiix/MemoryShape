@@ -26,4 +26,6 @@ public interface IBoard extends IterableCards {
     void fillAllCardsList();
 
 
+
+
 }

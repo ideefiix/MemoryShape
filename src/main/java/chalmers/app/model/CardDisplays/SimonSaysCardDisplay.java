@@ -53,6 +53,8 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
             expectedCard = getCardsToDisplay().get(0);
         }
 
-
+    public List<Card> getCardList(){
+        return cardsToDisplay;
+    }
 
 }
