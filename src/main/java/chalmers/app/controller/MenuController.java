@@ -1,11 +1,11 @@
 package chalmers.app.controller;
 
 import chalmers.app.model.Highscore;
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.core.JsonGenerationException;
+//import com.fasterxml.jackson.core.JsonParseException;
+//import com.fasterxml.jackson.core.type.TypeReference;
+//import com.fasterxml.jackson.databind.JsonMappingException;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class MenuController implements Initializable {
+public class MenuController  {
 
     private MainController mainController;
     private List<Highscore> hList;
@@ -42,6 +42,12 @@ public class MenuController implements Initializable {
     AnchorPane soundOptionsPane;
     @FXML
     FlowPane highscore_flwPane;
+    @FXML
+    Pane standardModeButton;
+    @FXML
+    Pane frenzyButton;
+    @FXML
+    Pane sequenceButton;
 
 
 
@@ -49,19 +55,19 @@ public class MenuController implements Initializable {
 
     public MenuController(MainController mainController) {
         this.mainController = mainController;
-        loadHighscores();
+       // loadHighscores();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+   // @Override
+   /* public void initialize(URL url, ResourceBundle resourceBundle) {
         fill_leaderboard();
-    }
+    }*/
 
     /**
      * Load 10 Highscores from JSON file
      */
 
-    void loadHighscores(){
+   /* void loadHighscores(){
         try{
             ObjectMapper mapper = new ObjectMapper();
             InputStream inputStream = new FileInputStream(new File("src/main/resources/highscores.json"));
@@ -100,7 +106,7 @@ public class MenuController implements Initializable {
      * TODO Called when program is shut down
      * Writes the highScores to JSON file
      */
-    void writeHighscores() {
+   /* void writeHighscores() {
         try {
             ObjectMapper mapper = new ObjectMapper();
             InputStream inputStream = new FileInputStream(new File("src/main/resources/highscores.json"));
@@ -112,7 +118,7 @@ public class MenuController implements Initializable {
                 e.printStackTrace();
             }
 
-    }
+    }*/
 
     @FXML
      void startButtonPressed( ) throws Exception{ //
@@ -155,5 +161,45 @@ public class MenuController implements Initializable {
     void newPlayerButtonPressed(){
         playerNameAnchorPane.toFront();
     }
+
+
+    @FXML
+    void standardModeButtonPressed(){
+       setDefaultStyle();
+        standardModeButton.getStyleClass().clear();
+        standardModeButton.getStyleClass().add("color");
+    }
+
+    @FXML
+    void frenzyButtonPressed(){
+        setDefaultStyle();
+        frenzyButton.getStyleClass().clear();
+        frenzyButton.getStyleClass().add("color");
+    }
+    @FXML
+   void sequenceButtonPressed(){
+        setDefaultStyle();
+        sequenceButton.getStyleClass().clear();
+        sequenceButton.getStyleClass().add("color");
+    }
+
+
+    private void setDefaultStyle(){
+        if(frenzyButton.getStyleClass().contains("color")){
+            frenzyButton.getStyleClass().clear();
+            frenzyButton.getStyleClass().add("buttonMode");
+        }
+        if(sequenceButton.getStyleClass().contains("color")){
+            sequenceButton.getStyleClass().clear();
+            sequenceButton.getStyleClass().add("buttonMode");
+        }
+        if(standardModeButton.getStyleClass().contains("color")){
+            standardModeButton.getStyleClass().clear();
+            standardModeButton.getStyleClass().add("buttonMode");
+        }
+    }
+
+
+
 
 }

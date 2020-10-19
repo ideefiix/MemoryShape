@@ -25,6 +25,7 @@
   -fx-font-size: 56;
   -fx-font-family:"Baloo Bhai";
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+  -fx-text-align: center;
 }
 
 .boardAnchorPane{
@@ -103,20 +104,46 @@ Har ingen hover effect
  -fx-background-color:#45ACA5;
 }
 
+.color{
+  -fx-background-color:#45ACA5;
+  -fx-background-radius:10;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+}
 
 
-.backForwardButton{
+.backButton{
   -fx-background-radius:25;
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
-
+  -fx-background-color: red;
 }
 
-.backForwardButton:hover{
- -fx-padding: 10px 24px
+.backButton:hover{
+ -fx-background-color:#DC143C;
+ -fx-padding: 10px 24px;
 }
 
-.backForwardButton:pressed{
-  -fx-background-color:#8B0000;
+.backButton:pressed{
+ -fx-background-color: #8B0000;
+ -fx-padding: 10px 24px;
+}
+
+
+
+
+.fowardButton{
+  -fx-background-radius:25;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+  -fx-background-color: #67DD6C;
+  }
+
+.fowardButton:hover{
+  -fx-background-color:#00FF00;
+  -fx-padding: 10px 24px;
+}
+
+.fowardButton:pressed{
+   -fx-background-color:#006400;
+   -fx-padding: 10px 24px;
 }
 
 .backForwardText{
@@ -183,6 +210,7 @@ Har ingen hover effect
   -fx-font-size: 28;
   -fx-font-family:"Baloo Bhai";
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+  -fx-text-align: center;
 
 }
 

@@ -2,8 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,68 +9,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" stylesheets="@menuStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <StackPane prefHeight="614.0" prefWidth="919.0">
          <children>
-            <AnchorPane fx:id="pausedAnchorPane" prefHeight="73.0" prefWidth="263.0" style="-fx-background-color: rgba(0, 0, 0, 0.65)rgba(0, 0, 0, 0.65);">
-               <children>
-                  <Pane fx:id="resumeButton" layoutX="317.0" layoutY="201.0" onMouseClicked="#resumeButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
-                     <children>
-                        <Text fill="WHITE" layoutX="72.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Resume" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="317.0" layoutY="378.0" onMouseClicked="#quitToMenuPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
-                     <children>
-                        <Text fill="WHITE" layoutX="18.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text=" Quit to menu " />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="317.0" layoutY="467.0" onMouseClicked="#quitButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
-                     <children>
-                        <Text fill="WHITE" layoutX="96.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Quit" />
-                     </children>
-                  </Pane>
-                  <Pane layoutX="317.0" layoutY="288.0" onMouseClicked="#optionsButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
-                     <children>
-                        <Text fill="WHITE" layoutX="66.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Options" />
-                     </children>
-                  </Pane>
-                  <Text layoutX="158.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Game Paused!" wrappingWidth="685.22900390625" />
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="soundOptionsAnchorPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: rgba(0, 0, 0, 0.65)rgba(0, 0, 0, 0.65);" styleClass="background">
-               <children>
-                  <Pane layoutX="161.0" layoutY="190.0" prefHeight="337.0" prefWidth="588.0" styleClass="boardAnchorPane">
-                     <children>
-                        <Slider layoutX="58.0" layoutY="99.0" majorTickUnit="10.0" prefHeight="16.0" prefWidth="473.0" showTickLabels="true" showTickMarks="true" value="10.0" />
-                        <Text fill="WHITE" layoutX="31.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regulate the volume:">
-                           <font>
-                              <Font name="Baloo Bhai" size="18.0" />
-                           </font>
-                        </Text>
-                        <RadioButton layoutX="76.0" layoutY="169.0" mnemonicParsing="false" text="ON" textFill="WHITE">
-                           <font>
-                              <Font name="Baloo Bhai" size="14.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton layoutX="76.0" layoutY="206.0" mnemonicParsing="false" text="OFF" textFill="WHITE">
-                           <font>
-                              <Font name="Baloo Bhai" size="14.0" />
-                           </font>
-                        </RadioButton>
-                     </children>
-                  </Pane>
-                  <Text layoutX="125.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Sound Options!" />
-                  <ImageView fitHeight="69.0" fitWidth="72.0" layoutX="38.0" layoutY="527.0" onMouseClicked="#backButtonPressed" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8-izquierda-círculo-64.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="gameOverAnchorPane" prefHeight="614.0" prefWidth="915.0" style="-fx-background-color: rgba(0, 0, 0, 0.65)rgba(0, 0, 0, 0.65);">
                <children>
                   <Pane layoutX="306.0" layoutY="431.0" onMouseClicked="#mainMenuButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
@@ -91,6 +33,26 @@
                         <Label fx:id="gameOverLabel" layoutY="-2.0" prefHeight="167.0" prefWidth="342.0" styleClass="outline" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                      </children>
                   </Pane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="pausedAnchorPane" prefHeight="73.0" prefWidth="263.0" style="-fx-background-color: rgba(0, 0, 0, 0.65)rgba(0, 0, 0, 0.65);">
+               <children>
+                  <Pane fx:id="resumeButton" layoutX="317.0" layoutY="201.0" onMouseClicked="#resumeButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
+                     <children>
+                        <Text fill="WHITE" layoutX="72.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Resume" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="317.0" layoutY="301.0" onMouseClicked="#quitToMenuPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
+                     <children>
+                        <Text fill="WHITE" layoutX="18.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text=" Quit to menu " />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="317.0" layoutY="400.0" onMouseClicked="#quitButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
+                     <children>
+                        <Text fill="WHITE" layoutX="96.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Quit" />
+                     </children>
+                  </Pane>
+                  <Text layoutX="158.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Game Paused!" wrappingWidth="685.22900390625" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="boardAnchorPane" prefHeight="614.0" prefWidth="919.0" styleClass="background">
@@ -117,9 +79,9 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3360cc" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsRect" width="56.0" />
                   <AnchorPane layoutX="65.0" layoutY="121.0" prefHeight="429.0" prefWidth="793.0" styleClass="boardAnchorPane">
                      <children>
-                        <AnchorPane layoutX="313.0" layoutY="21.0" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard">
+                        <AnchorPane layoutX="313.0" layoutY="21.0" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
                            <children>
-                              <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/shapes/YELLOWCIRCLE.png" />
                                  </image>

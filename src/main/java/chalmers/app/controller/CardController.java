@@ -59,6 +59,7 @@ public class CardController extends AnchorPane  {
         // You can't click on removed cards
         if(card.getisRemoved() == false){
             parentController.onclick(card);
+            parentController.gameOver();
 
 
             // Hide the previosly wrong guess
