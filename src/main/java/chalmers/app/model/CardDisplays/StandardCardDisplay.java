@@ -45,6 +45,10 @@ public class StandardCardDisplay extends AbstractCardDisplay {
         expectedCard = cardsToDisplay.get(0);
     }
 
+    public List<Card> getCardList(){
+        return cardsToDisplay;
+    }
+
 
 
 }

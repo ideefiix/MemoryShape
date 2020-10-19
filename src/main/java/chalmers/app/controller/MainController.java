@@ -44,8 +44,8 @@ public class MainController {
 
     public void setBoardScene(){
         createGame();
-        BoardController BC = new BoardController(this,game, game.getCardDisplay().getCardList());
-        game.setGameObserver(BC);
+        //BoardController BC = new BoardController(this,game, game.getCardDisplay2().getCardList());
+        //game.setGameObserver(BC);
 
         try {
             FXMLLoader loader;
@@ -53,6 +53,7 @@ public class MainController {
 
             BoardController bC = new BoardController(this, game, game.getCardDisplay().getCardList());
             loader.setController(bC);
+            game.setGameObserver(bC);
 
 
             Parent parent;

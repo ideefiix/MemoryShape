@@ -34,6 +34,10 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
 
     }
 
+    public List<Card> getCardList(){
+        return cardsToDisplay;
+    }
+
 
 
 }

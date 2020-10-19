@@ -47,24 +47,25 @@ public class Game {
     public Game(Player player, int level, GameMode mode) {
         this.player = player;
         this.level = level;
-        board = new Board(level);
-        cardDisplay = new CardDisplay(board.getActiveCardList());
 
         this.mode = mode;
 
         switch (mode){
-            case STANDARD:{
+            case STANDARD:
                 board2 = new StandardBoard(level);
                 cardDisplay2 = new StandardCardDisplay();
-            }
-            case FRENZY:{
+                break;
+
+            case FRENZY:
                 board2 = new FrenzyBoard(level);
                 cardDisplay2 = new StandardCardDisplay();
-            }
-            case SIMONSAYS:{
-                board2 = new StandardBoard(level);          //BORDE VARA SIMONSAYSMODE
-                cardDisplay2 = new StandardCardDisplay();   //HÄR OCKSÅ
-            }
+                break;
+
+            case SIMONSAYS:
+                board2 = new SimonSaysBoard(level);          //BORDE VARA SIMONSAYSMODE
+                cardDisplay2 = new SimonSaysCardDisplay();   //HÄR OCKSÅ
+                break;
+
         }
         initLevel(level);
     }
@@ -110,7 +111,7 @@ public class Game {
             }
         } else {
             board2.incorrectCard(selectedCard);
-            player.lives = player.lives - 1; //Skapa decLife funktion. Gör lives private
+            player.decLife();
             if(!player.IsAlive()){
                 gameOver();
             }
@@ -172,6 +173,10 @@ public class Game {
         return board;
     }
 
+    public IBoard getBoard2(){
+        return board2;
+    }
+
     public Player getPlayer() {
         return player;
     }
@@ -183,6 +188,8 @@ public class Game {
     public CardDisplay getCardDisplay() {
         return cardDisplay;
     }
+
+    public ICardDisplay getCardDisplay2(){return cardDisplay2;}
 
     public List<Card> getCardsOnTheBoard(){
        return board.getActiveCardList();
