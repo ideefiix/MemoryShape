@@ -12,9 +12,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.text.html.ImageView;
@@ -48,6 +50,10 @@ public class MenuController  {
     Pane frenzyButton;
     @FXML
     Pane sequenceButton;
+    @FXML
+    TextField name_textField;
+    @FXML
+    Text error_text;
 
 
 
@@ -130,15 +136,21 @@ public class MenuController  {
 
 
     @FXML
-    private void optionsButtonPressed(){ //
+    private void optionsButtonPressed(){
          soundOptionsPane.toFront();
     }
 
 
     @FXML
     void modeStartButtonPressed(){
-        mainController.setBoardScene();
-    } //
+        if(name_textField.getText().isEmpty()){
+            //Do nothing
+            error_text.setText("Enter a name!");
+        }else{
+            mainController.setBoardScene();
+            error_text.setText("");
+        }
+    }
 
     @FXML
     void leaderboardButtonPressed(){ //
