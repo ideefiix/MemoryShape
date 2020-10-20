@@ -25,6 +25,7 @@ public class BoardController implements Initializable, GameObserver {
     File dir = new File("src/main/resources/view/images/shapes");
     private List<Card> displayCards;
     private int indexImage = 0;
+    private boolean newLevel = false;
 
     @FXML
     AnchorPane pausedAnchorPane;
@@ -66,6 +67,19 @@ public class BoardController implements Initializable, GameObserver {
         hideCards();
         //setNextDisplayImage();
     }
+
+
+    @FXML
+    public void beginLevel(){
+        if(newLevel) {
+            hideCards();
+            selectedCard.setVisible(true);
+        }
+        newLevel = false;
+    }
+
+
+
 
 
 
@@ -317,6 +331,7 @@ public class BoardController implements Initializable, GameObserver {
         private void newLevel(){
             showCards();
             selectedCard.setVisible(false);
+            newLevel = true;
         }
 
         private void hideCardDisplay(){
@@ -333,6 +348,8 @@ public class BoardController implements Initializable, GameObserver {
     }
 
 
+
+
     @Override
     public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
         updateCardControllers(boardIterator);
@@ -342,10 +359,11 @@ public class BoardController implements Initializable, GameObserver {
     @Override
     public void update(String message) {
             switch (message){
-                    case "newLevel": newLevel();
+                case "new_level": newLevel();
                 break;
 
                 case "game_over": game_over();
+                break;
             }
             //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
     }

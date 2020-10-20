@@ -79,7 +79,7 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3360cc" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsRect" width="56.0" />
                   <AnchorPane layoutX="65.0" layoutY="121.0" prefHeight="429.0" prefWidth="793.0" styleClass="boardAnchorPane">
                      <children>
-                        <AnchorPane layoutX="313.0" layoutY="21.0" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
+                        <AnchorPane layoutX="313.0" layoutY="21.0" onMouseClicked="#beginLevel" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
                            <children>
                               <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

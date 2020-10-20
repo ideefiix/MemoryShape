@@ -54,6 +54,7 @@ public class Game {
 
     public void setUpObserver(){ //kan nog göras i konstruktorn senare.
         observer.update(cardDisplay2.createIterator(), board2.createIterator());
+        observer.update("new_level");
     }
 
 
@@ -85,7 +86,8 @@ public class Game {
             }
         }
         observer.update(cardDisplay2.createIterator(), board2.createIterator());
-        if(newlevel){observer.update("newLevel");}
+        if(newlevel){observer.update("new_level");}
+        newlevel = false;
 
     }
 
