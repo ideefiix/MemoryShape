@@ -3,6 +3,7 @@ package chalmers.app.model.CardDisplays;
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,33 +29,37 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
     @Override
 
     public void cardSelected(Card selectedCard) {
-
-        int i = 0;
-        expectedCard = getCardsToDisplay().get(i);
         if (selectedCard.equals(expectedCard)) {
             correctCardSelected = true;
-            getCardsToDisplay().remove(0);
+            if(cardsToDisplay.size() > 0) {
+                expectedCard = cardsToDisplay.get(0);
+                nextDisplayCards.clear();
+                cardsToDisplay.remove(0);
+            }
+            nextDisplayCards.add(selectedCard);
+
         } else {
             correctCardSelected = false;
         }
     }
 
-        public boolean isSequenceCompleted () {
-            if (getCardsToDisplay().isEmpty()) {
-                return true;
-            }
-            return false;
+
+
+    @Override
+    public void setUp (List<Card> cards) {
+        loadCardsToDisplay(cards);
+        nextDisplayCards.addAll(cardsToDisplay);
+        expectedCard = cardsToDisplay.get(0);
+        cardsToDisplay.remove(0);
         }
 
 
-        @Override
-        public void setUp (List < Card > cardsToDisplay) {
-            loadCardsToDisplay(cardsToDisplay);
-            expectedCard = getCardsToDisplay().get(0);
-        }
 
-    public List<Card> getCardList(){
-        return cardsToDisplay;
+
+    @Override
+    public List<Card> getCardList() {
+        return null;
     }
+
 
 }

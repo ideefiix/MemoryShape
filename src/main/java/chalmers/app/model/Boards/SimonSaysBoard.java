@@ -33,7 +33,7 @@ public class SimonSaysBoard extends AbstractBoard {
 
     @Override
     public void generateBoard(int currentLevel) {
-         nActiveCards = 3 + currentLevel;
+         nActiveCards = 2 + currentLevel;
         Collections.shuffle(allCardsList);
          activeCardList = new ArrayList<>();
          for( int i = 0; i< nActiveCards;i++){

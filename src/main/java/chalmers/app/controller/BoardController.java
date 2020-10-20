@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class BoardController implements Initializable, GameObserver {
 
@@ -50,8 +51,13 @@ public class BoardController implements Initializable, GameObserver {
     ImageView imageLife2;
     @FXML
     ImageView imageLife3;
+
+    /*
     @FXML
     Button start_btn;
+
+
+     */
 
 
     public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
@@ -74,31 +80,22 @@ public class BoardController implements Initializable, GameObserver {
 
 
     @FXML
-    public void beginLevel(){
+    public void beginLevel() {
         if(newLevel) {
-            start_btn.setVisible(false);
+            //start_btn.setVisible(false);
             hideCards();
             selectedCard.setVisible(true);
-            playCardSequence();
             newLevel = false;
         }
-    }
-
-    private void playCardSequence(){
-        while (displayIterator.hasNext()){
-            setDisplayImage(displayIterator.getCard());
-            delay1sec();
+        if(displayIterator.hasNext()){
+            showCards();
+            selectedCard.setImage(assignImage(displayIterator.getCard()));
+            displayIterator.getNext();
+            newLevel = true;
         }
     }
 
-    private void delay1sec(){
-        try{
-            Thread.sleep(1000);
-        }
-        catch(InterruptedException ex){
-            Thread.currentThread().interrupt();
-        }
-    }
+
 
 
 
@@ -304,7 +301,7 @@ public class BoardController implements Initializable, GameObserver {
         private void newLevel(){
             showCards();
             selectedCard.setVisible(false);
-            start_btn.setVisible(true);
+            //start_btn.setVisible(true);
             newLevel = true;
         }
 
