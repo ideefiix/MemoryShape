@@ -29,6 +29,7 @@ public class BoardController implements Initializable, GameObserver {
 
     public boolean newLevel = false;
     private ICardIterator displayIterator;
+    private boolean inSequence;
 
     @FXML
     AnchorPane pausedAnchorPane;
@@ -87,13 +88,21 @@ public class BoardController implements Initializable, GameObserver {
             selectedCard.setVisible(true);
             newLevel = false;
         }
+        /*
         if(displayIterator.hasNext()){
             showCards();
             selectedCard.setImage(assignImage(displayIterator.getCard()));
             displayIterator.getNext();
-            newLevel = true;
+            inSequence = true;
+            if(!displayIterator.hasNext()){
+                selectedCard.setImage(null);
+            }
         }
+         */
+
     }
+
+
 
 
 

@@ -42,7 +42,7 @@ public class MainController {
     }
 
     public void setBoardScene(){
-        createGame();
+        //createGame(mode);
         //BoardController BC = new BoardController(this,game, game.getCardDisplay2().getCardList());
         //game.setGameObserver(BC);
 
@@ -77,9 +77,16 @@ public class MainController {
             Thread.currentThread().interrupt();
         }
     }
-    public void createGame() {
-        //Hardcoded values for now
-        game = new Game(new Player("Nappe",3), Game.GameMode.SIMONSAYS); //borde inte ha koppling till player
+    public void createGame(String mode) {
+        switch (mode){
+            case "standard": game = new Game(new Player("Nappe",3), Game.GameMode.STANDARD); //borde inte ha koppling till player
+            break;
+            case "frenzy": game = new Game(new Player("Nappe",3), Game.GameMode.FRENZY);
+            break;
+            case "sequence": game = new Game(new Player("Nappe",3), Game.GameMode.SIMONSAYS);
+            break;
+        }
+
     }
 
 

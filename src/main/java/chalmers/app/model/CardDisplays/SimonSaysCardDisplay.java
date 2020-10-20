@@ -27,7 +27,6 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
 
 
     @Override
-
     public void cardSelected(Card selectedCard) {
         if (selectedCard.equals(expectedCard)) {
             correctCardSelected = true;

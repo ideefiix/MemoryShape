@@ -89,8 +89,9 @@ public class Game {
         observer.update(cardDisplay2.createIterator(), board2.createIterator());
         if(newlevel){observer.update("new_level");}
         newlevel = false;
-
     }
+
+
 
     public void initNewLevel(){
         level++;

@@ -31,6 +31,7 @@ public class MenuController  {
 
     private MainController mainController;
     private List<Highscore> hList;
+    private String mode;
 
     @FXML
     AnchorPane menuAnchorPane;
@@ -54,6 +55,9 @@ public class MenuController  {
     TextField name_textField;
     @FXML
     Text error_text;
+
+
+
 
 
 
@@ -128,9 +132,7 @@ public class MenuController  {
 
     @FXML
      void startButtonPressed( ) throws Exception{ //
-        mainController.createGame();
         modeAnchorPane.toFront();
-
     }
 
 
@@ -147,6 +149,7 @@ public class MenuController  {
             //Do nothing
             error_text.setText("Enter a name!");
         }else{
+            mainController.createGame(mode);
             mainController.setBoardScene();
             error_text.setText("");
         }
@@ -180,6 +183,7 @@ public class MenuController  {
        setDefaultStyle();
         standardModeButton.getStyleClass().clear();
         standardModeButton.getStyleClass().add("color");
+        mode = "standard";
     }
 
     @FXML
@@ -187,12 +191,14 @@ public class MenuController  {
         setDefaultStyle();
         frenzyButton.getStyleClass().clear();
         frenzyButton.getStyleClass().add("color");
+        mode = "frenzy";
     }
     @FXML
    void sequenceButtonPressed(){
         setDefaultStyle();
         sequenceButton.getStyleClass().clear();
         sequenceButton.getStyleClass().add("color");
+        mode = "sequence";
     }
 
 
