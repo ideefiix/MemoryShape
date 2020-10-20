@@ -25,12 +25,7 @@ public class StandardCardDisplay extends AbstractCardDisplay {
 
         if(selectedCard.equals(expectedCard)){
             correctCardSelected = true;
-            nextDisplayCards.clear();
-            if(cardsToDisplay.size() != 0) {
-                nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
-                cardsToDisplay.remove(0);
-                expectedCard = nextDisplayCards.get(0);
-            }
+            nextDisplay();
         } else {
             correctCardSelected = false;
         }
@@ -41,11 +36,20 @@ public class StandardCardDisplay extends AbstractCardDisplay {
          */
     }
 
+    private void nextDisplay(){
+        nextDisplayCards.clear();
+        if(cardsToDisplay.size() != 0) {
+            nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
+            cardsToDisplay.remove(0);
+            expectedCard = nextDisplayCards.get(0);
+        }
+    }
+
     @Override
     public void setUp(List<Card> cards) {
         loadCardsToDisplay(cards);
         nextDisplayCards.add(cardsToDisplay.get(0));
-        cardsToDisplay.remove(0);       //FEL HÄR DEN TAS BORT FRÅN BOARDEN!?!?!?!?
+        cardsToDisplay.remove(0);
         expectedCard = nextDisplayCards.get(0);
     }
 

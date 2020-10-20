@@ -80,7 +80,7 @@ public class MainController {
     }
     public void createGame() {
         //Hardcoded values for now
-        game = new Game(new Player("Nappe",3), Game.GameMode.STANDARD); //borde inte ha koppling till player
+        game = new Game(new Player("Nappe",3), Game.GameMode.FRENZY); //borde inte ha koppling till player
     }
 
 

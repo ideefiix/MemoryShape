@@ -6,6 +6,7 @@ import chalmers.app.model.Boards.FrenzyBoard;
 import chalmers.app.model.Boards.IBoard;
 import chalmers.app.model.Boards.SimonSaysBoard;
 import chalmers.app.model.Boards.StandardBoard;
+import chalmers.app.model.CardDisplays.FrenzyCardDisplay;
 import chalmers.app.model.CardDisplays.ICardDisplay;
 import chalmers.app.model.CardDisplays.SimonSaysCardDisplay;
 import chalmers.app.model.CardDisplays.StandardCardDisplay;
@@ -40,7 +41,7 @@ public class Game {
 
             case FRENZY:
                 board2 = new FrenzyBoard(level);
-                cardDisplay2 = new StandardCardDisplay();
+                cardDisplay2 = new FrenzyCardDisplay();
                 break;
 
             case SIMONSAYS:

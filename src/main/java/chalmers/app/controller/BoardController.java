@@ -24,7 +24,7 @@ public class BoardController implements Initializable, GameObserver {
     private List<CardController> cardControllers = new ArrayList<CardController>();
     File dir = new File("src/main/resources/view/images/shapes");
     private List<Card> displayCards;
-    private int indexImage = 0;
+
     public boolean newLevel = false;
 
     @FXML
@@ -131,12 +131,7 @@ public class BoardController implements Initializable, GameObserver {
 
 
 
-        public void setNextDisplayImage () {
-            if (indexImage < displayCards.size()) {
-                selectedCard.setImage(assignImageCardDisplay());
-                indexImage++;
-            }
-        }
+
 
         public void setDisplayImage(Card card){
             selectedCard.setImage(assignImage(card));
@@ -158,29 +153,6 @@ public class BoardController implements Initializable, GameObserver {
             return i;
         }
 
-        public Image assignImageCardDisplay () {
-            Image i = null;
-            Card c = displayCards.get(indexImage);
-
-            for (File file : dir.listFiles()) {
-                //Remove .JPG extension
-                String str = file.getName();
-                int pos = str.lastIndexOf(".");
-
-                if (str.substring(0, pos).equals(c.getID())) {
-                    i = new Image(file.toURI().toString());
-
-                    break;
-                }
-
-            }
-            if (i == null) {
-                System.out.println("Something ain't right in BC cardDisplay");
-                System.out.println(c.getID());
-            }
-            return i;
-
-        }
 
         /**
          * Makes the cardshapes invincible
@@ -321,12 +293,7 @@ public class BoardController implements Initializable, GameObserver {
              */
         }
 
-        public void displayCardDisplay(){
-            for(int i = 0; i < displayCards.size(); i++){
-                //DELAAAAYY
-                setNextDisplayImage();
-            }
-        }
+
 
         private void newLevel(){
             showCards();
