@@ -74,6 +74,10 @@
 
 }
 
+.optionsButton:hover{
+    -fx-background-color: #808080;
+    -fx-opacity: 0.3;
+}
 
 /**
 Har ingen hover effect
@@ -103,9 +107,15 @@ Har ingen hover effect
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
 }
 
+.leaderBoard{
+    -fx-background-color: #ffffff;
+    -fx-background-radius:10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+}
+
 
 .buttonMode:hover{
- -fx-background-color:#E0FFFF;
+ -fx-background-color:#99ccff;
 }
 
 .buttonMode:pressed{
@@ -122,11 +132,11 @@ Har ingen hover effect
 .backButton{
   -fx-background-radius:25;
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
-  -fx-background-color: red;
+  -fx-background-color: #DC143C;
 }
 
 .backButton:hover{
- -fx-background-color:#DC143C;
+ -fx-background-color:red;
  -fx-padding: 10px 24px;
 }
 
@@ -192,6 +202,14 @@ Har ingen hover effect
   -fx-stroke: #ffffff;
   -fx-stroke-width:5;
 
+}
+
+.optionsmenu{
+    -fx-background-color:#808080;
+    -fx-opacity: 0.0;
+}
+.optionsmenu:hover{
+    -fx-opacity: 0.3;
 }
 
 .optionsButton{

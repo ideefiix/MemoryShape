@@ -44,12 +44,12 @@
                   </Pane>
                   <Pane layoutX="317.0" layoutY="301.0" onMouseClicked="#quitToMenuPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
                      <children>
-                        <Text fill="WHITE" layoutX="18.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text=" Quit to menu " />
+                        <Text fill="WHITE" layoutX="39.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Main menu " />
                      </children>
                   </Pane>
                   <Pane layoutX="317.0" layoutY="400.0" onMouseClicked="#quitButtonPressed" prefHeight="73.0" prefWidth="263.0" styleClass="menuButton">
                      <children>
-                        <Text fill="WHITE" layoutX="96.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Quit" />
+                        <Text fill="WHITE" layoutX="100.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="whiteMenuText" text="Exit" />
                      </children>
                   </Pane>
                   <Text layoutX="158.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Game Paused!" wrappingWidth="685.22900390625" />
@@ -59,29 +59,14 @@
                <children>
                   <Text layoutX="155.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 85;" styleClass="titleText" text="Memory    Shape" wrappingWidth="768.22900390625" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#45aca5" height="45.0" layoutX="485.0" layoutY="33.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" styleClass="logo" width="45.0" />
-                  <ImageView fx:id="imageLife3" fitHeight="47.0" fitWidth="56.0" layoutX="14.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8-red-heart-96.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imageLife2" fitHeight="47.0" fitWidth="63.0" layoutX="51.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8-red-heart-96.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imageLife1" fitHeight="47.0" fitWidth="65.0" layoutX="89.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/icons8-red-heart-96.png" />
-                     </image>
-                  </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3357cc" height="14.0" layoutX="824.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsButton" width="56.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3357cc" height="14.0" layoutX="824.0" layoutY="7.0" stroke="BLACK" strokeType="INSIDE" width="56.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3254cd" height="14.0" layoutX="824.0" layoutY="31.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsRect" width="56.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3360cc" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsRect" width="56.0" />
-                  <AnchorPane layoutX="65.0" layoutY="121.0" prefHeight="429.0" prefWidth="793.0" styleClass="boardAnchorPane">
+                  <AnchorPane layoutX="65.0" layoutY="121.0" prefHeight="429.0" prefWidth="793.0" styleClass="boardAnchorPane" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="60.0">
                      <children>
                         <AnchorPane layoutX="313.0" layoutY="21.0" onMouseClicked="#beginLevel" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
                            <children>
-                              <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="selectedCard" fitHeight="100.0" fitWidth="100.0" layoutX="27.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
                         <FlowPane fx:id="flowPane" alignment="CENTER" hgap="10.0" layoutX="3.0" layoutY="215.0" prefHeight="212.0" prefWidth="787.0" vgap="10.0">
@@ -89,9 +74,24 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </FlowPane>
+                        <ImageView fx:id="imageLife3" fitHeight="47.0" fitWidth="56.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-red-heart-96.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imageLife2" fitHeight="47.0" fitWidth="63.0" layoutX="51.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-red-heart-96.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imageLife1" fitHeight="47.0" fitWidth="65.0" layoutX="89.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/icons8-red-heart-96.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
-                  <Pane fx:id="options" layoutX="819.0" layoutY="3.0" onMouseClicked="#pausedButtonPressed" prefHeight="73.0" prefWidth="64.0" />
+                  <Pane fx:id="options" layoutX="819.0" layoutY="3.0" onMouseClicked="#pausedButtonPressed" prefHeight="73.0" prefWidth="64.0" styleClass="optionsmenu" />
                </children>
             </AnchorPane>
          </children>
