@@ -6,6 +6,7 @@ import chalmers.app.model.GameObserver;
 import chalmers.app.model.ICardIterator;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -48,6 +49,8 @@ public class BoardController implements Initializable, GameObserver {
     ImageView imageLife2;
     @FXML
     ImageView imageLife3;
+    @FXML
+    Button start_btn;
 
 
     public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
@@ -72,10 +75,12 @@ public class BoardController implements Initializable, GameObserver {
     @FXML
     public void beginLevel(){
         if(newLevel) {
+            start_btn.setVisible(false);
             hideCards();
             selectedCard.setVisible(true);
+            newLevel = false;
         }
-        newLevel = false;
+
     }
 
 
@@ -333,6 +338,7 @@ public class BoardController implements Initializable, GameObserver {
         private void newLevel(){
             showCards();
             selectedCard.setVisible(false);
+            start_btn.setVisible(true);
             newLevel = true;
         }
 

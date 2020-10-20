@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -79,13 +80,10 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3360cc" height="14.0" layoutX="824.0" layoutY="55.0" stroke="BLACK" strokeType="INSIDE" styleClass="optionsRect" width="56.0" />
                   <AnchorPane layoutX="65.0" layoutY="121.0" prefHeight="429.0" prefWidth="793.0" styleClass="boardAnchorPane">
                      <children>
-                        <AnchorPane layoutX="313.0" layoutY="21.0" onMouseClicked="#beginLevel" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
+                        <AnchorPane layoutX="313.0" layoutY="21.0" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
                            <children>
-                              <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@images/shapes/YELLOWCIRCLE.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="selectedCard" fitHeight="129.0" fitWidth="151.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                              <Button fx:id="start_btn" layoutX="20.0" layoutY="40.0" mnemonicParsing="false" onAction="#beginLevel" prefHeight="64.0" prefWidth="104.0" text="Start level" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="40.0" />
                            </children>
                         </AnchorPane>
                         <FlowPane fx:id="flowPane" alignment="CENTER" hgap="10.0" layoutX="3.0" layoutY="215.0" prefHeight="212.0" prefWidth="787.0" vgap="10.0">
