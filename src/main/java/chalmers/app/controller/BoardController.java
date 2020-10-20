@@ -323,6 +323,15 @@ public class BoardController implements Initializable, GameObserver {
 
         }
 
+        private void game_over(){
+            populateGameOverLabel();
+            gameOverAnchorPane.toFront();
+        }
+
+    public void populateGameOverLabel () {
+        gameOverLabel.setText(" You reached level " + String.valueOf(mainController.getLevel()) + " and you scored " + String.valueOf(mainController.getPlayer().getCurrentScore()) + " points ");
+    }
+
 
     @Override
     public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
@@ -333,8 +342,10 @@ public class BoardController implements Initializable, GameObserver {
     @Override
     public void update(String message) {
             switch (message){
-                case "newLevel": newLevel();
+                    case "newLevel": newLevel();
                 break;
+
+                case "game_over": game_over();
             }
             //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
     }

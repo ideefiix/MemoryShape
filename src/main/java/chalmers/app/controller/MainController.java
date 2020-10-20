@@ -97,4 +97,12 @@ public class MainController {
 
     }
 
+    public int getLevel(){
+        return game.getLevel();
+    }
+
+    public Player getPlayer(){
+        return game.getPlayer();
+    }
+
 }
