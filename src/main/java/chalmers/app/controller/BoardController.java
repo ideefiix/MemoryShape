@@ -189,6 +189,7 @@ public class BoardController implements Initializable, GameObserver {
         public void hideCards () {
             for (CardController cc : cardControllers) {
                 cc.hideImage();
+                cc.setBackPliancy();
             }
 
         }
@@ -196,6 +197,7 @@ public class BoardController implements Initializable, GameObserver {
         public void showCards(){
             for(CardController cc: cardControllers){
                 cc.showImage();
+                cc.setNoPliancy();
             }
         }
 
