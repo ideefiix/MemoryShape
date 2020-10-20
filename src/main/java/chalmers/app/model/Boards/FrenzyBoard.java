@@ -33,10 +33,11 @@ public class FrenzyBoard extends AbstractBoard {
             int j = 0;
 
             while(j < 3){
-                Card temp = new Card(allCardsList.get(i).getColor(), allCardsList.get(i).getShape());
+
+                Card temp = new Card(allCardsList.get(i).getColor(), allCardsList.get(i).getShape(), allCardsList.get(i).getState());
                 activeCardList.add(temp);
                 if((remainder) % 3 > 0) {
-                    Card temp2 = new Card(allCardsList.get(i).getColor(), allCardsList.get(i).getShape());
+                    Card temp2 = new Card(allCardsList.get(i).getColor(), allCardsList.get(i).getShape(),allCardsList.get(i).getState());
                     activeCardList.add(temp2);
                     remainder--;
                 }

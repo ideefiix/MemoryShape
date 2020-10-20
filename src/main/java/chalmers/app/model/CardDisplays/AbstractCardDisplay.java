@@ -51,7 +51,8 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
     public abstract void cardSelected(Card card);
 
     @Override
-    public abstract void setUp(List<Card> cardsToDisplay);
+    public abstract void setUp(List<Card> cards);
+
 
 
     @Override
