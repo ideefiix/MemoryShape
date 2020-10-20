@@ -25,7 +25,7 @@ public class FrenzyBoard extends AbstractBoard {
      */
     @Override
     public void generateBoard(int currentLevel) {
-        nActiveCards = 2 + currentLevel / 3;
+        nActiveCards = 2 + (currentLevel - 1) / 3;
         activeCardList = new ArrayList<>();
         int remainder = currentLevel + 5;
         // Only shapes on the board are active
