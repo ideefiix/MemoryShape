@@ -60,7 +60,7 @@ public class CardController extends AnchorPane  {
 
     @FXML
     public void onClick(){
-        if(card.getState() != CardState.INCORRECT && card.getState() != CardState.CORRECT){
+        if(card.getState() != CardState.INCORRECT && card.getState() != CardState.CORRECT && !parentController.newLevel){
             parentController.onclick(card);
         }
     }

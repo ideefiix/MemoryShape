@@ -25,7 +25,7 @@ public class BoardController implements Initializable, GameObserver {
     File dir = new File("src/main/resources/view/images/shapes");
     private List<Card> displayCards;
     private int indexImage = 0;
-    private boolean newLevel = false;
+    public boolean newLevel = false;
 
     @FXML
     AnchorPane pausedAnchorPane;

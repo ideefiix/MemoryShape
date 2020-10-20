@@ -1,7 +1,9 @@
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.Card;
+import javafx.print.Collation;
 
+import java.util.Collections;
 import java.util.List;
 
 public class FrenzyCardDisplay extends AbstractCardDisplay {
@@ -28,10 +30,11 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
     }
 
     @Override
-    public void setUp(List<Card> cardsToDisplay) {
-
-
-
+    public void setUp(List<Card> cards) {
+        for(Card c : cards){
+            cardsToDisplay.add(new Card(c.getColor(),c.getShape()));
+        }
+        Collections.shuffle(cardsToDisplay);
     }
 
     public List<Card> getCardList(){
