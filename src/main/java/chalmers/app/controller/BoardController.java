@@ -21,7 +21,6 @@ import java.util.*;
 public class BoardController implements Initializable, GameObserver {
 
     private MainController mainController;
-    private Game game;
     private List<CardController> cardControllers = new ArrayList<CardController>();
     File dir = new File("src/main/resources/view/images/shapes");
     private List<Card> displayCards;
@@ -52,19 +51,20 @@ public class BoardController implements Initializable, GameObserver {
 
     public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
         this.mainController = mainController;
-        this.game = game;
+       // this.game = game;
         displayCards = DisplayCards;
+    }
 
-
+    public BoardController(MainController mainController){
+        this.mainController = mainController;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        createCards();
+        //createCards();
         updateBoard();
         hideCards();
-        setNextDisplayImage();
-
+        //setNextDisplayImage();
     }
 
 
@@ -73,6 +73,7 @@ public class BoardController implements Initializable, GameObserver {
     /**
      * Create the cards FXMLs
      */
+    /*
     public void createCards (){
         List<Card> cardList = game.getBoard().getActiveCardList();
 
@@ -81,6 +82,9 @@ public class BoardController implements Initializable, GameObserver {
             assignImage(cardList.get(i).getID(), cardControllers.get(i));
         }
     }
+
+
+     */
 
     /**
      * Is called by createCards()
@@ -111,19 +115,33 @@ public class BoardController implements Initializable, GameObserver {
     }
 
 
-    /**
-     * Creates a list of Images from a list of card IDs
-     */
-    public void setSelectedCard() {
-        Card selected = game.getCardDisplay().getSelectedCard();
-        assignImageCardDisplay();
-    }
+
 
         public void setNextDisplayImage () {
             if (indexImage < displayCards.size()) {
                 selectedCard.setImage(assignImageCardDisplay());
                 indexImage++;
             }
+        }
+
+        public void setDisplayImage(Card card){
+            selectedCard.setImage(assignImage(card));
+        }
+
+        public Image assignImage(Card c){
+            Image i = null;
+            for (File file : dir.listFiles()) {
+                //Remove .JPG extension
+                String str = file.getName();
+                int pos = str.lastIndexOf(".");
+                if (str.substring(0, pos).equals(c.getID())) {
+                    i = new Image(file.toURI().toString());
+
+                    break;
+                }
+
+            }
+            return i;
         }
 
         public Image assignImageCardDisplay () {
@@ -167,17 +185,9 @@ public class BoardController implements Initializable, GameObserver {
             }
         }
 
-        public Game getGame () {
-            return game;
-        }
 
-        public void incScore () {
-            game.getPlayer().incScore();
-        }
 
-        public void bcDecLife () {
-            game.getPlayer().decLife();
-        }
+
 
         public void onclick (Card card){
             mainController.onClick(card);
@@ -187,22 +197,6 @@ public class BoardController implements Initializable, GameObserver {
             return cardControllers;
         }
 
-        public void isBoardCleared () {
-            if (game.getBoardCleared()) {
-                game.incLevel();
-                game.newBoard();
-                game.setBoardCleared(false);
-                cardControllers = new ArrayList<>();
-                createCards();
-                updateBoard();
-                hideCards();
-                // Fix cardDisplay
-                displayCards = game.getCardDisplay().getCardList();
-                indexImage = 0;
-                setNextDisplayImage();
-
-            }
-        }
 
         @FXML
         private void pausedButtonPressed () { //
@@ -234,14 +228,7 @@ public class BoardController implements Initializable, GameObserver {
             pausedAnchorPane.toFront();
         }
 
-        public void gameOver () {
-            int lives = game.getPlayer().getLives();
-            if (lives <= 0) {
-                populateGameOverLabel();
-                gameOverAnchorPane.toFront();
 
-            }
-        }
 
         @FXML
         private void mainMenuButtonPressed () {
@@ -253,9 +240,12 @@ public class BoardController implements Initializable, GameObserver {
             mainController.setBoardScene();
         }
 
+        /*
         public void populateGameOverLabel () {
             gameOverLabel.setText(" You reached level " + String.valueOf(game.getLevel()) + " and you scored " + String.valueOf(game.getPlayer().getCurrentScore()) + " points ");
         }
+
+         */
 
         public void removeLifeImage () {
             int calls = 3;
@@ -282,8 +272,11 @@ public class BoardController implements Initializable, GameObserver {
                 Card card = boardIterator.getCard();
                 if(i < cardControllers.size()){
                     cardControllers.get(i).setCard(card);
+                    cardControllers.get(i).setImage(assignImage(card));
                 } else{
-                    cardControllers.add(new CardController(this, card));
+                    CardController newCC = new CardController(this, card);
+                    newCC.setImage(assignImage(card));
+                    cardControllers.add(newCC);
                 }
                 cardControllers.get(i).updateCardState();
                 boardIterator.getNext();
@@ -293,6 +286,16 @@ public class BoardController implements Initializable, GameObserver {
         }
 
         public void updateCardDisplay(ICardIterator displayIterator){
+
+            setDisplayImage(displayIterator.getCard());
+            while (displayIterator.hasNext()){
+                Card card = displayIterator.getCard();
+                setDisplayImage(card);
+                displayIterator.getNext();
+                //DELAYY
+            }
+
+            /*
             displayCards.clear();
             while (displayIterator.hasNext()){
                 Card card = displayIterator.getCard();
@@ -300,6 +303,8 @@ public class BoardController implements Initializable, GameObserver {
                 displayIterator.getNext();
             }
             displayCardDisplay();
+
+             */
         }
 
         public void displayCardDisplay(){
@@ -307,6 +312,15 @@ public class BoardController implements Initializable, GameObserver {
                 //DELAAAAYY
                 setNextDisplayImage();
             }
+        }
+
+        private void newLevel(){
+            showCards();
+            selectedCard.setVisible(false);
+        }
+
+        private void hideCardDisplay(){
+
         }
 
 
@@ -318,6 +332,10 @@ public class BoardController implements Initializable, GameObserver {
 
     @Override
     public void update(String message) {
+            switch (message){
+                case "newLevel": newLevel();
+                break;
+            }
             //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
     }
 

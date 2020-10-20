@@ -3,6 +3,7 @@ package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.Card;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,10 +25,12 @@ public class StandardCardDisplay extends AbstractCardDisplay {
 
         if(selectedCard.equals(expectedCard)){
             correctCardSelected = true;
-            cardsToDisplay.remove(0);
             nextDisplayCards.clear();
-            nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
-            expectedCard = nextDisplayCards.get(0);
+            if(cardsToDisplay.size() != 0) {
+                nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
+                cardsToDisplay.remove(0);
+                expectedCard = nextDisplayCards.get(0);
+            }
         } else {
             correctCardSelected = false;
         }
@@ -39,10 +42,11 @@ public class StandardCardDisplay extends AbstractCardDisplay {
     }
 
     @Override
-    public void setUp(List<Card> cardsToDisplay) {
-        loadCardsToDisplay(cardsToDisplay);
+    public void setUp(List<Card> cards) {
+        loadCardsToDisplay(cards);
         nextDisplayCards.add(cardsToDisplay.get(0));
-        expectedCard = cardsToDisplay.get(0);
+        cardsToDisplay.remove(0);       //FEL HÄR DEN TAS BORT FRÅN BOARDEN!?!?!?!?
+        expectedCard = nextDisplayCards.get(0);
     }
 
     public List<Card> getCardList(){

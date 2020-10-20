@@ -45,6 +45,10 @@ public class CardController extends AnchorPane  {
 
     }
 
+    public void setImage(Image i){
+        image.setImage(i);
+    }
+
     public void hideImage(){
         image.setVisible(false);
     }
@@ -56,43 +60,6 @@ public class CardController extends AnchorPane  {
 
     @FXML
     public void onClick(){
-        // You can't click on removed cards
-        if(card.getisRemoved() == false){
-            parentController.onclick(card);
-            parentController.gameOver();
-
-
-            // Hide the previosly wrong guess
-            for(CardController cc: parentController.getCardControllers()){
-                if (cc.getCard().getFlipped() && cc.getCard().getisRemoved() == false){
-                    cc.hideImage();
-                    cc.getBackgroundPane().getStyleClass().clear();
-                    cc.getBackgroundPane().getStyleClass().add("card_Default");
-                }
-            }
-            card.setFlipped(true);
-
-            //Manipulate the clicked card
-            if(card.getisRemoved()){
-                backgroundPane.getStyleClass().clear();
-                backgroundPane.getStyleClass().add("card_Green");
-            }else{
-                backgroundPane.getStyleClass().clear();
-                backgroundPane.getStyleClass().add("card_Red");
-            }
-
-            showImage();
-
-            //Update Selectedcard if right
-            if(card.getisRemoved()){
-                parentController.setNextDisplayImage();
-            }
-        }
-        //Is game over?
-        parentController.isBoardCleared();
-    }
-
-    public void onClick2(){
         if(card.getState() != CardState.INCORRECT && card.getState() != CardState.CORRECT){
             parentController.onclick(card);
         }
@@ -107,11 +74,10 @@ public class CardController extends AnchorPane  {
         showImage();
         switch (card.getState()){
             case INCORRECT:
-                backgroundPane.getStyleClass().add("card_Green");
-                break;
-
-            case CORRECT:
                 backgroundPane.getStyleClass().add("card_Red");
+                break;
+            case CORRECT:
+                backgroundPane.getStyleClass().add("card_Green");
                 break;
             case FACEUP:
                 backgroundPane.getStyleClass().add("card_Default");

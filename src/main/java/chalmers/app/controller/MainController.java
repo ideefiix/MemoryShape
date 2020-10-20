@@ -1,6 +1,5 @@
 package chalmers.app.controller;
 
-import chalmers.app.model.Board;
 import chalmers.app.model.Card;
 import chalmers.app.model.Game;
 import chalmers.app.model.Player;
@@ -51,14 +50,16 @@ public class MainController {
             FXMLLoader loader;
             loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
 
-            BoardController bC = new BoardController(this, game, game.getCardDisplay().getCardList());
+            BoardController bC = new BoardController(this);
             loader.setController(bC);
             game.setGameObserver(bC);
+
 
 
             Parent parent;
             parent = loader.load();
             stage.setScene(new Scene(parent));
+            game.setUpObserver();
 
 
         } catch (IOException e) {
@@ -79,8 +80,7 @@ public class MainController {
     }
     public void createGame() {
         //Hardcoded values for now
-        game = new Game(new Player("Nappe", 3), 1);
-        //game = new Game(new Player("Nappe",3), 0, Game.GameMode.STANDARD);
+        game = new Game(new Player("Nappe",3), Game.GameMode.STANDARD); //borde inte ha koppling till player
     }
 
 

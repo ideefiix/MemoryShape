@@ -22,32 +22,14 @@ public class Game {
     private IBoard board2;
     private ICardDisplay cardDisplay2;
 
-    private Board board;
     private boolean boardCleared = false;
     private Player player;
-    private CardDisplay cardDisplay;
     private int level = 0;
     private GameMode mode;
 
+
     public Game(Player player, GameMode mode) {
         this.player = player;
-        this.mode = mode;
-        //skapa Board beroende på mode
-        //skapa Display beroende på mode
-        initLevel(level);
-    }
-
-    public Game(Player player, int level) {//gammal konstruktor
-        this.player = player;
-        this.level = level;
-        board = new Board(level);
-        cardDisplay = new CardDisplay(board.getActiveCardList());
-    }
-
-    public Game(Player player, int level, GameMode mode) {
-        this.player = player;
-        this.level = level;
-
         this.mode = mode;
 
         switch (mode){
@@ -67,38 +49,23 @@ public class Game {
                 break;
 
         }
-        initLevel(level);
+        initNewLevel();
     }
 
-    public void newCardSelector(){
-        cardDisplay.restartList(board.getActiveCardList());
-        cardDisplay.setPlayerGuessedAllCards(false);
+    public void setUpObserver(){ //kan nog göras i konstruktorn senare.
+        observer.update(cardDisplay2.createIterator(), board2.createIterator());
     }
 
-    public void newBoard(){
-        board.generateBoard(level);
-        newCardSelector();
-    }
+
 
     /**
      * Call with a card from the board!
      */
-    public void onClick(Card card){
-        // Was it a good card?
-        if (didUserFindTheCard(card)) {
-            //Yes
-            cardDisplay.changeSelectedCard();
-            boardCleared = cardDisplay.getPlayerGuessedAllCards();
-            card.setisRemoved(true);
-            player.incScore();
-        }else{
-            //No
-            player.decLife();
-        }
-    }
 
 
-    public void onClick2(Card selectedCard){
+
+    public void onClick(Card selectedCard){
+        boolean newlevel = false;
         board2.flipIncorrectCards();
         cardDisplay2.cardSelected(selectedCard);
         if(cardDisplay2.isCorrectCardSelected()){
@@ -107,7 +74,8 @@ public class Game {
                 if(isGameComplete()){
                     gameComplete();
                 }
-                initLevel(level);
+                initNewLevel();
+                newlevel = true;
             }
         } else {
             board2.incorrectCard(selectedCard);
@@ -117,9 +85,11 @@ public class Game {
             }
         }
         observer.update(cardDisplay2.createIterator(), board2.createIterator());
+        if(newlevel){observer.update("newLevel");}
+
     }
 
-    public void initLevel(int level){
+    public void initNewLevel(){
         level++;
         board2.generateBoard(level);
         cardDisplay2.setUp(board2.getActiveCardList()); //frenzydisplay ska bara ha en av varje card som används i activecardslist
@@ -133,6 +103,8 @@ public class Game {
             return level >= 22;
         }
     }
+
+
 
     public void gameComplete(){
         observer.update("game_complete");
@@ -148,17 +120,7 @@ public class Game {
 
 
 
-    public boolean didUserFindTheCard(Card card){
-        Card cc = cardDisplay.getSelectedCard();
-        /**
-         * Now Check the flipped card
-         */
-        if (card.equals(cc)){
-            return true;
-        } else{
-            return false;
-        }
-    }
+
 
 
     public void incLevel(){
@@ -169,11 +131,9 @@ public class Game {
 
     private void hideCardSelector(){}//kanske toggles istället
 
-    public Board getBoard() {
-        return board;
-    }
 
-    public IBoard getBoard2(){
+
+    public IBoard getBoard(){
         return board2;
     }
 
@@ -185,30 +145,20 @@ public class Game {
         return level;
     }
 
-    public CardDisplay getCardDisplay() {
-        return cardDisplay;
-    }
 
-    public ICardDisplay getCardDisplay2(){return cardDisplay2;}
+    public ICardDisplay getCardDisplay(){return cardDisplay2;}
 
-    public List<Card> getCardsOnTheBoard(){
-       return board.getActiveCardList();
-    }
+
 
     public boolean getBoardCleared() {
         return boardCleared;
     }
 
-    public List< String > getActiveIds(){
-       return board.getIds();
-    }
 
     public void setBoardCleared(boolean b) {
         boardCleared = b;
     }
 
-    public List< String  > getCardDisplayIDs(){
-        return cardDisplay.getIds();
-    }
+
 
 }

@@ -22,12 +22,12 @@ public class StandardBoard extends AbstractBoard {
     @Override
     public void generateBoard(int currentLevel) {
         nActiveCards = 3 + (currentLevel);
-
+        //Collections.shuffle(allCardsList);
         activeCardList = new ArrayList<>();
         // Only shapes on the board is active
         for (int i = 0; i < nActiveCards; i++) {
             Card c = allCardsList.get(i);
-            activeCardList.add(new Card(c.getColor(),c.getShape(),CardState.FACEUP));
+            activeCardList.add(new Card(c.getColor(),c.getShape(),CardState.FACEDOWN));
         }
         Collections.shuffle(activeCardList);
     }
