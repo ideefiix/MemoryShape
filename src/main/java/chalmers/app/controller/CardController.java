@@ -97,5 +97,15 @@ public class CardController extends AnchorPane  {
     public Card getCard() {
         return card;
     }
+
+    public void setNoPliancy(){
+        backgroundPane.getStyleClass().clear();
+        backgroundPane.getStyleClass().add("card_NoPliancy");
+    }
+
+    public void setBackPliancy(){
+        backgroundPane.getStyleClass().clear();
+        backgroundPane.getStyleClass().add("card_Default");
+    }
 }
 

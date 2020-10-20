@@ -34,6 +34,14 @@
    -fx-border-radius: 10px;
 }
 
+.card_NoPliancy{
+   -fx-background-color: white;
+   -fx-background-radius: 10;
+   -fx-border-radius: 5px;
+   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.3, 0.0, 4);
+
+}
+
 .card_Default{
   -fx-background-color: white;
   -fx-background-radius: 10;
