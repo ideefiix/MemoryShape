@@ -27,6 +27,7 @@ public class BoardController implements Initializable, GameObserver {
     private List<Card> displayCards;
 
     public boolean newLevel = false;
+    private ICardIterator displayIterator;
 
     @FXML
     AnchorPane pausedAnchorPane;
@@ -78,9 +79,25 @@ public class BoardController implements Initializable, GameObserver {
             start_btn.setVisible(false);
             hideCards();
             selectedCard.setVisible(true);
+            playCardSequence();
             newLevel = false;
         }
+    }
 
+    private void playCardSequence(){
+        while (displayIterator.hasNext()){
+            setDisplayImage(displayIterator.getCard());
+            delay1sec();
+        }
+    }
+
+    private void delay1sec(){
+        try{
+            Thread.sleep(1000);
+        }
+        catch(InterruptedException ex){
+            Thread.currentThread().interrupt();
+        }
     }
 
 
@@ -279,25 +296,7 @@ public class BoardController implements Initializable, GameObserver {
         }
 
         public void updateCardDisplay(ICardIterator displayIterator){
-
             setDisplayImage(displayIterator.getCard());
-            while (displayIterator.hasNext()){
-                Card card = displayIterator.getCard();
-                setDisplayImage(card);
-                displayIterator.getNext();
-                //DELAYY
-            }
-
-            /*
-            displayCards.clear();
-            while (displayIterator.hasNext()){
-                Card card = displayIterator.getCard();
-                displayCards.add(new Card(card.getColor(), card.getShape(), card.getState()));
-                displayIterator.getNext();
-            }
-            displayCardDisplay();
-
-             */
         }
 
 
@@ -329,6 +328,7 @@ public class BoardController implements Initializable, GameObserver {
     public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
         updateCardControllers(boardIterator);
         updateCardDisplay(diplayIterator);
+        this.displayIterator = diplayIterator;
     }
 
     @Override

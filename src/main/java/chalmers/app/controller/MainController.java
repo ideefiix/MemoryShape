@@ -71,16 +71,15 @@ public class MainController {
 
     private void delay(){
         try{
-            Thread.sleep(4000);
+            Thread.sleep(1000);
         }
         catch(InterruptedException ex){
             Thread.currentThread().interrupt();
         }
-
     }
     public void createGame() {
         //Hardcoded values for now
-        game = new Game(new Player("Nappe",3), Game.GameMode.FRENZY); //borde inte ha koppling till player
+        game = new Game(new Player("Nappe",3), Game.GameMode.SIMONSAYS); //borde inte ha koppling till player
     }
 
 
