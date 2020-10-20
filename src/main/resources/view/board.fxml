@@ -91,7 +91,7 @@
                         </FlowPane>
                      </children>
                   </AnchorPane>
-                  <Pane fx:id="options" layoutX="819.0" layoutY="3.0" onMouseClicked="#pausedButtonPressed" prefHeight="73.0" prefWidth="64.0" />
+                  <Pane fx:id="options" layoutX="825.0" layoutY="5.0" onMouseClicked="#pausedButtonPressed" prefHeight="64.0" prefWidth="56.0" />
                </children>
             </AnchorPane>
          </children>

@@ -82,6 +82,7 @@ public class Game {
         } else {
             board2.incorrectCard(selectedCard);
             player.decLife();
+            observer.update("decrement_life");
             if(!player.IsAlive()){
                 gameOver();
             }
