@@ -30,6 +30,7 @@ public class BoardController implements Initializable, GameObserver {
     public boolean newLevel = false;
     private ICardIterator displayIterator;
     private boolean inSequence;
+    private int lives = 3;
 
     @FXML
     AnchorPane pausedAnchorPane;
@@ -264,17 +265,20 @@ public class BoardController implements Initializable, GameObserver {
          */
 
         public void removeLifeImage () {
-            int calls = 3;
-            switch (calls) {
-                case 3:
-                    imageLife1.setImage(null);
+            lives--;
+            switch (lives) {
                 case 2:
-                    imageLife2.setImage(null);
-                case 1:
                     imageLife1.setImage(null);
+                     break;
+                case 1:
+                    imageLife2.setImage(null);
+                    break;
+                case 0:
+                    imageLife3.setImage(null);
+                    break;
 
             }
-            calls--;
+
 
 
         }
@@ -344,6 +348,9 @@ public class BoardController implements Initializable, GameObserver {
                 break;
 
                 case "game_over": game_over();
+                break;
+
+                case "decrement_life" : removeLifeImage();
                 break;
             }
             //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
