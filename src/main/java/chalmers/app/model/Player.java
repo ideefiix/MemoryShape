@@ -1,10 +1,14 @@
 package chalmers.app.model;
 
-
+/**
+ * A class holding data about the player of the game
+ */
 public class Player {
+
     String name;
     int currentScore;
     int lives;
+
 
     public Player(String name, int lives) {
         this.name = name;
@@ -12,20 +16,26 @@ public class Player {
         this.lives = lives;
     }
 
+
     /**
-    *Anropas varje gång spelaren väljer rätt kort
+     * Increases the player's score
      */
     public void incScore(){
         currentScore++;
     }
 
+
     /**
-     * Anropas varje gång spelaren väljer fel kort
+     * Decreases the players number of lives.
      */
     public void decLife(){
         lives--;
     }
 
+
+    /**
+     * Returns true if the player has one life or more.
+     */
     public boolean IsAlive(){
         if(lives<1){
             return false;
@@ -41,7 +51,4 @@ public class Player {
         return currentScore;
     }
 
-    public int getLives() {
-        return lives;
-    }
 }

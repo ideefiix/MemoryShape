@@ -11,30 +11,17 @@ import java.util.List;
  */
 public class StandardCardDisplay extends AbstractCardDisplay {
 
-    //Osynliga instansvariabler:
-    //cardsToDisplay
-    //nextDisplayCards
-    //expectedCard
-    //correctCardSelected
-
-
-
 
     @Override
     public void cardSelected(Card selectedCard) {
-
         if(selectedCard.equals(expectedCard)){
             correctCardSelected = true;
             nextDisplay();
         } else {
             correctCardSelected = false;
         }
-        /*
-        Ska jämföra selectedCard med expectedCard.
-        Om det är rätt så ska expectedCard bli nästa förväntade kort och correctCardSelected ska sättas till true
-
-         */
     }
+
 
     private void nextDisplay(){
         nextDisplayCards.clear();

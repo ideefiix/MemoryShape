@@ -12,15 +12,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * An abstract class to hold common code between the different board classes
+ */
+
 public abstract class AbstractBoard implements IBoard {
+
 
     List<Card> allCardsList = new ArrayList<>();
     List<Card> activeCardList = new ArrayList<>();;
     int nActiveCards = 0;
-    boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
     boolean levelComplete = false;
-
-    //Methods
 
 
     /**
@@ -37,16 +39,28 @@ public abstract class AbstractBoard implements IBoard {
         Collections.shuffle(allCardsList);
     }
 
+
+    /**
+     * Sets the CardState of the selected card to CORRECT
+     */
     @Override
     public void correctCard(Card selectedCard) {
         selectedCard.setState(CardState.CORRECT);
     }
 
+
+    /**
+     * Sets the CardState of the selected card to INCORRECT
+     */
     @Override
     public void incorrectCard(Card selectedCard) {
         selectedCard.setState(CardState.INCORRECT);
     }
 
+    /**
+     * Restores the incorrect cards to face down by
+     * changing the CardState of the cards
+     */
     @Override
     public void flipIncorrectCards() {
         for(Card c: activeCardList){
@@ -57,6 +71,11 @@ public abstract class AbstractBoard implements IBoard {
         }
     }
 
+
+    /**
+     * Returns true if all cards on the board are correct
+     * by checking if their CardState is CORRECT
+     */
     @Override
     public boolean isLevelComplete(){
         levelComplete = true;
@@ -69,58 +88,27 @@ public abstract class AbstractBoard implements IBoard {
         return levelComplete;
     }
 
-    /*
-    /**
-     * Returns the IDs of the activecards
-     * @return
-
-    @Override
-    public List<String> getIds(){
-        List < String > colorShape = new ArrayList<>();
-        for(int i = 0; i < activeCardList.size(); i++){
-            String id = activeCardList.get(i).getColor().name() + activeCardList.get(i).getShape().name();
-            colorShape.add(id);
-        }
-        return colorShape;
-    }
-    */
 
     /**
-     * Create a board
+     * Generates a board of different cards by filling the activeCardList
      * @param currentLevel
      */
     @Override
     public abstract void generateBoard(int currentLevel);
 
+
+    /**
+     * Returns an iterator of the activeCardList, containing the different cards on the board
+     */
     @Override
     public ICardIterator createIterator() {
         return new CardIterator(activeCardList);
     }
 
 
-    /*@Override
-    public void showCards(){
-        hideCards = false;
-    }
-
-    //@Override
-    public void hideCards(){
-        hideCards = true;
-    }
-
-    //@Override
-    public boolean getHideCards(){
-        return hideCards;
-    }*/
-
     @Override
     public List<Card> getActiveCardList() {
         return activeCardList;
-    }
-
-    @Override
-    public int getNumberOfShapes() {
-        return nActiveCards;
     }
 
 }

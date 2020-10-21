@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * An interface for the different board classes
+ */
+
 public interface IBoard extends IterableCards {
 
     void generateBoard(int currentLevel);
@@ -16,8 +20,6 @@ public interface IBoard extends IterableCards {
     boolean isLevelComplete();
      
     List<Card> getActiveCardList();
-
-    int getNumberOfShapes();
 
     void correctCard(Card selectedCard);
 

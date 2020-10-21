@@ -13,8 +13,18 @@ import chalmers.app.model.CardDisplays.StandardCardDisplay;
 
 import java.util.List;
 
+/**
+ * A facade class used by the mainController class.
+ * This class communicates with and brings together
+ * the many classes in the model.
+ */
+
 public class Game {
 
+
+    /**
+     * Enum used to create
+     */
     public enum GameMode{
         STANDARD, SIMONSAYS, FRENZY;
     }
@@ -22,7 +32,6 @@ public class Game {
     private GameObserver observer;
     private IBoard board2;
     private ICardDisplay cardDisplay2;
-
     private boolean boardCleared = false;
     private Player player;
     private int level = 0;
@@ -32,7 +41,6 @@ public class Game {
     public Game(String playerName, GameMode mode) {
         this.player = new Player(playerName,3);
         this.mode = mode;
-
         switch (mode){
             case STANDARD:
                 board2 = new StandardBoard(level);
@@ -53,28 +61,27 @@ public class Game {
         initNewLevel();
     }
 
+
+    /**
+     * Sets up the observer (in this case boardController)
+     * for the first level of the game.
+     */
     public void setUpObserver(){ //kan nog göras i konstruktorn senare.
         observer.update(cardDisplay2.createIterator(), board2.createIterator());
         observer.update("new_level");
     }
 
 
-
     /**
-     * Call with a card from the board!
+     * Called from the
      */
-
-
-
     public void onClick(Card selectedCard){
         boolean newlevel = false;
         board2.flipIncorrectCards();
         cardDisplay2.cardSelected(selectedCard);
         if(cardDisplay2.isCorrectCardSelected()){
-
             player.incScore();
             board2.correctCard(selectedCard);
-
             if(board2.isLevelComplete()){
                 if(isGameComplete()){
                     gameComplete();
@@ -95,6 +102,13 @@ public class Game {
         newlevel = false;
     }
 
+    private void correctCardSelected(){
+
+    }
+
+    private void inCorrectCardSelected(){
+
+    }
 
 
     public void initNewLevel(){

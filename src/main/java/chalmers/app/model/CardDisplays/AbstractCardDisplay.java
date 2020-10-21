@@ -21,9 +21,6 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
     protected boolean correctCardSelected;
 
 
-
-
-
     /**
      * Loads the CardDisplay with cards to display
      * @param cards: List containing the cards to be displayed.
@@ -36,6 +33,10 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
         }
         Collections.shuffle(cardsToDisplay);
     }
+
+    /**
+     * Returns an iterator containing the cards to be displayed
+     */
 
     @Override
     public ICardIterator createIterator() {
@@ -50,27 +51,22 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
     @Override
     public abstract void cardSelected(Card card);
 
+    /**
+     * Prepares the cardDisplay to take in the first card
+     * Also prepares the first card(s) to be displayed
+     */
+
     @Override
     public abstract void setUp(List<Card> cards);
 
 
-
+    /**
+     * Returns true if the last selected card was correct
+     */
     @Override
     public boolean isCorrectCardSelected(){
         return correctCardSelected;
     }
-
-
-
-    //public ?abstract? Iterator getIterator();
-
-
-
-    //kommer antagligen inte behövar när getIterator() metoden finns.
-    public List<Card> getCardsToDisplay() {
-        return cardsToDisplay;
-    }
-
 
 
 }

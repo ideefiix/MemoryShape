@@ -20,7 +20,10 @@ public class SimonSaysBoard extends AbstractBoard {
         generateBoard(level);
     }
 
-
+    /**
+     * A different version of the same method in AbstractBoard
+     * The incorrect CardState of the cards are set to FACEUP insted of FACEDOWN
+     */
     @Override
     public void flipIncorrectCards() {
         for(Card c: activeCardList){
@@ -42,10 +45,6 @@ public class SimonSaysBoard extends AbstractBoard {
              activeCardList.add(c);
          }
         Collections.shuffle(activeCardList);
-
-        /*
-        När level är 1 genereras 4 kort, sedan + 1 kort per level. Korten ska börja som faceup.
-         */
 
     }
 

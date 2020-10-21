@@ -10,11 +10,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * Starts the application
+ * Class used to start the application.
  */
-public class App extends Application
-{
+public class App extends Application {
 
+
+    /**
+     * Starts the application.
+     * Uses a shutdown hook so data can be saved to JSON file on shutdown.
+     */
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -22,10 +26,6 @@ public class App extends Application
         mainController.getStage().show();
         mainController.getStage().setTitle("MemoryShape");
 
-
-        /**
-         * Added a shutdown hook so data can be saved to JSON file on shutdown
-         */
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
                 mainController.getJSONCommunicator().writeHighscores();
@@ -33,7 +33,6 @@ public class App extends Application
             }
         }, "Shutdown-thread"));
     }
-
 
 
     public static void main( String[] args ) {

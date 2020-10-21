@@ -9,13 +9,6 @@ import java.util.List;
 
 public class FrenzyCardDisplay extends AbstractCardDisplay {
 
-    //Osynliga instansvariabler:
-    //cardsToDisplay
-    //nextDisplayCards
-    //expectedCard
-    //correctCardSelected
-
-
 
     @Override
     public void cardSelected(Card selectedCard) {
@@ -26,11 +19,6 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
         } else {
             correctCardSelected = false;
         }
-        /*
-        Ska jämföra selectedCard med expectedCard.
-        Om det är rätt så ska expectedCard bli nästa förväntade kort och correctCardSelected ska sättas till true
-
-         */
     }
 
     private void nextDisplay(){

@@ -1,5 +1,10 @@
 package chalmers.app.model;
 
+/**
+ * A class used to hold data regarding high scores.
+ * Used by the JSONCommunicator class.
+ */
+
 public class Highscore {
     private String name,mode;
     private int score;

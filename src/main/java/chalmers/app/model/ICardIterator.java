@@ -1,5 +1,9 @@
 package chalmers.app.model;
 
+
+/**
+ * An immutable interface for the CardIterator class
+ */
 public interface ICardIterator {
 
     boolean hasNext();

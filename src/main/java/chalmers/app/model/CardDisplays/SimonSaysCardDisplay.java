@@ -9,23 +9,9 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Klass för den display som visar upp sekvensen av Cards i Simon Says game modet
+ * Class for cardDisplay used in the simon says mode
  */
 public class SimonSaysCardDisplay extends AbstractCardDisplay {
-
-    //Osynliga instansvariabler:
-    //cardsToDisplay
-    //nextDisplayCards
-    //expectedCard
-    //correctCardSelected
-
-    /*
-        Ska jämföra selectedCard med expectedCard.
-        Om det är rätt så ska expectedCard bli nästa förväntade kort och correctCardSelected ska sättas till true
-        i simon says behöver inte nextDisplayCards updateras förrän leveln är avklarad.
-
-
-         */
 
 
     @Override
@@ -46,7 +32,6 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
     }
 
 
-
     @Override
     public void setUp (List<Card> cards) {
         loadCardsToDisplay(cards);
@@ -56,14 +41,6 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
         expectedCard = cardsToDisplay.get(0);
         cardsToDisplay.remove(0);
         }
-
-
-
-
-    @Override
-    public List<Card> getCardList() {
-        return null;
-    }
 
 
 }
