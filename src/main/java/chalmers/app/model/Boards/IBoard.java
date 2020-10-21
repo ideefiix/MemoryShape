@@ -1,6 +1,7 @@
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.ICard;
 import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ public interface IBoard extends IterableCards {
 
     boolean isLevelComplete();
      
-    List<Card> getActiveCardList();
+    List<ICard> getActiveCardList();
 
-    void correctCard(Card selectedCard);
+    void correctCard(ICard selectedCard);
 
-    void incorrectCard(Card selectedCard);
+    void incorrectCard(ICard selectedCard);
 
     void fillAllCardsList();
 

@@ -10,11 +10,11 @@ import java.util.List;
  */
 public class CardIterator implements ICardIterator {
 
-    public CardIterator(List<Card> cards){
+    public CardIterator(List<ICard> cards){
         cardList = cards;
     }
 
-    List<Card> cardList;
+    List<ICard> cardList;
     int currentIndex = 0;
 
     @Override
@@ -33,7 +33,7 @@ public class CardIterator implements ICardIterator {
     }
 
     @Override
-    public Card getCard() {
+    public ICard getCard() {
         return cardList.get(currentIndex);
     }
 }

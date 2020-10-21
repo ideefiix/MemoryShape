@@ -1,9 +1,6 @@
 package chalmers.app.controller;
 
-import chalmers.app.model.Card;
-import chalmers.app.model.Game;
-import chalmers.app.model.GameObserver;
-import chalmers.app.model.ICardIterator;
+import chalmers.app.model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -154,11 +151,11 @@ public class BoardController implements Initializable, GameObserver {
 
 
 
-        public void setDisplayImage(Card card){
+        public void setDisplayImage(ICard card){
             selectedCard.setImage(assignImage(card));
         }
 
-        public Image assignImage(Card c){
+        public Image assignImage(ICard c){
             Image i = null;
             for (File file : dir.listFiles()) {
                 //Remove .JPG extension
@@ -205,7 +202,7 @@ public class BoardController implements Initializable, GameObserver {
 
 
 
-        public void onclick (Card card){
+        public void onclick (ICard card){
             mainController.onClick(card);
         }
 
@@ -290,7 +287,7 @@ public class BoardController implements Initializable, GameObserver {
         public void updateCardControllers(ICardIterator boardIterator){
             int i = 0;
             while (boardIterator.hasCard()){
-                Card card = boardIterator.getCard();
+                ICard card = boardIterator.getCard();
                 if(i < cardControllers.size()){
                     cardControllers.get(i).setCard(card);
                     cardControllers.get(i).setImage(assignImage(card));

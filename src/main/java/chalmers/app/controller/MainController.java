@@ -1,9 +1,6 @@
 package chalmers.app.controller;
 
-import chalmers.app.model.Card;
-import chalmers.app.model.Game;
-import chalmers.app.model.Highscore;
-import chalmers.app.model.Player;
+import chalmers.app.model.*;
 import com.sun.glass.ui.Menu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -126,14 +123,12 @@ public class MainController {
         return stage;
     }
 
-    public void onClick(Card card) {
+    public void onClick(ICard card) {
         mp.playOnClickSound();
         game.onClick(card);
     }
 
-    public void cardColorUpdater(Card card){
 
-    }
 
     public int getLevel(){
         return game.getLevel();

@@ -2,6 +2,7 @@ package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
+import chalmers.app.model.ICard;
 import chalmers.app.model.ICardIterator;
 
 import java.util.ArrayList;
@@ -26,9 +27,9 @@ public class SimonSaysBoard extends AbstractBoard {
      */
     @Override
     public void flipIncorrectCards() {
-        for(Card c: activeCardList){
+        for(ICard c: activeCardList){
             if(c.getState().equals(CardState.INCORRECT)){
-                c.setState(CardState.FACEUP);
+                c.setFaceUp();
                 break;
             }
         }
@@ -40,8 +41,8 @@ public class SimonSaysBoard extends AbstractBoard {
          Collections.shuffle(allCardsList);
          activeCardList = new ArrayList<>();
          for( int i = 0; i< nActiveCards;i++){
-             Card c = allCardsList.get(i);
-                c.setState(CardState.FACEUP);
+             ICard c = allCardsList.get(i);
+                c = new Card(c.getColor(),c.getShape(),CardState.FACEUP);
              activeCardList.add(c);
          }
         Collections.shuffle(activeCardList);

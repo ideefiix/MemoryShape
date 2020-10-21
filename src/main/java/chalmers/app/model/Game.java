@@ -76,9 +76,13 @@ public class Game {
 
 
     /**
-     * Called from the
+     * Takes in the selected card and updates the conditions
+     * in the board as well as the cardDisplay depending on
+     * if the card was correct.
+     * Also sends an updated version of the board and cardDisplay
+     * to the observer (BoardController class).
      */
-    public void onClick(Card selectedCard){
+    public void onClick(ICard selectedCard){
         newLevel = false;
         board2.flipIncorrectCards();
         cardDisplay2.cardSelected(selectedCard);
@@ -92,7 +96,11 @@ public class Game {
         newLevel = false;
     }
 
-    private void correctCardSelected(Card selectedCard){
+    /**
+     * Sub method to onClick().
+     * updates the conditions based on that the card was correct
+     */
+    private void correctCardSelected(ICard selectedCard){
         player.incScore();
         board2.correctCard(selectedCard);
         if(board2.isLevelComplete()){
@@ -103,9 +111,12 @@ public class Game {
             newLevel = true;
         }
     }
-
-    private void inCorrectCardSelected(Card selectedCard){
-        board2.incorrectCard(selectedCard);
+    /**
+     * Sub method to onClick().
+     * updates the conditions based on that the card was incorrect
+     */
+    private void inCorrectCardSelected(ICard selectedCard){
+         board2.incorrectCard(selectedCard);
         player.decLife();
         observer.update("decrement_life");
         if(!player.IsAlive()){

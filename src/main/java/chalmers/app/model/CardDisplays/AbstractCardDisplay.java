@@ -1,9 +1,6 @@
 package chalmers.app.model.CardDisplays;
 
-import chalmers.app.model.Card;
-import chalmers.app.model.CardIterator;
-import chalmers.app.model.ICardIterator;
-import chalmers.app.model.IterableCards;
+import chalmers.app.model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,9 +12,9 @@ import java.util.List;
 
 public abstract class AbstractCardDisplay implements ICardDisplay {
 
-    protected List<Card> cardsToDisplay = new ArrayList<>();
-    protected List<Card> nextDisplayCards = new ArrayList<>();;
-    protected Card expectedCard;
+    protected List<ICard> cardsToDisplay = new ArrayList<>();
+    protected List<ICard> nextDisplayCards = new ArrayList<>();;
+    protected ICard expectedCard;
     protected boolean correctCardSelected;
 
 
@@ -27,8 +24,8 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
      */
 
     @Override
-    public void loadCardsToDisplay(List<Card> cards){
-        for(Card card: cards){
+    public void loadCardsToDisplay(List<ICard> cards){
+        for(ICard card: cards){
             cardsToDisplay.add(new Card(card.getColor(),card.getShape()));
         }
         Collections.shuffle(cardsToDisplay);
@@ -49,7 +46,7 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
      * @param card: The card selected by the player
      */
     @Override
-    public abstract void cardSelected(Card card);
+    public abstract void cardSelected(ICard card);
 
     /**
      * Prepares the cardDisplay to take in the first card
@@ -57,7 +54,7 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
      */
 
     @Override
-    public abstract void setUp(List<Card> cards);
+    public abstract void setUp(List<ICard> cards);
 
 
     /**

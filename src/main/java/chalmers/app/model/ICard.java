@@ -6,12 +6,16 @@ import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
 
 /**
- * An immutable interface for Card class used both inside and outside of the model
+ * A less mutable interface for the Card class used both inside and outside of the model
  */
 public interface ICard {
     Color getColor();
     Shape getShape();
     CardState getState();
     String getID();
-    boolean equals(Card card);
+    void setCorrect();
+    void setIncorrect();
+    void setFaceUp();
+    void setFaceDown();
+    boolean equals(ICard card);
 }

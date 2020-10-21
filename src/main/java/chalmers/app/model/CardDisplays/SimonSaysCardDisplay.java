@@ -4,6 +4,7 @@ import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
+import chalmers.app.model.ICard;
 
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,7 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
 
 
     @Override
-    public void cardSelected(Card selectedCard) {
+    public void cardSelected(ICard selectedCard) {
         if (selectedCard.equals(expectedCard)) {
             correctCardSelected = true;
             if(cardsToDisplay.size() > 0) {
@@ -33,7 +34,7 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
 
 
     @Override
-    public void setUp (List<Card> cards) {
+    public void setUp (List<ICard> cards) {
         loadCardsToDisplay(cards);
         nextDisplayCards.clear();
         nextDisplayCards.addAll(cardsToDisplay);

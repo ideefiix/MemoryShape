@@ -1,12 +1,9 @@
 package chalmers.app.model.Boards;
 
-import chalmers.app.model.Card;
+import chalmers.app.model.*;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
-import chalmers.app.model.CardIterator;
-import chalmers.app.model.ICardIterator;
-import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,8 +16,8 @@ import java.util.List;
 public abstract class AbstractBoard implements IBoard {
 
 
-    List<Card> allCardsList = new ArrayList<>();
-    List<Card> activeCardList = new ArrayList<>();;
+    List<ICard> allCardsList = new ArrayList<>();
+    List<ICard> activeCardList = new ArrayList<>();;
     int nActiveCards = 0;
     boolean levelComplete = false;
 
@@ -32,7 +29,7 @@ public abstract class AbstractBoard implements IBoard {
     public void fillAllCardsList(){
         for(Color color: Color.values()){
             for(Shape shape: Shape.values()){
-                Card card = new Card(color,shape,CardState.FACEDOWN);
+                ICard card = new Card(color,shape,CardState.FACEDOWN);
                 allCardsList.add(card);
             }
         }
@@ -44,8 +41,8 @@ public abstract class AbstractBoard implements IBoard {
      * Sets the CardState of the selected card to CORRECT
      */
     @Override
-    public void correctCard(Card selectedCard) {
-        selectedCard.setState(CardState.CORRECT);
+    public void correctCard(ICard selectedCard) {
+        selectedCard.setCorrect();
     }
 
 
@@ -53,8 +50,8 @@ public abstract class AbstractBoard implements IBoard {
      * Sets the CardState of the selected card to INCORRECT
      */
     @Override
-    public void incorrectCard(Card selectedCard) {
-        selectedCard.setState(CardState.INCORRECT);
+    public void incorrectCard(ICard selectedCard) {
+        selectedCard.setIncorrect();
     }
 
     /**
@@ -63,9 +60,9 @@ public abstract class AbstractBoard implements IBoard {
      */
     @Override
     public void flipIncorrectCards() {
-        for(Card c: activeCardList){
+        for(ICard c: activeCardList){
             if(c.getState().equals(CardState.INCORRECT)){
-                c.setState(CardState.FACEDOWN);
+                c.setFaceDown();
                 break;
             }
         }
@@ -79,7 +76,7 @@ public abstract class AbstractBoard implements IBoard {
     @Override
     public boolean isLevelComplete(){
         levelComplete = true;
-        for(Card c: activeCardList) {
+        for(ICard c: activeCardList) {
             if (c.getState() !=  CardState.CORRECT){
                 levelComplete = false;
                 break;
@@ -107,7 +104,7 @@ public abstract class AbstractBoard implements IBoard {
 
 
     @Override
-    public List<Card> getActiveCardList() {
+    public List<ICard> getActiveCardList() {
         return activeCardList;
     }
 

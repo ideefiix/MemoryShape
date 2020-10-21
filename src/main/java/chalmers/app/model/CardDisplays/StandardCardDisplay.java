@@ -2,6 +2,7 @@ package chalmers.app.model.CardDisplays;
 
 
 import chalmers.app.model.Card;
+import chalmers.app.model.ICard;
 
 import java.util.Collections;
 import java.util.List;
@@ -13,7 +14,7 @@ public class StandardCardDisplay extends AbstractCardDisplay {
 
 
     @Override
-    public void cardSelected(Card selectedCard) {
+    public void cardSelected(ICard selectedCard) {
         if(selectedCard.equals(expectedCard)){
             correctCardSelected = true;
             nextDisplay();
@@ -33,14 +34,14 @@ public class StandardCardDisplay extends AbstractCardDisplay {
     }
 
     @Override
-    public void setUp(List<Card> cards) {
+    public void setUp(List<ICard> cards) {
         loadCardsToDisplay(cards);
         nextDisplayCards.add(cardsToDisplay.get(0));
         cardsToDisplay.remove(0);
         expectedCard = nextDisplayCards.get(0);
     }
 
-    public List<Card> getCardList(){
+    public List<ICard> getCardList(){
         return cardsToDisplay;
     }
 

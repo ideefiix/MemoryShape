@@ -24,12 +24,15 @@ public class Card implements ICard{
     }
 
 
+
+
+
     /**
      * Compares if two cards are the same
      * in this case meaning having the same shape and color
      */
-    public boolean equals(Card other) {
-        return (this.color == other.color && this.shape == other.shape);
+    public boolean equals(ICard other) {
+        return (this.color == other.getColor() && this.shape == other.getShape());
     }
 
     public Color getColor() {
@@ -47,6 +50,26 @@ public class Card implements ICard{
      */
     public String getID(){
         return (color.toString() + shape.toString());
+    }
+
+    @Override
+    public void setCorrect() {
+        setState(CardState.CORRECT);
+    }
+
+    @Override
+    public void setIncorrect() {
+        setState(CardState.INCORRECT);
+    }
+
+    @Override
+    public void setFaceUp() {
+        setState(CardState.FACEUP);
+    }
+
+    @Override
+    public void setFaceDown() {
+        setState(CardState.FACEDOWN);
     }
 
     public void setState(CardState state) {
