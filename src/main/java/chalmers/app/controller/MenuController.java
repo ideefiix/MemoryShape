@@ -27,10 +27,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-public class MenuController  {
+public class MenuController implements Initializable {
 
     private MainController mainController;
-    private List<Highscore> hList;
     private String mode;
 
     @FXML
@@ -65,45 +64,20 @@ public class MenuController  {
 
     public MenuController(MainController mainController) {
         this.mainController = mainController;
-       // loadHighscores();
     }
 
-   // @Override
-   /* public void initialize(URL url, ResourceBundle resourceBundle) {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
         fill_leaderboard();
-    }*/
-
-    /**
-     * Load 10 Highscores from JSON file
-     */
-
-   /* void loadHighscores(){
-        try{
-            ObjectMapper mapper = new ObjectMapper();
-            InputStream inputStream = new FileInputStream(new File("src/main/resources/highscores.json"));
-            hList = mapper.readValue(inputStream, new TypeReference<List<Highscore>>() {});
-            for(int i = 0; i < hList.size(); i++){
-                System.out.println(hList.get(i).getName());
-            }
-
-            inputStream.close();
-
-        } catch (FileNotFoundException e){
-
-        } catch (JsonGenerationException e) {
-            e.printStackTrace();
-        } catch (JsonMappingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
+
 
     /**
      * Fills the flowpane with HighScoreController
      */
     private void fill_leaderboard() {
         highscore_flwPane.getChildren().clear();
+        List<Highscore> hList = mainController.getJSONHighscores();
 
         for(int i = 0; i < hList.size(); i++){
             HighscoreController hc = new HighscoreController(this, String.valueOf(i+1), hList.get(i).getName(),hList.get(i).getMode(),hList.get(i).getScore());
@@ -111,24 +85,6 @@ public class MenuController  {
         }
 
     }
-
-    /**
-     * TODO Called when program is shut down
-     * Writes the highScores to JSON file
-     */
-   /* void writeHighscores() {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            InputStream inputStream = new FileInputStream(new File("src/main/resources/highscores.json"));
-            mapper.writeValue(new File("src/main/resources/highscores.json"), hList);
-            inputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }catch(IOException e){
-                e.printStackTrace();
-            }
-
-    }*/
 
     @FXML
      void startButtonPressed( ) throws Exception{ //

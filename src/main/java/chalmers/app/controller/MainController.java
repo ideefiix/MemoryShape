@@ -2,6 +2,7 @@ package chalmers.app.controller;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.Game;
+import chalmers.app.model.Highscore;
 import chalmers.app.model.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Author: Filip
@@ -17,6 +19,7 @@ import java.io.IOException;
 public class MainController {
 
     final Stage stage = new Stage();
+    private JSONCommunicator jCom = new JSONCommunicator();
     Game game;
 
     public MainController(){
@@ -111,4 +114,15 @@ public class MainController {
         return game.getPlayer();
     }
 
+    public List<Highscore> getJSONHighscores(){
+        return jCom.gethList();
+    }
+
+    public JSONCommunicator getJSONCommunicator(){
+        return jCom;
+    }
+
+    public void sendnewScore() {
+        jCom.compareScore(game.getCurrentScore(),game.getModeString(),game.getName());
+    }
 }

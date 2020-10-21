@@ -167,6 +167,18 @@ public class Game {
         boardCleared = b;
     }
 
+    public int getCurrentScore() {
+        return player.getCurrentScore();
+    }
+
+    public String getName() {
+        return player.getName();
+    }
+
+    public String getModeString() {
+        return mode.toString();
+    }
+
 
 
 }

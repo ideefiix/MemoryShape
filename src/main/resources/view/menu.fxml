@@ -69,48 +69,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="menuAnchorPane" styleClass="background">
-               <children>
-                  <Pane fx:id="playButton" layoutX="250.0" layoutY="219.0" onMouseClicked="#startButtonPressed" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
-                     <children>
-                        <Label alignment="CENTER" layoutX="132.0" layoutY="6.0" prefHeight="40.0" prefWidth="137.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Start" textAlignment="CENTER">
-                           <font>
-                              <Font name="Baloo Bhai" size="36.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="exitButton" layoutX="463.0" layoutY="438.0" onMouseClicked="#exitButtonPressed" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
-                     <children>
-                        <Label alignment="CENTER" layoutX="25.0" layoutY="6.0" prefHeight="40.0" prefWidth="137.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Exit" textAlignment="CENTER">
-                           <font>
-                              <Font name="Baloo Bhai" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="optionsButton" layoutX="250.0" layoutY="438.0" onMouseClicked="#optionsButtonPressed" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
-                     <children>
-                        <Label alignment="CENTER" layoutX="25.0" layoutY="6.0" prefHeight="40.0" prefWidth="137.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Mute" textAlignment="CENTER">
-                           <font>
-                              <Font name="Baloo Bhai" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="leaderboardButton" layoutX="250.0" layoutY="327.0" onMouseClicked="#leaderboardButtonPressed" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
-                     <children>
-                        <Label alignment="CENTER" layoutX="73.0" layoutY="-1.0" prefHeight="63.0" prefWidth="254.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Leaderboard" textAlignment="CENTER">
-                           <font>
-                              <Font name="Baloo Bhai" size="30.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Text layoutX="101.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Memory    Shape" wrappingWidth="815.22900390625" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="470.0" layoutY="59.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" styleClass="logo" width="51.0" />
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="leaderboardAnchorPane" prefHeight="200.0" prefWidth="200.0" styleClass="background">
                <children>
                   <Text layoutX="210.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Highscores" wrappingWidth="563.22900390625" />
@@ -161,6 +119,48 @@
                         </Pane>
                      </children>
                   </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="menuAnchorPane" styleClass="background">
+               <children>
+                  <Pane fx:id="playButton" layoutX="250.0" layoutY="219.0" onMouseClicked="#startButtonPressed" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
+                     <children>
+                        <Label alignment="CENTER" layoutX="132.0" layoutY="6.0" prefHeight="40.0" prefWidth="137.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Start" textAlignment="CENTER">
+                           <font>
+                              <Font name="Baloo Bhai" size="36.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="exitButton" layoutX="463.0" layoutY="438.0" onMouseClicked="#exitButtonPressed" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
+                     <children>
+                        <Label alignment="CENTER" layoutX="25.0" layoutY="6.0" prefHeight="40.0" prefWidth="137.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Exit" textAlignment="CENTER">
+                           <font>
+                              <Font name="Baloo Bhai" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="optionsButton" layoutX="250.0" layoutY="438.0" onMouseClicked="#optionsButtonPressed" prefHeight="60.0" prefWidth="187.0" styleClass="menuButton">
+                     <children>
+                        <Label alignment="CENTER" layoutX="25.0" layoutY="6.0" prefHeight="40.0" prefWidth="137.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Mute" textAlignment="CENTER">
+                           <font>
+                              <Font name="Baloo Bhai" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="leaderboardButton" layoutX="250.0" layoutY="327.0" onMouseClicked="#leaderboardButtonPressed" prefHeight="60.0" prefWidth="400.0" styleClass="menuButton">
+                     <children>
+                        <Label alignment="CENTER" layoutX="73.0" layoutY="-1.0" prefHeight="63.0" prefWidth="254.0" style="-fx-text-fill: white;" styleClass="whiteMenuText" text="Leaderboard" textAlignment="CENTER">
+                           <font>
+                              <Font name="Baloo Bhai" size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Text layoutX="101.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="titleText" text="Memory    Shape" wrappingWidth="815.22900390625" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="51.0" layoutX="470.0" layoutY="59.0" rotate="45.0" stroke="BLACK" strokeType="INSIDE" styleClass="logo" width="51.0" />
                </children>
             </AnchorPane>
          </children>

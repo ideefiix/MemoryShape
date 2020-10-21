@@ -54,13 +54,6 @@ public class BoardController implements Initializable, GameObserver {
     @FXML
     ImageView imageLife3;
 
-    /*
-    @FXML
-    Button start_btn;
-
-
-     */
-
 
     public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
         this.mainController = mainController;
@@ -323,6 +316,7 @@ public class BoardController implements Initializable, GameObserver {
         }
 
         private void game_over(){
+            mainController.sendnewScore();
             populateGameOverLabel();
             gameOverAnchorPane.toFront();
         }

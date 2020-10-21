@@ -20,7 +20,7 @@ public class HighscoreController extends AnchorPane {
     @FXML
     Label score;
 
-    public HighscoreController(MenuController parentController, String position, String name, String mode, String score) {
+    public HighscoreController(MenuController parentController, String position, String name, String mode, int score) {
         this.parentController = parentController;
 
         try {
@@ -35,6 +35,6 @@ public class HighscoreController extends AnchorPane {
         this.position.setText(position);
         this.name.setText(name);
         this.mode.setText(mode);
-        this.score.setText(score);
+        this.score.setText(Integer.toString(score));
     }
 }

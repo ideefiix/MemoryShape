@@ -18,17 +18,20 @@ public class App extends Application
     @Override
     public void start(Stage stage) throws Exception {
 
-        /*Parent root = FXMLLoader.load(getClass().getResource("view/menu.fxml"));
-        Scene scene = new Scene(root, 1000, 800);
-
-        stage.setTitle("MemoryShape");
-        stage.setScene(scene);
-        stage.show();*/
-
-        MainController mainController = new MainController();
+        final MainController mainController = new MainController();
         mainController.getStage().show();
         mainController.getStage().setTitle("MemoryShape");
 
+
+        /**
+         * Added a shutdown hook so data can be saved to JSON file on shutdown
+         */
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                mainController.getJSONCommunicator().writeHighscores();
+                System.out.println("Is shuting down");
+            }
+        }, "Shutdown-thread"));
     }
 
 

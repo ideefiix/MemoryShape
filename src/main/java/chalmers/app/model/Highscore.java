@@ -1,9 +1,10 @@
 package chalmers.app.model;
 
 public class Highscore {
-    private String name,mode,score;
+    private String name,mode;
+    private int score;
 
-    public Highscore(String name, String mode, String score) {
+    public Highscore(String name, String mode, int score) {
         this.name = name;
         this.mode = mode;
         this.score = score;
@@ -19,7 +20,7 @@ public class Highscore {
         return mode;
     }
 
-    public String getScore() {
+    public int getScore() {
         return score;
     }
 
@@ -31,7 +32,7 @@ public class Highscore {
         this.mode = mode;
     }
 
-    public void setScore(String score) {
+    public void setScore(int score) {
         this.score = score;
     }
 }
