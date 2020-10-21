@@ -21,11 +21,13 @@ public class MainController {
 
     final Stage stage = new Stage();
     private JSONCommunicator jCom = new JSONCommunicator();
+    private MusicPlayer mp = new MusicPlayer();
     String enterName = null;
     Game game;
 
     public MainController(){
         setMenuScene();
+        //mp.playBackgroundMusic();
     }
 
 
@@ -108,6 +110,7 @@ public class MainController {
     }
 
     public void onClick(Card card) {
+        mp.playOnClickSound();
         game.onClick(card);
     }
 
