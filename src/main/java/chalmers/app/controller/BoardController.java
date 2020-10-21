@@ -85,7 +85,7 @@ public class BoardController implements Initializable, GameObserver {
         if(displayIterator != null && (displayIterator.hasCard())){
             newLevel = true;
             showCards();
-            selectedCard.setImage(assignImage(displayIterator.getCard()));
+            setDisplayImage(displayIterator.getCard());
             if(!displayIterator.hasNext()){
                 newLevel = false;
                 selectedCard.setImage(null);
@@ -253,7 +253,9 @@ public class BoardController implements Initializable, GameObserver {
 
         @FXML
         private void newGameButtonPressed () {
+            mainController.newGame();
             mainController.setBoardScene();
+
         }
 
         /*

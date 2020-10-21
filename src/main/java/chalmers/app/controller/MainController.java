@@ -23,6 +23,8 @@ public class MainController {
     private JSONCommunicator jCom = new JSONCommunicator();
     private MusicPlayer mp = new MusicPlayer();
     String enterName = null;
+    String mode;
+    String playerName;
     Game game;
 
     public MainController(){
@@ -92,6 +94,8 @@ public class MainController {
         }
     }
     public void createGame(String mode, String playerName) {
+        this.playerName = playerName;
+        this.mode = mode;
         switch (mode){
             case "standard": game = new Game(playerName, Game.GameMode.STANDARD);
             break;
@@ -103,6 +107,19 @@ public class MainController {
 
     }
 
+    public void newGame() {
+        switch (mode) {
+            case "standard":
+                game = new Game(playerName, Game.GameMode.STANDARD);
+                break;
+            case "frenzy":
+                game = new Game(playerName, Game.GameMode.FRENZY);
+                break;
+            case "sequence":
+                game = new Game(playerName, Game.GameMode.SIMONSAYS);
+                break;
+        }
+    }
 
 
     public Stage getStage() {
@@ -140,5 +157,9 @@ public class MainController {
 
     public void saveEnteredName(String enteredName){
         enterName = enteredName;
+    }
+
+    public void setMode(String mode){
+        this.mode = mode;
     }
 }
