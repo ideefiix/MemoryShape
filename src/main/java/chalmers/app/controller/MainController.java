@@ -152,7 +152,7 @@ public class MainController {
     }
 
     public void sendnewScore() {
-        jCom.compareScore(game.getCurrentScore(),game.getModeString(),game.getName());
+        jCom.compareScore(game.getCurrentScore(),mode,game.getName()); //Brukade vara game.getModeString() ist för mode. kanske orsakar nått
     }
 
     public void saveEnteredName(String enteredName){

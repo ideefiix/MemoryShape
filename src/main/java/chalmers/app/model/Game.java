@@ -23,7 +23,7 @@ public class Game {
 
 
     /**
-     * Enum used to create
+     * Enum when creating a game
      */
     public enum GameMode{
         STANDARD, SIMONSAYS, FRENZY;
@@ -32,12 +32,15 @@ public class Game {
     private GameObserver observer;
     private IBoard board2;
     private ICardDisplay cardDisplay2;
-    private boolean boardCleared = false;
     private Player player;
     private int level = 0;
     private GameMode mode;
+    private boolean newLevel;
 
-
+    /**
+     * Constructor that takes in the enum GameMode to
+     * create a game of one of the three existing modes.
+     */
     public Game(String playerName, GameMode mode) {
         this.player = new Player(playerName,3);
         this.mode = mode;
@@ -76,38 +79,38 @@ public class Game {
      * Called from the
      */
     public void onClick(Card selectedCard){
-        boolean newlevel = false;
+        newLevel = false;
         board2.flipIncorrectCards();
         cardDisplay2.cardSelected(selectedCard);
         if(cardDisplay2.isCorrectCardSelected()){
-            player.incScore();
-            board2.correctCard(selectedCard);
-            if(board2.isLevelComplete()){
-                if(isGameComplete()){
-                    gameComplete();
-                }
-                initNewLevel();
-                newlevel = true;
-            }
+            correctCardSelected(selectedCard);
         } else {
-            board2.incorrectCard(selectedCard);
-            player.decLife();
-            observer.update("decrement_life");
-            if(!player.IsAlive()){
-                gameOver();
-            }
+            inCorrectCardSelected(selectedCard);
         }
         observer.update(cardDisplay2.createIterator(), board2.createIterator());
-        if(newlevel){observer.update("new_level");}
-        newlevel = false;
+        if(newLevel){observer.update("new_level");}
+        newLevel = false;
     }
 
-    private void correctCardSelected(){
-
+    private void correctCardSelected(Card selectedCard){
+        player.incScore();
+        board2.correctCard(selectedCard);
+        if(board2.isLevelComplete()){
+            if(isGameComplete()){
+                gameComplete();
+            }
+            initNewLevel();
+            newLevel = true;
+        }
     }
 
-    private void inCorrectCardSelected(){
-
+    private void inCorrectCardSelected(Card selectedCard){
+        board2.incorrectCard(selectedCard);
+        player.decLife();
+        observer.update("decrement_life");
+        if(!player.IsAlive()){
+            gameOver();
+        }
     }
 
 
@@ -142,43 +145,12 @@ public class Game {
 
 
 
-
-
-
-    public void incLevel(){
-        level++;
-    }
-
-    private void hideCards(){}
-
-    private void hideCardSelector(){}//kanske toggles istället
-
-
-
-    public IBoard getBoard(){
-        return board2;
-    }
-
     public Player getPlayer() {
         return player;
     }
 
     public int getLevel() {
         return level;
-    }
-
-
-    public ICardDisplay getCardDisplay(){return cardDisplay2;}
-
-
-
-    public boolean getBoardCleared() {
-        return boardCleared;
-    }
-
-
-    public void setBoardCleared(boolean b) {
-        boardCleared = b;
     }
 
     public int getCurrentScore() {
@@ -189,6 +161,8 @@ public class Game {
         return player.getName();
     }
 
+
+    //brukade andvändes tror inte de behövs
     public String getModeString() {
         return mode.toString();
     }
