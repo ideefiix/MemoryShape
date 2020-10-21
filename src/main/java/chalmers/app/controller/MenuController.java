@@ -87,7 +87,7 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-     void startButtonPressed( ) throws Exception{ //
+     void startButtonPressed( ) throws Exception{
         modeAnchorPane.toFront();
     }
 
@@ -107,6 +107,7 @@ public class MenuController implements Initializable {
         }else{
             mainController.createGame(mode, name_textField.getText());
             mainController.setBoardScene();
+            mainController.saveEnteredName(name_textField.getText());
             error_text.setText("");
         }
     }
@@ -173,6 +174,9 @@ public class MenuController implements Initializable {
         }
     }
 
+    public void setPlayerName(String name){
+        name_textField.setText(name);
+    }
 
 
 

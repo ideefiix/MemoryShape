@@ -4,6 +4,7 @@ import chalmers.app.model.Card;
 import chalmers.app.model.Game;
 import chalmers.app.model.Highscore;
 import chalmers.app.model.Player;
+import com.sun.glass.ui.Menu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +21,7 @@ public class MainController {
 
     final Stage stage = new Stage();
     private JSONCommunicator jCom = new JSONCommunicator();
+    String enterName = null;
     Game game;
 
     public MainController(){
@@ -32,11 +34,18 @@ public class MainController {
         try {
             FXMLLoader loader;
             loader = new FXMLLoader(getClass().getResource("/view/menu.fxml"));
-            loader.setController(new MenuController(this));
+            MenuController mc = new MenuController(this);
+
+            loader.setController(mc);
 
             Parent parent;
             parent = loader.load();
             stage.setScene(new Scene(parent));
+
+            //Autofill textbox with player name
+            if(enterName != null){
+                mc.setPlayerName(enterName);
+            }
 
         } catch (IOException e) {
             System.err.println("Error in initComponent method: " + e.getMessage());
@@ -124,5 +133,9 @@ public class MainController {
 
     public void sendnewScore() {
         jCom.compareScore(game.getCurrentScore(),game.getModeString(),game.getName());
+    }
+
+    public void saveEnteredName(String enteredName){
+        enterName = enteredName;
     }
 }
