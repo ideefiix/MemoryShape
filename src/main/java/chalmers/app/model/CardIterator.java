@@ -13,11 +13,16 @@ public class CardIterator implements ICardIterator {
 
     @Override
     public boolean hasNext() {
+        return currentIndex < cardList.size() - 1;
+    }
+
+    @Override
+    public boolean hasCard() {
         return currentIndex < cardList.size();
     }
 
     @Override
-    public void getNext() {
+    public void step() {
         currentIndex++;
     }
 

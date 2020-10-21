@@ -3,7 +3,8 @@ package chalmers.app.model;
 public interface ICardIterator {
 
     boolean hasNext();
-    void getNext();
+    boolean hasCard();
+    void step();
     Card getCard();
 
 }

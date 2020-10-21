@@ -82,15 +82,16 @@ public class BoardController implements Initializable, GameObserver {
             selectedCard.setVisible(true);
             newLevel = false;
         }
-        if(displayIterator.hasNext()){
+        if(displayIterator != null && (displayIterator.hasCard())){
             newLevel = true;
             showCards();
             selectedCard.setImage(assignImage(displayIterator.getCard()));
-            displayIterator.getNext();
             if(!displayIterator.hasNext()){
                 newLevel = false;
                 selectedCard.setImage(null);
+                turnOnCardPliancy();
             }
+            displayIterator.step();
         }
     }
 
@@ -168,7 +169,6 @@ public class BoardController implements Initializable, GameObserver {
 
                     break;
                 }
-
             }
             return i;
         }
@@ -194,6 +194,12 @@ public class BoardController implements Initializable, GameObserver {
                 }
             }
         }
+
+        public void turnOnCardPliancy(){
+        for(CardController cc: cardControllers){
+            cc.setBackPliancy();
+        }
+    }
 
 
 
@@ -281,7 +287,7 @@ public class BoardController implements Initializable, GameObserver {
 
         public void updateCardControllers(ICardIterator boardIterator){
             int i = 0;
-            while (boardIterator.hasNext()){
+            while (boardIterator.hasCard()){
                 Card card = boardIterator.getCard();
                 if(i < cardControllers.size()){
                     cardControllers.get(i).setCard(card);
@@ -292,7 +298,7 @@ public class BoardController implements Initializable, GameObserver {
                     cardControllers.add(newCC);
                 }
                 cardControllers.get(i).updateCardState();
-                boardIterator.getNext();
+                boardIterator.step();
                 i++;
             }
             updateBoard();
