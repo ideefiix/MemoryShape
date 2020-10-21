@@ -28,7 +28,6 @@ public class Player {
 
     public boolean IsAlive(){
         if(lives<1){
-            currentScore = 0;
             return false;
         }
         return true;

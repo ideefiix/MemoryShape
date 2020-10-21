@@ -29,8 +29,8 @@ public class Game {
     private GameMode mode;
 
 
-    public Game(Player player, GameMode mode) {
-        this.player = player;
+    public Game(String playerName, GameMode mode) {
+        this.player = new Player(playerName,3);
         this.mode = mode;
 
         switch (mode){
@@ -71,7 +71,10 @@ public class Game {
         board2.flipIncorrectCards();
         cardDisplay2.cardSelected(selectedCard);
         if(cardDisplay2.isCorrectCardSelected()){
+
+            player.incScore();
             board2.correctCard(selectedCard);
+
             if(board2.isLevelComplete()){
                 if(isGameComplete()){
                     gameComplete();

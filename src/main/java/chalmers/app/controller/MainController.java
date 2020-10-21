@@ -77,13 +77,13 @@ public class MainController {
             Thread.currentThread().interrupt();
         }
     }
-    public void createGame(String mode) {
+    public void createGame(String mode, String playerName) {
         switch (mode){
-            case "standard": game = new Game(new Player("Nappe",3), Game.GameMode.STANDARD); //borde inte ha koppling till player
+            case "standard": game = new Game(playerName, Game.GameMode.STANDARD);
             break;
-            case "frenzy": game = new Game(new Player("Nappe",3), Game.GameMode.FRENZY);
+            case "frenzy": game = new Game(playerName, Game.GameMode.FRENZY);
             break;
-            case "sequence": game = new Game(new Player("Nappe",3), Game.GameMode.SIMONSAYS);
+            case "sequence": game = new Game(playerName, Game.GameMode.SIMONSAYS);
             break;
         }
 

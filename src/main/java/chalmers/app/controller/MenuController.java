@@ -149,7 +149,7 @@ public class MenuController  {
             //Do nothing
             error_text.setText("Enter a name!");
         }else{
-            mainController.createGame(mode);
+            mainController.createGame(mode, name_textField.getText());
             mainController.setBoardScene();
             error_text.setText("");
         }
