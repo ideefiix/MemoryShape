@@ -29,10 +29,10 @@ public class App extends Application {
         }, "Shutdown-thread"));
     }
 
-    public void startApp(){
-        launch();
-    }
 
+    public static void main( String[] args ) {
+        launch(args);
+    }
 
 
 }

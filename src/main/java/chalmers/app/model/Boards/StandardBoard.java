@@ -1,17 +1,14 @@
 /**
  * Authors: Kevin
- * Responsibility: An interface used to achieve a weaker dependency on the board classes
+ * Responsibility: Represents the board of cards used in the Standard mode of the game
  * Used by: Game
  * Uses: ICard
  */
-
 package chalmers.app.model.Boards;
-
 
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.ICard;
-
 import java.util.ArrayList;
 import java.util.Collections;
 

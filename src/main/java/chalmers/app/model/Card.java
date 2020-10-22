@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Represents the cards used in the game
+ * Used by: Game
+ * Uses: CardState, Color, Shape
+ */
+
 package chalmers.app.model;
 
 import chalmers.app.model.CardEnums.CardState;

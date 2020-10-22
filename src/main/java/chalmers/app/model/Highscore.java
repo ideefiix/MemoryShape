@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Holds data concerning high scores
+ * Used by: JSONCommunicator
+ * Uses:
+ */
+
 package chalmers.app.model;
 
 /**

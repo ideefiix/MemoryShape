@@ -10,14 +10,10 @@ import chalmers.app.model.*;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * An abstract class to hold common code between the different board classes
- */
 
 public abstract class AbstractBoard implements IBoard {
 

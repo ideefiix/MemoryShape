@@ -1,35 +1,20 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Represents and holds the code for the card display of cards used in the Frenzy mode of the game
+ * Used by: Game
+ * Uses: ICard
+ */
+
 package chalmers.app.model.CardDisplays;
 
-import chalmers.app.model.Card;
 import chalmers.app.model.ICard;
-import javafx.print.Collation;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class FrenzyCardDisplay extends AbstractCardDisplay {
 
 
-    @Override
-    public void cardSelected(ICard selectedCard) {
 
-        if(selectedCard.equals(expectedCard)){
-            correctCardSelected = true;
-            nextDisplay();
-        } else {
-            correctCardSelected = false;
-        }
-    }
-
-    private void nextDisplay(){
-        nextDisplayCards.clear();
-        if(cardsToDisplay.size() != 0) {
-            nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
-            cardsToDisplay.remove(0);
-            expectedCard = nextDisplayCards.get(0);
-        }
-    }
 
     @Override
     public void setUp(List<ICard> cards) {
@@ -40,6 +25,11 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
         expectedCard = nextDisplayCards.get(0);
     }
 
+
+    /**
+     * Sorts the ICards in the cardToDisplay list so that identical
+     * cards are placed next to each other.
+     */
     public void sortCardsToDisplay(){
         List<ICard> tempList = new ArrayList<>();
         while (cardsToDisplay.size() > 0){
@@ -50,17 +40,15 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
                 if(cardsToDisplay.get(i).equals(tempList.get(tempList.size() - 1))){
                     tempList.add(cardsToDisplay.get(i));
                     cardsToDisplay.remove(cardsToDisplay.get(i));
-                    i--;
+
+                } else {
+                    i++;
                 }
-                i++;
             }
         }
         cardsToDisplay = tempList;
     }
 
-    public List<ICard> getCardList(){
-        return cardsToDisplay;
-    }
 
 
 

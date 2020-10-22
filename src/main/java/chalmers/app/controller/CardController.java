@@ -1,6 +1,11 @@
+/**
+ * Authors:
+ * Responsibility: javaFX controller for card.fxml
+ * Used by: BoardController
+ * Uses: ICard, BoardController
+ */
 package chalmers.app.controller;
 
-import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.ICard;
 import javafx.fxml.FXML;
@@ -8,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.File;
 import java.io.IOException;
 

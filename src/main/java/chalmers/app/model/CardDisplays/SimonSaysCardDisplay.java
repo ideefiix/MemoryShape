@@ -1,12 +1,13 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Represents and holds the code for the card display of cards used in the Sequence mode of the game
+ * Used by: Game
+ * Uses: ICard
+ */
+
 package chalmers.app.model.CardDisplays;
 
-import chalmers.app.model.Card;
-import chalmers.app.model.CardEnums.CardState;
-import chalmers.app.model.CardEnums.Color;
-import chalmers.app.model.CardEnums.Shape;
 import chalmers.app.model.ICard;
-
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,6 +32,8 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
         nextDisplayCards.clear();
         nextDisplayCards.add(selectedCard);
     }
+
+
 
 
     @Override

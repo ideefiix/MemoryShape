@@ -1,3 +1,9 @@
+/**
+ * Authors: Filip
+ * Responsibility:
+ * Used by: MainController
+ * Uses: HighScores
+ */
 package chalmers.app.controller;
 
 import chalmers.app.model.Highscore;
@@ -5,7 +11,6 @@ import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

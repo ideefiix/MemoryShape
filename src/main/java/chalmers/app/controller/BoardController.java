@@ -1,21 +1,21 @@
+/**
+ * Authors: Kevin
+ * Responsibility: javaFX controller for board.fxml
+ * Used by: MainController
+ * Uses: ICard, ICardIterator, MainController, BoardController
+ */
 package chalmers.app.controller;
 
 import chalmers.app.model.*;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-
-
 import java.io.File;
-import java.net.URL;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
+
 
 public class BoardController implements GameObserver {
 

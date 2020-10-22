@@ -1,11 +1,15 @@
+/**
+ * Authors: Filip
+ * Responsibility: javaFX controller for highscore.fxml
+ * Used by: MenuController
+ * Uses: MenuController
+ */
 package chalmers.app.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 
 public class HighscoreController extends AnchorPane {

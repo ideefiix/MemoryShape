@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: An iterator class for lists of cards
+ * Used by: Game, BoardController
+ * Uses: ICard
+ */
+
 package chalmers.app.model;
 
 import java.util.List;

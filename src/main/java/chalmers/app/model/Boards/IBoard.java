@@ -4,14 +4,13 @@
  * Used by: Game
  * Uses: ICard
  */
-
 package chalmers.app.model.Boards;
+
 import chalmers.app.model.ICard;
 import chalmers.app.model.ICardIterator;
-import chalmers.app.model.IterableCards;
 import java.util.List;
 
-public interface IBoard extends IterableCards {
+public interface IBoard {
 
     void generateBoard(int currentLevel);
 
@@ -26,11 +25,5 @@ public interface IBoard extends IterableCards {
     void incorrectCard(ICard selectedCard);
 
     ICardIterator createIterator();
-
-
-
-
-
-
 
 }

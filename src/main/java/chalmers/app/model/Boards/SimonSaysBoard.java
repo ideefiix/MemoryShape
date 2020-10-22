@@ -1,11 +1,11 @@
 /**
  * Authors: Kevin
- * Responsibility: An interface used to achieve a weaker dependency on the board classes
+ * Responsibility: Represents and holds the code for the board of cards used in the Sequence mode of the game
  * Used by: Game
  * Uses: ICard
  */
-
 package chalmers.app.model.Boards;
+
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.ICard;
@@ -15,7 +15,6 @@ import java.util.Collections;
 public class SimonSaysBoard extends AbstractBoard {
 
     /**
-     *
      * Constructor
      * Fills a list with all different shapes
      * Shuffles the list and creates a board with the first X shapes

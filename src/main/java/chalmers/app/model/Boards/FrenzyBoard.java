@@ -4,11 +4,9 @@
  * Used by: Game
  * Uses: Card
  */
-
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -17,11 +15,7 @@ import java.util.Collections;
  */
 public class FrenzyBoard extends AbstractBoard {
 
-    /**
-     * Constructor
-     * Fills a list with all different shapes
-     * Shuffles the list and creates a board with the first X shapes
-     */
+
     public FrenzyBoard(int level) {
         fillAllCardsList();
         generateBoard(level);
@@ -30,7 +24,7 @@ public class FrenzyBoard extends AbstractBoard {
 
     /**
      * Method for generating a board for the frenzy gamemode. Creates a list of cards, with several of the same kind.
-     * @param currentLevel
+     * @param currentLevel: the current level of the game
      */
     @Override
     public void generateBoard(int currentLevel) {

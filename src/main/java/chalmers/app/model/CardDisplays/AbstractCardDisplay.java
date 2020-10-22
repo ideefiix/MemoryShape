@@ -1,7 +1,13 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Holds common code between the different cardDisplay classes
+ * Used by: Game
+ * Uses: ICard, ICardIterator
+ */
+
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,11 +48,27 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
 
 
     /**
-     * Takes in the card selected by the player and updates the conditions within the CardDisplay
-     * @param card: The card selected by the player
+     * Takes in the card selected by the player, updates the conditions within
+     * the card display to display the next cards.
+     * @param selectedCard: The card selected by the player
      */
     @Override
-    public abstract void cardSelected(ICard card);
+    public void cardSelected(ICard selectedCard){
+        if(selectedCard.equals(expectedCard)){
+            correctCardSelected = true;
+            nextDisplayCards.clear();
+            if(cardsToDisplay.size() != 0) {
+                nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
+                cardsToDisplay.remove(0);
+                expectedCard = nextDisplayCards.get(0);
+            }
+        } else {
+            correctCardSelected = false;
+        }
+    }
+
+
+
 
     /**
      * Prepares the cardDisplay to take in the first card

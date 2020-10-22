@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Holds data about the player of the game
+ * Used by: Game
+ * Uses:
+ */
+
 package chalmers.app.model;
 
 /**

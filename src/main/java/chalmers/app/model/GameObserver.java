@@ -1,3 +1,11 @@
+/**
+ * Authors: Kevin
+ * Responsibility: A modified observer interface used by the
+ * Game class to achieve a weaker dependency of BoardController
+ * Used by: Game, BoardController
+ * Uses: ICardIterator
+ */
+
 package chalmers.app.model;
 
 /**
@@ -8,7 +16,7 @@ package chalmers.app.model;
 public interface GameObserver {
 
     void update(ICardIterator diplayIterator, ICardIterator boardIterator);
-    void update(String message);
 
+    void update(String message);
 
 }

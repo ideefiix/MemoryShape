@@ -1,37 +1,16 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Represents and holds the code for the card display of cards used in the Standard mode of the game
+ * Used by: Game
+ * Uses: ICard
+ */
 package chalmers.app.model.CardDisplays;
 
-
-import chalmers.app.model.Card;
 import chalmers.app.model.ICard;
-
-import java.util.Collections;
 import java.util.List;
 
-/**
- * Klass för den display som visar upp Cards
- */
+
 public class StandardCardDisplay extends AbstractCardDisplay {
-
-
-    @Override
-    public void cardSelected(ICard selectedCard) {
-        if(selectedCard.equals(expectedCard)){
-            correctCardSelected = true;
-            nextDisplay();
-        } else {
-            correctCardSelected = false;
-        }
-    }
-
-
-    private void nextDisplay(){
-        nextDisplayCards.clear();
-        if(cardsToDisplay.size() != 0) {
-            nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
-            cardsToDisplay.remove(0);
-            expectedCard = nextDisplayCards.get(0);
-        }
-    }
 
     @Override
     public void setUp(List<ICard> cards) {
@@ -40,11 +19,5 @@ public class StandardCardDisplay extends AbstractCardDisplay {
         cardsToDisplay.remove(0);
         expectedCard = nextDisplayCards.get(0);
     }
-
-    public List<ICard> getCardList(){
-        return cardsToDisplay;
-    }
-
-
 
 }

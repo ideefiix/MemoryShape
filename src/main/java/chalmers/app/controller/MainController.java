@@ -1,19 +1,20 @@
+/**
+ * Author: Filip
+ * Responsibility: Load components for scenes and controls the Stage
+ * Used by: BoardController, MenuController, App
+ * Uses: Game, BoardController, JSONCommunicator
+ */
 package chalmers.app.controller;
 
 import chalmers.app.model.*;
-import com.sun.glass.ui.Menu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Author: Filip
- * Responsibility: Load components for scenes and control the Stage
- */
+
 public class MainController {
 
     final Stage stage = new Stage();
@@ -55,10 +56,6 @@ public class MainController {
     }
 
     public void setBoardScene(){
-        //createGame(mode);
-        //BoardController BC = new BoardController(this,game, game.getCardDisplay2().getCardList());
-        //game.setGameObserver(BC);
-
         try {
             FXMLLoader loader;
             loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
@@ -90,6 +87,8 @@ public class MainController {
             Thread.currentThread().interrupt();
         }
     }
+
+
     public void createGame(String mode, String playerName) {
         this.playerName = playerName;
         this.mode = mode;
@@ -103,6 +102,7 @@ public class MainController {
         }
 
     }
+
 
     public void newGame() {
         switch (mode) {
@@ -123,11 +123,11 @@ public class MainController {
         return stage;
     }
 
+
     public void onClick(ICard card) {
         mp.playOnClickSound();
         game.onClick(card);
     }
-
 
 
     public int getLevel(){

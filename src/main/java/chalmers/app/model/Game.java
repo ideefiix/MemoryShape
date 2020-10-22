@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: A facade class that communicates with- and brings together the classes in the model
+ * Used by: MainController
+ * Uses: ICard, IBoard, ICardDisplay, IGameObserver
+ */
+
 package chalmers.app.model;
 
 
@@ -8,7 +15,7 @@ import chalmers.app.model.Boards.SimonSaysBoard;
 import chalmers.app.model.Boards.StandardBoard;
 import chalmers.app.model.CardDisplays.*;
 
-import java.util.List;
+
 
 /**
  * A facade class used by the mainController class.

@@ -1,28 +1,20 @@
+/**
+ * Author: Filip
+ * Responsibility: Load components for scenes and controls the Stage
+ * Used by: BoardController, MenuController, App
+ * Uses: Game, BoardController, JSONCommunicator
+ */
 package chalmers.app.controller;
 
 import chalmers.app.model.Highscore;
-//import com.fasterxml.jackson.core.JsonGenerationException;
-//import com.fasterxml.jackson.core.JsonParseException;
-//import com.fasterxml.jackson.core.type.TypeReference;
-//import com.fasterxml.jackson.databind.JsonMappingException;
-//import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-
-import javax.swing.text.html.ImageView;
-import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
