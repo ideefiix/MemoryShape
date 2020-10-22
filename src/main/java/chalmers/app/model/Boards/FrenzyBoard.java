@@ -5,7 +5,7 @@ import chalmers.app.model.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FrenzyBoard extends AbstractBoard {
+public class  FrenzyBoard extends AbstractBoard {
 
     /**
      *

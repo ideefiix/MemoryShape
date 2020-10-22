@@ -6,7 +6,6 @@ import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
 import chalmers.app.model.CardIterator;
 import chalmers.app.model.ICardIterator;
-import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,6 +21,10 @@ public abstract class AbstractBoard implements IBoard {
 
     //Methods
 
+
+    public List<Card> getAllCardsList() {
+        return allCardsList;
+    }
 
     /**
      * Initalizes the list with ALL cards
@@ -68,6 +71,7 @@ public abstract class AbstractBoard implements IBoard {
         }
         return levelComplete;
     }
+
 
     /*
     /**
@@ -117,6 +121,7 @@ public abstract class AbstractBoard implements IBoard {
     public List<Card> getActiveCardList() {
         return activeCardList;
     }
+
 
     @Override
     public int getNumberOfShapes() {

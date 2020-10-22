@@ -51,7 +51,7 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
         expectedCard = nextDisplayCards.get(0);
     }
 
-    private void sortCardsToDisplay(){
+    public void sortCardsToDisplay(){
         List<Card> tempList = new ArrayList<>();
         while (cardsToDisplay.size() > 0){
             tempList.add(cardsToDisplay.get(0));

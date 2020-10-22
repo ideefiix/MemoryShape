@@ -3,7 +3,6 @@ package chalmers.app.model.CardDisplays;
 import chalmers.app.model.Card;
 import chalmers.app.model.CardIterator;
 import chalmers.app.model.ICardIterator;
-import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -53,18 +52,29 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
     @Override
     public abstract void setUp(List<Card> cards);
 
-
+    public void setCardsToDisplay(List<Card> cardsToDisplay) {
+        this.cardsToDisplay = cardsToDisplay;
+    }
 
     @Override
     public boolean isCorrectCardSelected(){
         return correctCardSelected;
     }
 
+    public void setExpectedCard(Card expectedCard) {
+        this.expectedCard = expectedCard;
+    }
+
+//public ?abstract? Iterator getIterator();
 
 
-    //public ?abstract? Iterator getIterator();
+    public List<Card> getNextDisplayCards() {
+        return nextDisplayCards;
+    }
 
-
+    public Card getExpectedCard() {
+        return expectedCard;
+    }
 
     //kommer antagligen inte behövar när getIterator() metoden finns.
     public List<Card> getCardsToDisplay() {

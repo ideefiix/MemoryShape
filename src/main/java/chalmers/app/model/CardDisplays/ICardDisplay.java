@@ -12,6 +12,7 @@ public interface ICardDisplay extends IterableCards {
     boolean isCorrectCardSelected();
     void setUp(List<Card> cardsToDisplay);
     List<Card> getCardList(); //temporär
+    void setExpectedCard(Card expectedCard);
 
     //get iterator
 
