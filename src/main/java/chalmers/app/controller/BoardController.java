@@ -17,17 +17,15 @@ import java.net.URL;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class BoardController implements Initializable, GameObserver {
+public class BoardController implements GameObserver {
 
     private MainController mainController;
     private List<CardController> cardControllers = new ArrayList<CardController>();
     File dir = new File("src/main/resources/view/images/shapes");
-    private List<Card> displayCards;
-
     public boolean newLevel = false;
     private ICardIterator displayIterator;
-    private boolean inSequence;
     private int lives = 3;
+
 
     @FXML
     AnchorPane pausedAnchorPane;
@@ -35,7 +33,6 @@ public class BoardController implements Initializable, GameObserver {
     AnchorPane boardAnchorPane;
     @FXML
     AnchorPane soundOptionsAnchorPane;
-
     @FXML
     FlowPane flowPane;
     @FXML
@@ -52,22 +49,8 @@ public class BoardController implements Initializable, GameObserver {
     ImageView imageLife3;
 
 
-    public BoardController(MainController mainController, Game game, List< Card > DisplayCards) {
-        this.mainController = mainController;
-       // this.game = game;
-        displayCards = DisplayCards;
-    }
-
     public BoardController(MainController mainController){
         this.mainController = mainController;
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        //createCards();
-        updateBoard();
-        hideCards();
-        //setNextDisplayImage();
     }
 
 
@@ -93,31 +76,6 @@ public class BoardController implements Initializable, GameObserver {
     }
 
 
-
-
-
-
-
-
-
-
-
-    /**
-     * Create the cards FXMLs
-     */
-    /*
-    public void createCards (){
-        List<Card> cardList = game.getBoard().getActiveCardList();
-
-        for(int i = 0; i < cardList.size(); i ++){
-            cardControllers.add( new CardController(this, cardList.get(i)));
-            assignImage(cardList.get(i).getID(), cardControllers.get(i));
-        }
-    }
-
-
-     */
-
     /**
      * Is called by createCards()
      * Sets the cards Images on the board.
@@ -136,6 +94,7 @@ public class BoardController implements Initializable, GameObserver {
         }
     }
 
+
     /**
      * Fills the board with cards
      */
@@ -147,190 +106,165 @@ public class BoardController implements Initializable, GameObserver {
     }
 
 
+    public void setDisplayImage(ICard card){
+        selectedCard.setImage(assignImage(card));
+    }
 
-
-
-
-        public void setDisplayImage(ICard card){
-            selectedCard.setImage(assignImage(card));
-        }
-
-        public Image assignImage(ICard c){
-            Image i = null;
-            for (File file : dir.listFiles()) {
-                //Remove .JPG extension
-                String str = file.getName();
-                int pos = str.lastIndexOf(".");
-                if (str.substring(0, pos).equals(c.getID())) {
-                    i = new Image(file.toURI().toString());
-
+    public Image assignImage(ICard c){
+        Image i = null;
+        for (File file : dir.listFiles()) {
+            //Remove .JPG extension
+            String str = file.getName();
+            int pos = str.lastIndexOf(".");
+            if (str.substring(0, pos).equals(c.getID())) {
+                i = new Image(file.toURI().toString());
                     break;
-                }
-            }
-            return i;
-        }
-
-
-        /**
-         * Makes the cardshapes invincible
-         */
-
-        public void hideCards () {
-            for (CardController cc : cardControllers) {
-                cc.hideImage();
-                cc.setBackPliancy();
-            }
-
-        }
-
-        public void showCards(){
-            for(CardController cc: cardControllers){
-                cc.showImage();
-                if(newLevel) {
-                    cc.setNoPliancy();
-                }
             }
         }
+        return i;
+    }
 
-        public void turnOnCardPliancy(){
+
+    public void hideCards () {
+        for (CardController cc : cardControllers) {
+            cc.hideImage();
+            cc.setBackPliancy();
+        }
+    }
+
+
+    public void showCards(){
+        for(CardController cc: cardControllers){
+            cc.showImage();
+            if(newLevel) {
+                cc.setNoPliancy();
+            }
+        }
+    }
+
+
+    public void turnOnCardPliancy(){
         for(CardController cc: cardControllers){
             cc.setBackPliancy();
         }
     }
 
 
+    public void onclick (ICard card){
+        mainController.onClick(card);
+    }
+
+
+    public List<CardController> getCardControllers () {
+        return cardControllers;
+    }
+
+
+    @FXML
+    private void pausedButtonPressed () { //
+        pausedAnchorPane.toFront();
+    }
+
+    @FXML
+    private void resumeButtonPressed () {
+        boardAnchorPane.toFront();
+    }
+
+    @FXML
+    private void optionsButtonPressed () {
+        soundOptionsAnchorPane.toFront();
+    }
+
+    @FXML
+    private void quitButtonPressed () {
+        mainController.getStage().close();
+    }
+
+    @FXML
+    private void quitToMenuPressed () {
+        mainController.setMenuScene();
+    }
+
+    @FXML
+    private void backButtonPressed () {
+        pausedAnchorPane.toFront();
+    }
+
+
+    @FXML
+    private void mainMenuButtonPressed () {
+        mainController.setMenuScene();
+    }
+
+    @FXML
+    private void newGameButtonPressed () {
+        mainController.newGame();
+        mainController.setBoardScene();
+    }
 
 
 
-        public void onclick (ICard card){
-            mainController.onClick(card);
+    public void removeLifeImage () {
+        lives--;
+        switch (lives) {
+            case 2:
+                imageLife1.setImage(null);
+                break;
+
+            case 1:
+                imageLife2.setImage(null);
+                break;
+            case 0:
+                imageLife3.setImage(null);
+                break;
         }
 
-        public List<CardController> getCardControllers () {
-            return cardControllers;
-        }
+    }
 
 
-        @FXML
-        private void pausedButtonPressed () { //
-            pausedAnchorPane.toFront();
-        }
-
-        @FXML
-        private void resumeButtonPressed () {
-            boardAnchorPane.toFront();
-        }
-
-        @FXML
-        private void optionsButtonPressed () {
-            soundOptionsAnchorPane.toFront();
-        }
-
-        @FXML
-        private void quitButtonPressed () {
-            mainController.getStage().close();
-        }
-
-        @FXML
-        private void quitToMenuPressed () {
-            mainController.setMenuScene();
-        }
-
-        @FXML
-        private void backButtonPressed () {
-            pausedAnchorPane.toFront();
-        }
-
-
-
-        @FXML
-        private void mainMenuButtonPressed () {
-            mainController.setMenuScene();
-        }
-
-        @FXML
-        private void newGameButtonPressed () {
-            mainController.newGame();
-            mainController.setBoardScene();
-
-        }
-
-        /*
-        public void populateGameOverLabel () {
-            gameOverLabel.setText(" You reached level " + String.valueOf(game.getLevel()) + " and you scored " + String.valueOf(game.getPlayer().getCurrentScore()) + " points ");
-        }
-
-         */
-
-        public void removeLifeImage () {
-            lives--;
-            switch (lives) {
-                case 2:
-                    imageLife1.setImage(null);
-                     break;
-                case 1:
-                    imageLife2.setImage(null);
-                    break;
-                case 0:
-                    imageLife3.setImage(null);
-                    break;
-
+    public void updateCardControllers(ICardIterator boardIterator){
+        int i = 0;
+        while (boardIterator.hasCard()){
+            ICard card = boardIterator.getCard();
+            if(i < cardControllers.size()){
+                cardControllers.get(i).setCard(card);
+                cardControllers.get(i).setImage(assignImage(card));
+            } else{
+                CardController newCC = new CardController(this, card);
+                newCC.setImage(assignImage(card));
+                cardControllers.add(newCC);
             }
-
-
-
+            cardControllers.get(i).updateCardState();
+            boardIterator.step();
+            i++;
         }
+        updateBoard();
+    }
 
 
-
-
-        public void updateCardControllers(ICardIterator boardIterator){
-            int i = 0;
-            while (boardIterator.hasCard()){
-                ICard card = boardIterator.getCard();
-                if(i < cardControllers.size()){
-                    cardControllers.get(i).setCard(card);
-                    cardControllers.get(i).setImage(assignImage(card));
-                } else{
-                    CardController newCC = new CardController(this, card);
-                    newCC.setImage(assignImage(card));
-                    cardControllers.add(newCC);
-                }
-                cardControllers.get(i).updateCardState();
-                boardIterator.step();
-                i++;
-            }
-            updateBoard();
-        }
-
-        public void updateCardDisplay(ICardIterator displayIterator){
+    public void updateCardDisplay(ICardIterator displayIterator){
             setDisplayImage(displayIterator.getCard());
         }
 
 
+    private void newLevel(){
+        newLevel = true;
+        showCards();
+        selectedCard.setVisible(false);
+        //start_btn.setVisible(true);
+    }
 
-        private void newLevel(){
-            newLevel = true;
-            showCards();
-            selectedCard.setVisible(false);
-            //start_btn.setVisible(true);
-        }
 
-        private void hideCardDisplay(){
+    private void game_over(){
+        mainController.sendnewScore();
+        populateGameOverLabel();
+        gameOverAnchorPane.toFront();
+    }
 
-        }
-
-        private void game_over(){
-            mainController.sendnewScore();
-            populateGameOverLabel();
-            gameOverAnchorPane.toFront();
-        }
 
     public void populateGameOverLabel () {
         gameOverLabel.setText(" You reached level " + String.valueOf(mainController.getLevel()) + " and you scored " + String.valueOf(mainController.getPlayer().getCurrentScore()) + " points ");
     }
-
-
 
 
     @Override
@@ -341,6 +275,7 @@ public class BoardController implements Initializable, GameObserver {
             this.displayIterator = diplayIterator;
         }
     }
+
 
     @Override
     public void update(String message) {
@@ -354,7 +289,6 @@ public class BoardController implements Initializable, GameObserver {
                 case "decrement_life" : removeLifeImage();
                 break;
             }
-            //Switch-sats för olika messages som gameover och gamecomplete. kanske displayCardDisplay
     }
 
 }
