@@ -4,15 +4,13 @@ import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
 
-public class Card {
+public class Card implements ICard{
 
     private CardState state;
     private Color color;
     private Shape shape;
-    private boolean isFlipped = false;
-    private boolean removed = false;
-    int size = 1;
-    private boolean revealed;
+
+
 
     public Card(Color color, Shape shape) {
         this.color = color;
@@ -25,24 +23,16 @@ public class Card {
         this.shape = shape;
     }
 
-    public boolean equals(Card other) {
-        return (this.color == other.color && this.shape == other.shape);
-    }
 
-    public boolean getisRemoved(){
-        return removed;
-    }
 
-    public void setisRemoved(boolean state){
-        removed = state;
-    }
 
-    public boolean getFlipped(){
-        return isFlipped;
-    }
 
-    public void setFlipped(boolean state){
-        isFlipped = state;
+    /**
+     * Compares if two cards are the same
+     * in this case meaning having the same shape and color
+     */
+    public boolean equals(ICard other) {
+        return (this.color == other.getColor() && this.shape == other.getShape());
     }
 
     public Color getColor() {
@@ -53,21 +43,46 @@ public class Card {
         return shape;
     }
 
+    /**
+     * Returns the ID of the card. The ID is simply a combination of the
+     * color and the shape.
+     * Used to match the card to an image in the boardController class
+     */
     public String getID(){
         return (color.toString() + shape.toString());
     }
-    public void setState(CardState state) {
+
+    @Override
+    public Card getMutableCard() {
+        return this;
+    }
+
+
+    public void setCorrect() {
+        setState(CardState.CORRECT);
+    }
+
+
+    public void setIncorrect() {
+        setState(CardState.INCORRECT);
+    }
+
+
+    public void setFaceUp() {
+        setState(CardState.FACEUP);
+    }
+
+
+    public void setFaceDown() {
+        setState(CardState.FACEDOWN);
+    }
+
+    private void setState(CardState state) {
         this.state = state;
     }
 
     public CardState getState() {
         return state;
     }
-    public boolean isRevealed() {
-        return revealed;
-    }
 
-    public void setRevealed(boolean revealed) {
-        this.revealed = revealed;
-    }
 }

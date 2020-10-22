@@ -1,20 +1,19 @@
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.ICard;
 import chalmers.app.model.IterableCards;
 
 import java.util.List;
 
 public interface ICardDisplay extends IterableCards {
 
-    void loadCardsToDisplay(List<Card> cards);
-    void cardSelected(Card card);
+    void loadCardsToDisplay(List<ICard> cards);
+    void cardSelected(ICard card);
     boolean isCorrectCardSelected();
-    void setUp(List<Card> cardsToDisplay);
-    List<Card> getCardList(); //temporär
-    void setExpectedCard(Card expectedCard);
+    void setUp(List<ICard> cardsToDisplay);
+    void setExpectedCard(ICard card);
 
-    //get iterator
 
 
 

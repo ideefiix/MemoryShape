@@ -1,8 +1,6 @@
 package chalmers.app.model.CardDisplays;
 
-import chalmers.app.model.Card;
-import chalmers.app.model.CardIterator;
-import chalmers.app.model.ICardIterator;
+import chalmers.app.model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,13 +12,10 @@ import java.util.List;
 
 public abstract class AbstractCardDisplay implements ICardDisplay {
 
-    protected List<Card> cardsToDisplay = new ArrayList<>();
-    protected List<Card> nextDisplayCards = new ArrayList<>();;
-    protected Card expectedCard;
+    protected List<ICard> cardsToDisplay = new ArrayList<>();
+    protected List<ICard> nextDisplayCards = new ArrayList<>();;
+    protected ICard expectedCard;
     protected boolean correctCardSelected;
-
-
-
 
 
     /**
@@ -29,12 +24,16 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
      */
 
     @Override
-    public void loadCardsToDisplay(List<Card> cards){
-        for(Card card: cards){
+    public void loadCardsToDisplay(List<ICard> cards){
+        for(ICard card: cards){
             cardsToDisplay.add(new Card(card.getColor(),card.getShape()));
         }
         Collections.shuffle(cardsToDisplay);
     }
+
+    /**
+     * Returns an iterator containing the cards to be displayed
+     */
 
     @Override
     public ICardIterator createIterator() {
@@ -47,37 +46,45 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
      * @param card: The card selected by the player
      */
     @Override
-    public abstract void cardSelected(Card card);
+    public abstract void cardSelected(ICard card);
+
+    /**
+     * Prepares the cardDisplay to take in the first card
+     * Also prepares the first card(s) to be displayed
+     */
 
     @Override
-    public abstract void setUp(List<Card> cards);
+    public abstract void setUp(List<ICard> cards);
 
-    public void setCardsToDisplay(List<Card> cardsToDisplay) {
+    public void setCardsToDisplay(List<ICard> cardsToDisplay) {
         this.cardsToDisplay = cardsToDisplay;
     }
 
+    /**
+     * Returns true if the last selected card was correct
+     */
     @Override
     public boolean isCorrectCardSelected(){
         return correctCardSelected;
     }
 
-    public void setExpectedCard(Card expectedCard) {
+    public void setExpectedCard(ICard expectedCard) {
         this.expectedCard = expectedCard;
     }
 
 //public ?abstract? Iterator getIterator();
 
 
-    public List<Card> getNextDisplayCards() {
+    public List<ICard> getNextDisplayCards() {
         return nextDisplayCards;
     }
 
-    public Card getExpectedCard() {
+    public ICard getExpectedCard() {
         return expectedCard;
     }
 
     //kommer antagligen inte behövar när getIterator() metoden finns.
-    public List<Card> getCardsToDisplay() {
+    public List<ICard> getCardsToDisplay() {
         return cardsToDisplay;
     }
 

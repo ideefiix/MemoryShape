@@ -1,11 +1,16 @@
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.ICard;
 import chalmers.app.model.IterableCards;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+/**
+ * An interface for the different board classes
+ */
 
 public interface IBoard extends IterableCards {
 
@@ -15,15 +20,15 @@ public interface IBoard extends IterableCards {
 
     boolean isLevelComplete();
      
-    List<Card> getActiveCardList();
+    List<ICard> getActiveCardList();
 
-    int getNumberOfShapes();
+    void correctCard(ICard selectedCard);
 
-    void correctCard(Card selectedCard);
-
-    void incorrectCard(Card selectedCard);
+    void incorrectCard(ICard selectedCard);
 
     void fillAllCardsList();
+
+    int getNumberOfShapes();
 
 
 

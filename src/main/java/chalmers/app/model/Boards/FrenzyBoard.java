@@ -5,10 +5,12 @@ import chalmers.app.model.Card;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class  FrenzyBoard extends AbstractBoard {
+/**
+ * A class for the board used in the Frenzy mode
+ */
+public class FrenzyBoard extends AbstractBoard {
 
     /**
-     *
      * Constructor
      * Fills a list with all different shapes
      * Shuffles the list and creates a board with the first X shapes

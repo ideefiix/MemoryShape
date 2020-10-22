@@ -1,6 +1,7 @@
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.Card;
+import chalmers.app.model.ICard;
 import javafx.print.Collation;
 
 import java.util.ArrayList;
@@ -9,16 +10,9 @@ import java.util.List;
 
 public class FrenzyCardDisplay extends AbstractCardDisplay {
 
-    //Osynliga instansvariabler:
-    //cardsToDisplay
-    //nextDisplayCards
-    //expectedCard
-    //correctCardSelected
-
-
 
     @Override
-    public void cardSelected(Card selectedCard) {
+    public void cardSelected(ICard selectedCard) {
 
         if(selectedCard.equals(expectedCard)){
             correctCardSelected = true;
@@ -26,11 +20,6 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
         } else {
             correctCardSelected = false;
         }
-        /*
-        Ska jämföra selectedCard med expectedCard.
-        Om det är rätt så ska expectedCard bli nästa förväntade kort och correctCardSelected ska sättas till true
-
-         */
     }
 
     private void nextDisplay(){
@@ -43,7 +32,7 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
     }
 
     @Override
-    public void setUp(List<Card> cards) {
+    public void setUp(List<ICard> cards) {
         loadCardsToDisplay(cards);
         sortCardsToDisplay();
         nextDisplayCards.add(cardsToDisplay.get(0));
@@ -52,7 +41,7 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
     }
 
     public void sortCardsToDisplay(){
-        List<Card> tempList = new ArrayList<>();
+        List<ICard> tempList = new ArrayList<>();
         while (cardsToDisplay.size() > 0){
             tempList.add(cardsToDisplay.get(0));
             cardsToDisplay.remove(0);
@@ -69,7 +58,7 @@ public class FrenzyCardDisplay extends AbstractCardDisplay {
         cardsToDisplay = tempList;
     }
 
-    public List<Card> getCardList(){
+    public List<ICard> getCardList(){
         return cardsToDisplay;
     }
 

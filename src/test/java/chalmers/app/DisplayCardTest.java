@@ -7,6 +7,7 @@ import chalmers.app.model.CardDisplays.StandardCardDisplay;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
+import chalmers.app.model.ICard;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -19,14 +20,14 @@ public class DisplayCardTest {
     StandardCardDisplay cardDisplay = new StandardCardDisplay();
     FrenzyCardDisplay frenzyCardDisplay = new FrenzyCardDisplay();
     SimonSaysCardDisplay simonSaysCardDisplay = new SimonSaysCardDisplay();
-    Card expectedCard = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
-    Card selectedCard = new Card(Color.PINK, Shape.DIAMOND,CardState.FACEUP);
-    Card card1 = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
-    Card card2 = new Card(Color.ORANGE,Shape.CIRCLE,CardState.FACEUP);
-    Card card3 = new Card(Color.GREEN,Shape.RECTANGLE,CardState.FACEUP);
-    Card card4 = new Card(Color.YELLOW,Shape.STAR,CardState.FACEUP);
-    Card card5 = new Card(Color.PINK,Shape.DIAMOND,CardState.FACEUP);
-    List<Card> cards = new ArrayList<>();
+    ICard expectedCard = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
+    ICard selectedCard = new Card(Color.PINK, Shape.DIAMOND,CardState.FACEUP);
+    ICard card1 = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
+    ICard card2 = new Card(Color.ORANGE,Shape.CIRCLE,CardState.FACEUP);
+    ICard card3 = new Card(Color.GREEN,Shape.RECTANGLE,CardState.FACEUP);
+    ICard card4 = new Card(Color.YELLOW,Shape.STAR,CardState.FACEUP);
+    ICard card5 = new Card(Color.PINK,Shape.DIAMOND,CardState.FACEUP);
+    List<ICard> cards = new ArrayList<>();
 
     public void fyllingList(){
         cards.add(card1);

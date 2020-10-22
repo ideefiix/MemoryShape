@@ -64,6 +64,7 @@ public class MenuController implements Initializable {
 
     public MenuController(MainController mainController) {
         this.mainController = mainController;
+        mainController.setMode(mode);
     }
 
     @Override

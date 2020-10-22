@@ -2,13 +2,19 @@ package chalmers.app.model;
 
 import java.util.List;
 
+
+/**
+ * A modified iterator class used for lists of Cards.
+ * Used by the board classes and the cardDisplay classes
+ * to send an iterator to the controller classes.
+ */
 public class CardIterator implements ICardIterator {
 
-    public CardIterator(List<Card> cards){
+    public CardIterator(List<ICard> cards){
         cardList = cards;
     }
 
-    List<Card> cardList;
+    List<ICard> cardList;
     int currentIndex = 0;
 
     @Override
@@ -27,7 +33,7 @@ public class CardIterator implements ICardIterator {
     }
 
     @Override
-    public Card getCard() {
+    public ICard getCard() {
         return cardList.get(currentIndex);
     }
 }

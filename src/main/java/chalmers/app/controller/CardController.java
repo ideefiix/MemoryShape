@@ -2,6 +2,7 @@ package chalmers.app.controller;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
+import chalmers.app.model.ICard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 public class CardController extends AnchorPane  {
     private BoardController parentController;
-    Card card;
+    ICard card;
 
     @FXML
     ImageView image;
@@ -22,7 +23,7 @@ public class CardController extends AnchorPane  {
     AnchorPane backgroundPane;
 
 
-    public CardController(BoardController parentController, Card card) {
+    public CardController(BoardController parentController, ICard card) {
         this.parentController = parentController;
         this.card = card;
 
@@ -65,7 +66,7 @@ public class CardController extends AnchorPane  {
         }
     }
 
-    public void setCard(Card card){
+    public void setCard(ICard card){
         this.card = card;
     }
 
@@ -94,7 +95,7 @@ public class CardController extends AnchorPane  {
     public AnchorPane getBackgroundPane() {
         return backgroundPane;
     }
-    public Card getCard() {
+    public ICard getCard() {
         return card;
     }
 

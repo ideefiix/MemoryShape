@@ -8,6 +8,7 @@ import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
+import chalmers.app.model.ICard;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -22,11 +23,6 @@ public class BoardTest {
     Card card2 = new Card(Color.ORANGE,Shape.CIRCLE,CardState.FACEDOWN);
     Card card3 = new Card(Color.GREEN,Shape.RECTANGLE,CardState.FACEDOWN);
 
-  @Test
-    public void testFillAllCards(){
-      assertTrue((board.getAllCardsList().size()==25));
-  }
-
     @Test
     public void testIsLevelComplete(){
         assertFalse(board.isLevelComplete());
@@ -35,7 +31,7 @@ public class BoardTest {
     }
 
     public void setCardState(AbstractBoard board){
-      for(Card card : board.getActiveCardList()){
+      for(ICard card : board.getActiveCardList()){
           board.correctCard(card);
       }
     }
@@ -45,18 +41,9 @@ public class BoardTest {
     @Test
     public void testGenerateBoard(){
      assertTrue(board.getActiveCardList().get(0).getState().equals(CardState.FACEDOWN));
-     assertTrue(isContained(board));
     }
 
 
-   public boolean isContained(AbstractBoard board){
-     int n = board.getNumberOfShapes();
-      for( int i=0; i < n;i++){
-          if( board.getActiveCardList().get(0).equals(board.getAllCardsList().get(i))){
-              return true;
-          }
-      } return false;
-   }
 
     @Test
     public void testFlipIncorrectCards(){
@@ -69,7 +56,7 @@ public class BoardTest {
     }
 
     public void setIncorrectState(AbstractBoard board){
-      for(Card card : board.getActiveCardList()){
+      for(ICard card : board.getActiveCardList()){
           board.incorrectCard(card);
       }
     }
@@ -81,7 +68,7 @@ public class BoardTest {
 
 
     public boolean isDuplicated(){
-      Card card = boardFrenzy.getActiveCardList().get(1);
+      ICard card = boardFrenzy.getActiveCardList().get(1);
       for(int i =0; i < boardFrenzy.getActiveCardList().size();i++){
           if(card.equals(boardFrenzy.getActiveCardList().get(i))){
               return true;
@@ -91,7 +78,6 @@ public class BoardTest {
 
     @Test
     public void testGenerateBoardSimonSays(){
-      assertTrue(isContained(boardSimonSays));
       assertTrue(boardSimonSays.getActiveCardList().get(0).getState().equals(CardState.FACEUP));
     }
 

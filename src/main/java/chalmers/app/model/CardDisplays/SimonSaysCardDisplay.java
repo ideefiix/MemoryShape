@@ -4,32 +4,19 @@ import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
+import chalmers.app.model.ICard;
 
 import java.util.Collections;
 import java.util.List;
 
 /**
- * Klass för den display som visar upp sekvensen av Cards i Simon Says game modet
+ * Class for cardDisplay used in the simon says mode
  */
 public class SimonSaysCardDisplay extends AbstractCardDisplay {
 
-    //Osynliga instansvariabler:
-    //cardsToDisplay
-    //nextDisplayCards
-    //expectedCard
-    //correctCardSelected
-
-    /*
-        Ska jämföra selectedCard med expectedCard.
-        Om det är rätt så ska expectedCard bli nästa förväntade kort och correctCardSelected ska sättas till true
-        i simon says behöver inte nextDisplayCards updateras förrän leveln är avklarad.
-
-
-         */
-
 
     @Override
-    public void cardSelected(Card selectedCard) {
+    public void cardSelected(ICard selectedCard) {
         if (selectedCard.equals(expectedCard)) {
             correctCardSelected = true;
             if(cardsToDisplay.size() > 0) {
@@ -46,9 +33,8 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
     }
 
 
-
     @Override
-    public void setUp (List<Card> cards) {
+    public void setUp (List<ICard> cards) {
         loadCardsToDisplay(cards);
         nextDisplayCards.clear();
         nextDisplayCards.addAll(cardsToDisplay);
@@ -56,14 +42,6 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
         expectedCard = cardsToDisplay.get(0);
         cardsToDisplay.remove(0);
         }
-
-
-
-
-    @Override
-    public List<Card> getCardList() {
-        return null;
-    }
 
 
 }

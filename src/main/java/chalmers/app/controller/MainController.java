@@ -1,9 +1,6 @@
 package chalmers.app.controller;
 
-import chalmers.app.model.Card;
-import chalmers.app.model.Game;
-import chalmers.app.model.Highscore;
-import chalmers.app.model.Player;
+import chalmers.app.model.*;
 import com.sun.glass.ui.Menu;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,6 +20,8 @@ public class MainController {
     private JSONCommunicator jCom = new JSONCommunicator();
     private MusicPlayer mp = new MusicPlayer();
     String enterName = null;
+    String mode;
+    String playerName;
     Game game;
 
     public MainController(){
@@ -92,6 +91,8 @@ public class MainController {
         }
     }
     public void createGame(String mode, String playerName) {
+        this.playerName = playerName;
+        this.mode = mode;
         switch (mode){
             case "standard": game = new Game(playerName, Game.GameMode.STANDARD);
             break;
@@ -103,20 +104,31 @@ public class MainController {
 
     }
 
+    public void newGame() {
+        switch (mode) {
+            case "standard":
+                game = new Game(playerName, Game.GameMode.STANDARD);
+                break;
+            case "frenzy":
+                game = new Game(playerName, Game.GameMode.FRENZY);
+                break;
+            case "sequence":
+                game = new Game(playerName, Game.GameMode.SIMONSAYS);
+                break;
+        }
+    }
 
 
     public Stage getStage() {
         return stage;
     }
 
-    public void onClick(Card card) {
+    public void onClick(ICard card) {
         mp.playOnClickSound();
         game.onClick(card);
     }
 
-    public void cardColorUpdater(Card card){
 
-    }
 
     public int getLevel(){
         return game.getLevel();
@@ -135,10 +147,14 @@ public class MainController {
     }
 
     public void sendnewScore() {
-        jCom.compareScore(game.getCurrentScore(),game.getModeString(),game.getName());
+        jCom.compareScore(game.getCurrentScore(),mode,game.getName()); //Brukade vara game.getModeString() ist för mode. kanske orsakar nått
     }
 
     public void saveEnteredName(String enteredName){
         enterName = enteredName;
+    }
+
+    public void setMode(String mode){
+        this.mode = mode;
     }
 }

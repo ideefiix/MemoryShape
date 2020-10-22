@@ -1,30 +1,26 @@
 package chalmers.app.model.Boards;
 
-import chalmers.app.model.Card;
+import chalmers.app.model.*;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
-import chalmers.app.model.CardIterator;
-import chalmers.app.model.ICardIterator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * An abstract class to hold common code between the different board classes
+ */
+
 public abstract class AbstractBoard implements IBoard {
 
-    List<Card> allCardsList = new ArrayList<>();
-    List<Card> activeCardList = new ArrayList<>();;
+
+    List<ICard> allCardsList = new ArrayList<>();
+    List<ICard> activeCardList = new ArrayList<>();;
     int nActiveCards = 0;
-    boolean hideCards; //När hide cards = true så ska cardselector synas, annars inte
     boolean levelComplete = false;
 
-    //Methods
-
-
-    public List<Card> getAllCardsList() {
-        return allCardsList;
-    }
 
     /**
      * Initalizes the list with ALL cards
@@ -33,37 +29,57 @@ public abstract class AbstractBoard implements IBoard {
     public void fillAllCardsList(){
         for(Color color: Color.values()){
             for(Shape shape: Shape.values()){
-                Card card = new Card(color,shape,CardState.FACEDOWN);
+                ICard card = new Card(color,shape,CardState.FACEDOWN);
                 allCardsList.add(card);
             }
         }
         Collections.shuffle(allCardsList);
     }
 
+
+    /**
+     * Sets the CardState of the selected card to CORRECT
+     */
     @Override
-    public void correctCard(Card selectedCard) {
-        selectedCard.setState(CardState.CORRECT);
+    public void correctCard(ICard selectedCard) {
+        Card mutalbeCard = selectedCard.getMutableCard();
+        mutalbeCard.setCorrect();
     }
 
+
+    /**
+     * Sets the CardState of the selected card to INCORRECT
+     */
     @Override
-    public void incorrectCard(Card selectedCard) {
-        selectedCard.setState(CardState.INCORRECT);
+    public void incorrectCard(ICard selectedCard) {
+        Card mutalbeCard = selectedCard.getMutableCard();
+        mutalbeCard.setIncorrect();
     }
 
+    /**
+     * Restores the incorrect cards to face down by
+     * changing the CardState of the cards
+     */
     @Override
     public void flipIncorrectCards() {
-        for(Card c: activeCardList){
+        for(ICard c: activeCardList){
             if(c.getState().equals(CardState.INCORRECT)){
-                c.setState(CardState.FACEDOWN);
+                Card card = c.getMutableCard();
+                card.setFaceDown();
                 break;
             }
         }
     }
 
+
+    /**
+     * Returns true if all cards on the board are correct
+     * by checking if their CardState is CORRECT
+     */
     @Override
     public boolean isLevelComplete(){
         levelComplete = true;
-        for(Card c: activeCardList) {
+        for(ICard c: activeCardList) {
             if (c.getState() !=  CardState.CORRECT){
                 levelComplete = false;
                 break;
@@ -73,55 +89,27 @@ public abstract class AbstractBoard implements IBoard {
     }
 
 
-    /*
     /**
-     * Returns the IDs of the activecards
-     * @return
-
-    @Override
-    public List<String> getIds(){
-        List < String > colorShape = new ArrayList<>();
-        for(int i = 0; i < activeCardList.size(); i++){
-            String id = activeCardList.get(i).getColor().name() + activeCardList.get(i).getShape().name();
-            colorShape.add(id);
-        }
-        return colorShape;
-    }
-    */
-
-    /**
-     * Create a board
+     * Generates a board of different cards by filling the activeCardList
      * @param currentLevel
      */
     @Override
     public abstract void generateBoard(int currentLevel);
 
+
+    /**
+     * Returns an iterator of the activeCardList, containing the different cards on the board
+     */
     @Override
     public ICardIterator createIterator() {
         return new CardIterator(activeCardList);
     }
 
 
-    /*@Override
-    public void showCards(){
-        hideCards = false;
-    }
-
-    //@Override
-    public void hideCards(){
-        hideCards = true;
-    }
-
-    //@Override
-    public boolean getHideCards(){
-        return hideCards;
-    }*/
-
     @Override
-    public List<Card> getActiveCardList() {
+    public List<ICard> getActiveCardList() {
         return activeCardList;
     }
-
 
     @Override
     public int getNumberOfShapes() {
