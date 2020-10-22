@@ -53,7 +53,7 @@ public class Card implements ICard{
     }
 
     @Override
-    public Card getMutalbeCard() {
+    public Card getMutableCard() {
         return this;
     }
 
@@ -77,7 +77,7 @@ public class Card implements ICard{
         setState(CardState.FACEDOWN);
     }
 
-    public void setState(CardState state) {
+    private void setState(CardState state) {
         this.state = state;
     }
 

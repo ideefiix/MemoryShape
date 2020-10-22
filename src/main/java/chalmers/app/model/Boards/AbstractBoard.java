@@ -42,7 +42,7 @@ public abstract class AbstractBoard implements IBoard {
      */
     @Override
     public void correctCard(ICard selectedCard) {
-        Card mutalbeCard = selectedCard.getMutalbeCard();
+        Card mutalbeCard = selectedCard.getMutableCard();
         mutalbeCard.setCorrect();
     }
 
@@ -52,7 +52,7 @@ public abstract class AbstractBoard implements IBoard {
      */
     @Override
     public void incorrectCard(ICard selectedCard) {
-        Card mutalbeCard = selectedCard.getMutalbeCard();
+        Card mutalbeCard = selectedCard.getMutableCard();
         mutalbeCard.setIncorrect();
     }
 
@@ -64,7 +64,7 @@ public abstract class AbstractBoard implements IBoard {
     public void flipIncorrectCards() {
         for(ICard c: activeCardList){
             if(c.getState().equals(CardState.INCORRECT)){
-                Card card = c.getMutalbeCard();
+                Card card = c.getMutableCard();
                 card.setFaceDown();
                 break;
             }

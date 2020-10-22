@@ -13,13 +13,6 @@ public interface ICard {
     Shape getShape();
     CardState getState();
     String getID();
-    Card getMutalbeCard();
-    /*
-    void setCorrect();
-    void setIncorrect();
-    void setFaceUp();
-    void setFaceDown();
-
-     */
+    Card getMutableCard();
     boolean equals(ICard card);
 }
