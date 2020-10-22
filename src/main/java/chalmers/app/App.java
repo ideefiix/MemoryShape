@@ -24,7 +24,7 @@ public class App extends Application {
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
             public void run() {
                 mainController.getJSONCommunicator().writeHighscores();
-                System.out.println("Is shuting down");
+                System.out.println("Is shutting down");
             }
         }, "Shutdown-thread"));
     }
