@@ -19,7 +19,7 @@ import java.io.IOException;
 
 public class CardController extends AnchorPane  {
     private BoardController parentController;
-    ICard card;
+    private ICard card;
 
     @FXML
     ImageView image;
@@ -59,7 +59,7 @@ public class CardController extends AnchorPane  {
 
     @FXML
     public void onClick(){
-        if(card.getState() != CardState.INCORRECT && card.getState() != CardState.CORRECT && !parentController.newLevel){
+        if(card.getState() != CardState.INCORRECT && card.getState() != CardState.CORRECT && !parentController.getNewLevel()){
             parentController.onclick(card);
         }
     }

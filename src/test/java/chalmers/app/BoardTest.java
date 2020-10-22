@@ -50,7 +50,7 @@ public class BoardTest {
 
 
     @Test
-    public void testFlipIncorrectCards(){
+    public void testFlipIncorrectCards(){ //borde kolla så alla kort som var incorrect har ändrats till
       setIncorrectState(board);
       board.flipIncorrectCards();
       assertTrue(board.getActiveCardList().get(0).getState().equals(CardState.FACEDOWN));

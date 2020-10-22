@@ -20,10 +20,10 @@ public class MainController {
     final Stage stage = new Stage();
     private JSONCommunicator jCom = new JSONCommunicator();
     private MusicPlayer mp = new MusicPlayer();
-    String enterName = null;
-    String mode;
-    String playerName;
-    Game game;
+    private String enterName = null;
+    private String mode;
+    private String playerName;
+    private Game game;
 
     public MainController(){
         setMenuScene();

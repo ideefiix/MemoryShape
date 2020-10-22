@@ -21,8 +21,8 @@ public class BoardController implements GameObserver {
 
     private MainController mainController;
     private List<CardController> cardControllers = new ArrayList<CardController>();
-    File dir = new File("src/main/resources/view/images/shapes");
-    public boolean newLevel = false;
+    private File dir = new File("src/main/resources/view/images/shapes");
+    private boolean newLevel = false;
     private ICardIterator displayIterator;
     private int lives = 3;
 
@@ -267,6 +267,10 @@ public class BoardController implements GameObserver {
                 case "decrement_life" : removeLifeImage();
                 break;
             }
+    }
+
+    public boolean getNewLevel(){
+        return newLevel;
     }
 
 }
