@@ -12,14 +12,14 @@ import java.util.List;
 
 /**
  * A facade class used by the mainController class.
- * This class communicates with and brings together
+ * This class communicates with- and brings together
  * the many classes in the model.
  */
 
 public class Game {
 
     /**
-     * Enum when creating a game
+     * Enum used when creating a game
      */
     public enum GameMode{
         STANDARD, SIMONSAYS, FRENZY;
@@ -112,7 +112,7 @@ public class Game {
      * updates the conditions based on that the card was incorrect
      */
     private void inCorrectCardSelected(ICard selectedCard){
-         board2.incorrectCard(selectedCard);
+        board2.incorrectCard(selectedCard);
         player.decLife();
         observer.update("decrement_life");
         if(!player.IsAlive()){
@@ -120,7 +120,10 @@ public class Game {
         }
     }
 
-
+    /**
+     * initializes a new level. Also increases the level so that
+     *
+     */
     public void initNewLevel(){
         level++;
         board2.generateBoard(level);

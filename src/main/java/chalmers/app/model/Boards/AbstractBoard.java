@@ -1,3 +1,9 @@
+/**
+ * Authors:
+ * Responsibility:
+ * Used by:
+ * Uses:
+ */
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.*;

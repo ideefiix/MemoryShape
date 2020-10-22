@@ -4,6 +4,11 @@ import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
 
+/**
+ * Class used to represent the cards used in the game.
+ * A card consists of a colored shape.
+ */
+
 public class Card implements ICard{
 
     private CardState state;
@@ -11,20 +16,17 @@ public class Card implements ICard{
     private Shape shape;
 
 
-
     public Card(Color color, Shape shape) {
         this.color = color;
         this.shape = shape;
     }
+
 
     public Card(Color color, Shape shape, CardState state) {
         this.state = state;
         this.color = color;
         this.shape = shape;
     }
-
-
-
 
 
     /**
@@ -52,26 +54,26 @@ public class Card implements ICard{
         return (color.toString() + shape.toString());
     }
 
-    @Override
+    /**
+     * Returns the class itself.
+     * Is used in the model when the state (CardState) of the card
+     * needs to be mutated
+     */
     public Card getMutableCard() {
         return this;
     }
-
 
     public void setCorrect() {
         setState(CardState.CORRECT);
     }
 
-
     public void setIncorrect() {
         setState(CardState.INCORRECT);
     }
 
-
     public void setFaceUp() {
         setState(CardState.FACEUP);
     }
-
 
     public void setFaceDown() {
         setState(CardState.FACEDOWN);
