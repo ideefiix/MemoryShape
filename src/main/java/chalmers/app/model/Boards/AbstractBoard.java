@@ -25,7 +25,7 @@ public abstract class AbstractBoard implements IBoard {
     /**
      * Initalizes the list with ALL cards
      */
-    @Override
+
     public void fillAllCardsList(){
         for(Color color: Color.values()){
             for(Shape shape: Shape.values()){
@@ -111,9 +111,5 @@ public abstract class AbstractBoard implements IBoard {
         return activeCardList;
     }
 
-    @Override
-    public int getNumberOfShapes() {
-        return nActiveCards;
-    }
 
 }

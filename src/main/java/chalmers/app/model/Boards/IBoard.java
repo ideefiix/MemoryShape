@@ -26,9 +26,8 @@ public interface IBoard extends IterableCards {
 
     void incorrectCard(ICard selectedCard);
 
-    void fillAllCardsList();
 
-    int getNumberOfShapes();
+
 
 
 

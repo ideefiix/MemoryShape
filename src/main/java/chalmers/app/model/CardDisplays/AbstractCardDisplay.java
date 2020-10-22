@@ -23,7 +23,7 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
      * @param cards: List containing the cards to be displayed.
      */
 
-    @Override
+
     public void loadCardsToDisplay(List<ICard> cards){
         for(ICard card: cards){
             cardsToDisplay.add(new Card(card.getColor(),card.getShape()));
