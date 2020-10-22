@@ -1,6 +1,6 @@
 /**
  * Authors: Filip
- * Responsibility:
+ * Responsibility: Communicate with JSON file
  * Used by: MainController
  * Uses: HighScores
  */
@@ -23,9 +23,9 @@ public class JSONCommunicator {
     }
 
     /**
- * On startup
- * Load 10 Highscores from JSON file
- */
+     * On startup
+     * Load 10 Highscores from JSON file
+     **/
 
 
     public void loadHighscores(){
@@ -82,22 +82,39 @@ public class JSONCommunicator {
 
     public void compareScore(int currentScore, String mode, String name) {
 
-        int index = -1;
+        Highscore temp = new Highscore();
+        temp.setName(name);
+        temp.setMode(mode);
+        temp.setScore(currentScore);
 
-        for (int i = 9; i >= 0; i--){
-            if (currentScore > hList.get(i).getScore()){
-                index = i;
-            } else{
-                break;
+        if (temp.getScore() > hList.get(9).getScore()) {
+            hList.get(9).setScore(temp.getScore());
+            hList.get(9).setMode(temp.getMode());
+            hList.get(9).setName(temp.getName());
+
+            for (int i = 9; i > 0; i--) {
+                
+
+                if (hList.get(i).getScore() > hList.get(i - 1).getScore()) {
+
+                    temp.setName(hList.get(i-1).getName());
+                    temp.setMode(hList.get(i-1).getMode());
+                    temp.setScore(hList.get(i-1).getScore());
+                    // Ex: 9 -> 8
+                    hList.get(i-1).setScore(hList.get(i).getScore());
+                    hList.get(i-1).setMode(hList.get(i).getMode());
+                    hList.get(i-1).setName(hList.get(i).getName());
+                    // Ex: 8 -> 9
+                    hList.get(i).setScore(temp.getScore());
+                    hList.get(i).setMode(temp.getMode());
+                    hList.get(i).setName(temp.getName());
+
+                } else {
+                    break;
+                }
+
             }
-        }
-        /**
-         * Check if card made it to Highscorelist
-         */
-        if(index != -1){
-            hList.get(index).setScore(currentScore);
-            hList.get(index).setMode(mode);
-            hList.get(index).setName(name);
+
         }
     }
 }

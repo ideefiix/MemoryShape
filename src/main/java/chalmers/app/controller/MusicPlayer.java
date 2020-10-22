@@ -7,6 +7,10 @@ import java.io.*;
 
 public class MusicPlayer {
 
+    /**
+     * Author: Filip
+     * IS not implemented yet
+     */
 
     public void playBackgroundMusic (){
         try {
