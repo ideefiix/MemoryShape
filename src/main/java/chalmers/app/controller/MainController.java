@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MainController {
 
-    final Stage stage = new Stage();
+    private final Stage stage = new Stage();
     private JSONCommunicator jCom = new JSONCommunicator();
     private MusicPlayer mp = new MusicPlayer();
     private String enterName = null;
