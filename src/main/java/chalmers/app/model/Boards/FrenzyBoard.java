@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: Represents the board of cards used in the Frenzy mode of the game
+ * Used by: Game
+ * Uses: Card
+ */
+
 package chalmers.app.model.Boards;
 
 import chalmers.app.model.Card;
@@ -33,9 +40,7 @@ public class FrenzyBoard extends AbstractBoard {
         // Only shapes on the board are active
         for (int i = 0; i < nActiveCards; i++) {
             int j = 0;
-
             while(j < 3){
-
                 Card temp = new Card(allCardsList.get(i).getColor(), allCardsList.get(i).getShape(), allCardsList.get(i).getState());
                 activeCardList.add(temp);
                 if((remainder) % 3 > 0) {

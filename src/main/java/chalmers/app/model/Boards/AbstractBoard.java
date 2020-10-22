@@ -1,8 +1,8 @@
 /**
- * Authors:
- * Responsibility:
+ * Authors: Kevin
+ * Responsibility: Holds common code between the different board classes
  * Used by:
- * Uses:
+ * Uses: ICard, Card, Color, Shape, ICardIterator
  */
 package chalmers.app.model.Boards;
 

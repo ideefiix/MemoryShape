@@ -1,3 +1,10 @@
+/**
+ * Authors: Kevin
+ * Responsibility: An interface used to achieve a weaker dependency on the board classes
+ * Used by: Game
+ * Uses: ICard
+ */
+
 package chalmers.app.model.Boards;
 
 

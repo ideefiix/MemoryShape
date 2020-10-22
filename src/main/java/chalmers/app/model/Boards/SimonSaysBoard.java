@@ -1,10 +1,14 @@
-package chalmers.app.model.Boards;
+/**
+ * Authors: Kevin
+ * Responsibility: An interface used to achieve a weaker dependency on the board classes
+ * Used by: Game
+ * Uses: ICard
+ */
 
+package chalmers.app.model.Boards;
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.ICard;
-import chalmers.app.model.ICardIterator;
-
 import java.util.ArrayList;
 import java.util.Collections;
 

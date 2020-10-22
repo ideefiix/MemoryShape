@@ -29,8 +29,10 @@ public class App extends Application {
         }, "Shutdown-thread"));
     }
 
-
-    public static void main( String[] args ) {
-        launch(args);
+    public void startApp(){
+        launch();
     }
+
+
+
 }
