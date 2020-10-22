@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Nils, Edenia
  * Responsibility: Represents and holds the code for the card display of cards used in the Sequence mode of the game
  * Used by: Game
  * Uses: ICard
@@ -13,8 +13,7 @@ import java.util.List;
 /**
  * Class for cardDisplay used in the simon says mode
  */
-public class SimonSaysCardDisplay extends AbstractCardDisplay {
-
+public class SequenceCardDisplay extends AbstractCardDisplay {
 
     @Override
     public void cardSelected(ICard selectedCard) {
@@ -33,9 +32,6 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
         nextDisplayCards.add(selectedCard);
     }
 
-
-
-
     @Override
     public void setUp (List<ICard> cards) {
         loadCardsToDisplay(cards);
@@ -45,6 +41,4 @@ public class SimonSaysCardDisplay extends AbstractCardDisplay {
         expectedCard = cardsToDisplay.get(0);
         cardsToDisplay.remove(0);
         }
-
-
 }

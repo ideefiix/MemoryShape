@@ -1,3 +1,7 @@
+/**
+ *
+ */
+
 package chalmers.app.model.CardDisplays;
 
 import chalmers.app.model.ICard;

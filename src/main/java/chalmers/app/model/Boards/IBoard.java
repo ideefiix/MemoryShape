@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Nils
  * Responsibility: An interface used to achieve a weaker dependency on the board classes
  * Used by: Game
  * Uses: ICard

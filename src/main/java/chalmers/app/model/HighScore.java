@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Filip
  * Responsibility: Holds data concerning high scores
  * Used by: JSONCommunicator
  * Uses:
@@ -12,16 +12,12 @@ package chalmers.app.model;
  * Used by the JSONCommunicator class.
  */
 
-public class Highscore {
-    private String name,mode;
+public class HighScore {
+    private String name, mode;
     private int score;
 
-    public Highscore(String name, String mode, int score) {
-        this.name = name;
-        this.mode = mode;
-        this.score = score;
-    }
-    public Highscore() {
+
+    public HighScore() {
     }
 
     public String getName() {

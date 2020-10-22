@@ -27,7 +27,6 @@ public class MainController {
 
     public MainController(){
         setMenuScene();
-        //mp.playBackgroundMusic();
     }
 
 
@@ -44,7 +43,6 @@ public class MainController {
             parent = loader.load();
             stage.setScene(new Scene(parent));
 
-            //Autofill textbox with player name
             if(enterName != null){
                 mc.setPlayerName(enterName);
             }
@@ -64,8 +62,6 @@ public class MainController {
             loader.setController(bC);
             game.setGameObserver(bC);
 
-
-
             Parent parent;
             parent = loader.load();
             stage.setScene(new Scene(parent));
@@ -79,15 +75,6 @@ public class MainController {
 
     }
 
-    private void delay(){
-        try{
-            Thread.sleep(1000);
-        }
-        catch(InterruptedException ex){
-            Thread.currentThread().interrupt();
-        }
-    }
-
 
     public void createGame(String mode, String playerName) {
         this.playerName = playerName;
@@ -97,7 +84,7 @@ public class MainController {
             break;
             case "frenzy": game = new Game(playerName, Game.GameMode.FRENZY);
             break;
-            case "sequence": game = new Game(playerName, Game.GameMode.SIMONSAYS);
+            case "sequence": game = new Game(playerName, Game.GameMode.SEQUENCE);
             break;
         }
 
@@ -113,7 +100,7 @@ public class MainController {
                 game = new Game(playerName, Game.GameMode.FRENZY);
                 break;
             case "sequence":
-                game = new Game(playerName, Game.GameMode.SIMONSAYS);
+                game = new Game(playerName, Game.GameMode.SEQUENCE);
                 break;
         }
     }
@@ -138,7 +125,7 @@ public class MainController {
         return game.getPlayer();
     }
 
-    public List<Highscore> getJSONHighscores(){
+    public List<HighScore> getJSONHighScores(){
         return jCom.gethList();
     }
 
@@ -146,7 +133,7 @@ public class MainController {
         return jCom;
     }
 
-    public void sendnewScore() {
+    public void sendNewScore() {
         jCom.compareScore(game.getCurrentScore(),mode,game.getName()); //Brukade vara game.getModeString() ist för mode. kanske orsakar nått
     }
 

@@ -1,8 +1,12 @@
+/**
+ * Authors: Edenia
+ * TestClass for the different CardDisplays
+ */
 package chalmers.app;
 
 import chalmers.app.model.Card;
 import chalmers.app.model.CardDisplays.FrenzyCardDisplay;
-import chalmers.app.model.CardDisplays.SimonSaysCardDisplay;
+import chalmers.app.model.CardDisplays.SequenceCardDisplay;
 import chalmers.app.model.CardDisplays.StandardCardDisplay;
 import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
@@ -15,11 +19,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class DisplayCardTest {
+public class CardDisplayTest {
 
     StandardCardDisplay cardDisplay = new StandardCardDisplay();
     FrenzyCardDisplay frenzyCardDisplay = new FrenzyCardDisplay();
-    SimonSaysCardDisplay simonSaysCardDisplay = new SimonSaysCardDisplay();
+    SequenceCardDisplay sequenceCardDisplay = new SequenceCardDisplay();
     ICard expectedCard = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
     ICard selectedCard = new Card(Color.PINK, Shape.DIAMOND,CardState.FACEUP);
     ICard card1 = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
@@ -64,15 +68,15 @@ public class DisplayCardTest {
     @Test
     public void testSsSetUp(){
         fyllingList();
-        simonSaysCardDisplay.setUp(cards);
-        assertTrue(simonSaysCardDisplay.getNextDisplayCards().get(0).equals(simonSaysCardDisplay.getExpectedCard()));
+        sequenceCardDisplay.setUp(cards);
+        assertTrue(sequenceCardDisplay.getNextDisplayCards().get(0).equals(sequenceCardDisplay.getExpectedCard()));
     }
 
     @Test
     public void testSsCardSelected(){
-        simonSaysCardDisplay.setExpectedCard(expectedCard);
-        simonSaysCardDisplay.cardSelected(selectedCard);
-        assertTrue(simonSaysCardDisplay.isCorrectCardSelected());
+        sequenceCardDisplay.setExpectedCard(expectedCard);
+        sequenceCardDisplay.cardSelected(selectedCard);
+        assertTrue(sequenceCardDisplay.isCorrectCardSelected());
     }
 
 

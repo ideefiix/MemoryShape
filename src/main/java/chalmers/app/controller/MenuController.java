@@ -1,12 +1,12 @@
 /**
- * Author: Filip
+ * Author: Nils, Filip, Edenia
  * Responsibility: Load components for scenes and controls the Stage
  * Used by: BoardController, MenuController, App
  * Uses: Game, BoardController, JSONCommunicator
  */
 package chalmers.app.controller;
 
-import chalmers.app.model.Highscore;
+import chalmers.app.model.HighScore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -61,16 +61,16 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fill_leaderboard();
+        fillLeaderboard();
     }
 
 
     /**
      * Fills the flowpane with HighScoreController
      */
-    private void fill_leaderboard() {
+    private void fillLeaderboard() {
         highscore_flwPane.getChildren().clear();
-        List<Highscore> hList = mainController.getJSONHighscores();
+        List<HighScore> hList = mainController.getJSONHighScores();
 
         for(int i = 0; i < hList.size(); i++){
             HighscoreController hc = new HighscoreController(this, String.valueOf(i+1), hList.get(i).getName(),hList.get(i).getMode(),hList.get(i).getScore());
@@ -95,7 +95,6 @@ public class MenuController implements Initializable {
     @FXML
     void modeStartButtonPressed(){
         if(name_textField.getText().isEmpty()){
-            //Do nothing
             error_text.setText("Enter a name!");
         }else{
             mainController.createGame(mode, name_textField.getText());
@@ -170,7 +169,5 @@ public class MenuController implements Initializable {
     public void setPlayerName(String name){
         name_textField.setText(name);
     }
-
-
 
 }

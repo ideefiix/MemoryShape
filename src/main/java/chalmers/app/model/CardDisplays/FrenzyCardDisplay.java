@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Nils
  * Responsibility: Represents and holds the code for the card display of cards used in the Frenzy mode of the game
  * Used by: Game
  * Uses: ICard

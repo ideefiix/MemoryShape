@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Nils, Filip
  * Responsibility: Holds common code between the different board classes
  * Used by:
  * Uses: ICard, Card, Color, Shape, ICardIterator
@@ -54,8 +54,8 @@ public abstract class AbstractBoard implements IBoard {
      */
     @Override
     public void incorrectCard(ICard selectedCard) {
-        Card mutalbeCard = selectedCard.getMutableCard();
-        mutalbeCard.setIncorrect();
+        Card mutableCard = selectedCard.getMutableCard();
+        mutableCard.setIncorrect();
     }
 
     /**

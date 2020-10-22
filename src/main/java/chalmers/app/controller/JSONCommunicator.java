@@ -6,7 +6,7 @@
  */
 package chalmers.app.controller;
 
-import chalmers.app.model.Highscore;
+import chalmers.app.model.HighScore;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JSONCommunicator {
-    private List<Highscore> hList = new ArrayList<>();
+    private List<HighScore> hList = new ArrayList<>();
 
     public JSONCommunicator() {
         loadHighscores();
@@ -32,7 +32,7 @@ public class JSONCommunicator {
         try{
             ObjectMapper mapper = new ObjectMapper();
             InputStream inputStream = new FileInputStream(new File("src/main/resources/highscores.json"));
-            hList = mapper.readValue(inputStream, new TypeReference<List<Highscore>>() {});
+            hList = mapper.readValue(inputStream, new TypeReference<List<HighScore>>() {});
             for(int i = 0; i < hList.size(); i++){
                 System.out.println(hList.get(i).getName());
             }
@@ -68,12 +68,8 @@ public class JSONCommunicator {
 
     }
 
-    public List<Highscore> gethList() {
+    public List<HighScore> gethList() {
         return hList;
-    }
-
-    public void sethList(List<Highscore> hList) {
-        this.hList = hList;
     }
 
     /**
@@ -82,7 +78,7 @@ public class JSONCommunicator {
 
     public void compareScore(int currentScore, String mode, String name) {
 
-        Highscore temp = new Highscore();
+        HighScore temp = new HighScore();
         temp.setName(name);
         temp.setMode(mode);
         temp.setScore(currentScore);

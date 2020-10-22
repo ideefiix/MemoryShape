@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Nils, Filip
  * Responsibility: Represents the board of cards used in the Standard mode of the game
  * Used by: Game
  * Uses: ICard
@@ -27,9 +27,7 @@ public class StandardBoard extends AbstractBoard {
     @Override
     public void generateBoard(int currentLevel) {
         nActiveCards = 2 + (currentLevel);
-        //Collections.shuffle(allCardsList);
         activeCardList = new ArrayList<>();
-        // Only shapes on the board is active
         for (int i = 0; i < nActiveCards; i++) {
             ICard c = allCardsList.get(i);
             activeCardList.add(new Card(c.getColor(),c.getShape(),CardState.FACEDOWN));

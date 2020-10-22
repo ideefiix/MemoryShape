@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Filip, Edenia
  * Responsibility: javaFX controller for board.fxml
  * Used by: MainController
  * Uses: ICard, ICardIterator, MainController, BoardController
@@ -76,23 +76,6 @@ public class BoardController implements GameObserver {
     }
 
 
-    /**
-     * Is called by createCards()
-     * Sets the cards Images on the board.
-     */
-    public void assignImage(String id, CardController cc){
-        for(File file: dir.listFiles()){
-
-            //Remove .JPG extension
-            String str = file.getName();
-            int pos = str.lastIndexOf(".");
-
-            if(str.substring(0,pos).equals(id)){
-                cc.setImage(file);
-                break;
-            }
-        }
-    }
 
 
     /**
@@ -128,7 +111,7 @@ public class BoardController implements GameObserver {
     public void hideCards () {
         for (CardController cc : cardControllers) {
             cc.hideImage();
-            cc.setBackPliancy();
+            cc.turnOnPliancy();
         }
     }
 
@@ -137,7 +120,7 @@ public class BoardController implements GameObserver {
         for(CardController cc: cardControllers){
             cc.showImage();
             if(newLevel) {
-                cc.setNoPliancy();
+                cc.turnOffPliancy();
             }
         }
     }
@@ -145,18 +128,13 @@ public class BoardController implements GameObserver {
 
     public void turnOnCardPliancy(){
         for(CardController cc: cardControllers){
-            cc.setBackPliancy();
+            cc.turnOnPliancy();
         }
     }
 
 
     public void onclick (ICard card){
         mainController.onClick(card);
-    }
-
-
-    public List<CardController> getCardControllers () {
-        return cardControllers;
     }
 
 
@@ -256,7 +234,7 @@ public class BoardController implements GameObserver {
 
 
     private void game_over(){
-        mainController.sendnewScore();
+        mainController.sendNewScore();
         populateGameOverLabel();
         gameOverAnchorPane.toFront();
     }
@@ -268,11 +246,11 @@ public class BoardController implements GameObserver {
 
 
     @Override
-    public void update(ICardIterator diplayIterator, ICardIterator boardIterator){
+    public void update(ICardIterator displayIterator, ICardIterator boardIterator){
         updateCardControllers(boardIterator);
-        updateCardDisplay(diplayIterator);
-        if(diplayIterator.hasNext()) {
-            this.displayIterator = diplayIterator;
+        updateCardDisplay(displayIterator);
+        if(displayIterator.hasNext()) {
+            this.displayIterator = displayIterator;
         }
     }
 

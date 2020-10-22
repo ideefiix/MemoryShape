@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Nils, Filip
  * Responsibility: Holds data about the player of the game
  * Used by: Game
  * Uses:
@@ -12,9 +12,9 @@ package chalmers.app.model;
  */
 public class Player {
 
-    String name;
-    int currentScore;
-    int lives;
+    private String name;
+    private int currentScore;
+    private int lives;
 
 
     public Player(String name, int lives) {
@@ -23,14 +23,12 @@ public class Player {
         this.lives = lives;
     }
 
-
     /**
      * Increases the player's score
      */
     public void incScore(){
         currentScore++;
     }
-
 
     /**
      * Decreases the players number of lives.
@@ -39,11 +37,10 @@ public class Player {
         lives--;
     }
 
-
     /**
      * Returns true if the player has one life or more.
      */
-    public boolean IsAlive(){
+    public boolean isAlive(){
         if(lives<1){
             return false;
         }

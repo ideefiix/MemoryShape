@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Nils, Filip
  * Responsibility: Represents and holds the code for the card display of cards used in the Standard mode of the game
  * Used by: Game
  * Uses: ICard

@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Nils
  * Responsibility: Represents the board of cards used in the Frenzy mode of the game
  * Used by: Game
  * Uses: Card
@@ -31,7 +31,6 @@ public class FrenzyBoard extends AbstractBoard {
         nActiveCards = 2 + (currentLevel - 1) / 3;
         activeCardList = new ArrayList<>();
         int remainder = currentLevel + 5;
-        // Only shapes on the board are active
         for (int i = 0; i < nActiveCards; i++) {
             int j = 0;
             while(j < 3){

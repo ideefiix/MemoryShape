@@ -1,3 +1,7 @@
+/**
+ * Authors: Filip
+ * Test class for app
+ */
 package chalmers.app;
 
 import org.junit.Test;

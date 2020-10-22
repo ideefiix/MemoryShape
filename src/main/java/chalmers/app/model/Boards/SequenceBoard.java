@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Nils, Edenia
  * Responsibility: Represents and holds the code for the board of cards used in the Sequence mode of the game
  * Used by: Game
  * Uses: ICard
@@ -12,14 +12,14 @@ import chalmers.app.model.ICard;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SimonSaysBoard extends AbstractBoard {
+public class SequenceBoard extends AbstractBoard {
 
     /**
      * Constructor
      * Fills a list with all different shapes
      * Shuffles the list and creates a board with the first X shapes
      */
-    public SimonSaysBoard(int level) {
+    public SequenceBoard(int level) {
         fillAllCardsList();
         generateBoard(level);
     }
@@ -52,6 +52,4 @@ public class SimonSaysBoard extends AbstractBoard {
         Collections.shuffle(activeCardList);
 
     }
-
-
 }

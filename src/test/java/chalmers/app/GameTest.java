@@ -1,3 +1,8 @@
+/**
+ * Authors: Edenia
+ * Test class for the Game class
+ */
+
 package chalmers.app;
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
@@ -14,13 +19,4 @@ public class GameTest {
     Card expectedCard = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
     Card selectedCard = new Card(Color.PINK, Shape.DIAMOND,CardState.FACEUP);
 
-
-
-    @Test
-    public void testOnClick(){
-        /*gametest.getCardDisplay().setExpectedCard(expectedCard);
-        gametest.onClick(selectedCard);
-        assertTrue(gametest.getPlayer().getCurrentScore()==1);
-        assertTrue(selectedCard.getState().equals(CardState.CORRECT));*/
-    }
 }

@@ -1,5 +1,5 @@
 /**
- * Authors: Kevin
+ * Authors: Kevin, Nils, Filip
  * Responsibility: Holds common code between the different cardDisplay classes
  * Used by: Game
  * Uses: ICard, ICardIterator
@@ -14,21 +14,21 @@ import java.util.List;
 
 /**
  * A class to hold common code between the different CardDisplay classes
+ *
  */
 
 public abstract class AbstractCardDisplay implements ICardDisplay {
 
-    protected List<ICard> cardsToDisplay = new ArrayList<>();
-    protected List<ICard> nextDisplayCards = new ArrayList<>();;
-    protected ICard expectedCard;
-    protected boolean correctCardSelected;
+    List<ICard> cardsToDisplay = new ArrayList<>();
+    List<ICard> nextDisplayCards = new ArrayList<>();;
+    ICard expectedCard;
+    boolean correctCardSelected;
 
 
     /**
      * Loads the CardDisplay with cards to display
      * @param cards: List containing the cards to be displayed.
      */
-
 
     public void loadCardsToDisplay(List<ICard> cards){
         for(ICard card: cards){
@@ -46,7 +46,6 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
         return new CardIterator(nextDisplayCards);
     }
 
-
     /**
      * Takes in the card selected by the player, updates the conditions within
      * the card display to display the next cards.
@@ -58,7 +57,7 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
             correctCardSelected = true;
             nextDisplayCards.clear();
             if(cardsToDisplay.size() != 0) {
-                nextDisplayCards.add(cardsToDisplay.get(0));    //Kan orsaka bug om cardsToDisplay är tom
+                nextDisplayCards.add(cardsToDisplay.get(0));
                 cardsToDisplay.remove(0);
                 expectedCard = nextDisplayCards.get(0);
             }
@@ -66,8 +65,6 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
             correctCardSelected = false;
         }
     }
-
-
 
 
     /**
@@ -94,8 +91,6 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
         this.expectedCard = expectedCard;
     }
 
-//public ?abstract? Iterator getIterator();
-
 
     public List<ICard> getNextDisplayCards() {
         return nextDisplayCards;
@@ -105,11 +100,8 @@ public abstract class AbstractCardDisplay implements ICardDisplay {
         return expectedCard;
     }
 
-    //kommer antagligen inte behövar när getIterator() metoden finns.
     public List<ICard> getCardsToDisplay() {
         return cardsToDisplay;
     }
-
-
 
 }

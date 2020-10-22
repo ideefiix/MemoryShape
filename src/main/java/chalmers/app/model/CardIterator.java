@@ -21,8 +21,8 @@ public class CardIterator implements ICardIterator {
         cardList = cards;
     }
 
-    List<ICard> cardList;
-    int currentIndex = 0;
+    private List<ICard> cardList;
+    private int currentIndex = 0;
 
     @Override
     public boolean hasNext() {

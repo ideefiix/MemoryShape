@@ -1,5 +1,5 @@
 /**
- * Authors:
+ * Authors: Filip, Edenia
  * Responsibility: javaFX controller for card.fxml
  * Used by: BoardController
  * Uses: ICard, BoardController
@@ -43,12 +43,6 @@ public class CardController extends AnchorPane  {
 
     }
 
-    public void setImage(File file){
-
-        Image imageFromUrl = new Image(file.toURI().toString());
-        image.setImage(imageFromUrl);
-
-    }
 
     public void setImage(Image i){
         image.setImage(i);
@@ -96,19 +90,16 @@ public class CardController extends AnchorPane  {
     }
 
 
-    public AnchorPane getBackgroundPane() {
-        return backgroundPane;
-    }
     public ICard getCard() {
         return card;
     }
 
-    public void setNoPliancy(){
+    public void turnOffPliancy(){
         backgroundPane.getStyleClass().clear();
         backgroundPane.getStyleClass().add("card_NoPliancy");
     }
 
-    public void setBackPliancy(){
+    public void turnOnPliancy(){
         backgroundPane.getStyleClass().clear();
         backgroundPane.getStyleClass().add("card_Default");
     }

@@ -1,8 +1,12 @@
+/**
+ * Authors: Edenia
+ * Test class for the different boards
+ */
 package chalmers.app;
 
 import chalmers.app.model.Boards.AbstractBoard;
 import chalmers.app.model.Boards.FrenzyBoard;
-import chalmers.app.model.Boards.SimonSaysBoard;
+import chalmers.app.model.Boards.SequenceBoard;
 import chalmers.app.model.Boards.StandardBoard;
 import chalmers.app.model.Card;
 import chalmers.app.model.CardEnums.CardState;
@@ -18,7 +22,7 @@ public class BoardTest {
 
     StandardBoard board = new StandardBoard(2);
     FrenzyBoard boardFrenzy = new FrenzyBoard(1);
-    SimonSaysBoard boardSimonSays = new SimonSaysBoard(1);
+    SequenceBoard boardSimonSays = new SequenceBoard(1);
     Card card1 = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEDOWN);
     Card card2 = new Card(Color.ORANGE,Shape.CIRCLE,CardState.FACEDOWN);
     Card card3 = new Card(Color.GREEN,Shape.RECTANGLE,CardState.FACEDOWN);
