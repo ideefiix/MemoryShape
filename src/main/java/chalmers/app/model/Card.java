@@ -53,21 +53,26 @@ public class Card implements ICard{
     }
 
     @Override
+    public Card getMutalbeCard() {
+        return this;
+    }
+
+
     public void setCorrect() {
         setState(CardState.CORRECT);
     }
 
-    @Override
+
     public void setIncorrect() {
         setState(CardState.INCORRECT);
     }
 
-    @Override
+
     public void setFaceUp() {
         setState(CardState.FACEUP);
     }
 
-    @Override
+
     public void setFaceDown() {
         setState(CardState.FACEDOWN);
     }

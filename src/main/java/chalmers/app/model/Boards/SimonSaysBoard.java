@@ -29,7 +29,8 @@ public class SimonSaysBoard extends AbstractBoard {
     public void flipIncorrectCards() {
         for(ICard c: activeCardList){
             if(c.getState().equals(CardState.INCORRECT)){
-                c.setFaceUp();
+                Card mutableCard = c.getMutalbeCard();
+                mutableCard.setFaceUp();
                 break;
             }
         }
