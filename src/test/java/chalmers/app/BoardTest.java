@@ -22,7 +22,7 @@ public class BoardTest {
 
     StandardBoard board = new StandardBoard(2);
     FrenzyBoard boardFrenzy = new FrenzyBoard(1);
-    SequenceBoard boardSimonSays = new SequenceBoard(1);
+    SequenceBoard boardSimonSays = new SequenceBoard(1); //ändra namn till sequence
     Card card1 = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEDOWN);
     Card card2 = new Card(Color.ORANGE,Shape.CIRCLE,CardState.FACEDOWN);
     Card card3 = new Card(Color.GREEN,Shape.RECTANGLE,CardState.FACEDOWN);
@@ -50,10 +50,11 @@ public class BoardTest {
 
 
     @Test
-    public void testFlipIncorrectCards(){ //borde kolla så alla kort som var incorrect har ändrats till
+    public void testFlipIncorrectCards(){
       setIncorrectState(board);
       board.flipIncorrectCards();
       assertTrue(board.getActiveCardList().get(0).getState().equals(CardState.FACEDOWN));
+      assertFalse(board.getActiveCardList().get(1).getState().equals(CardState.FACEDOWN));
       setCardState(board);
       board.flipIncorrectCards();
       assertTrue(board.getActiveCardList().get(0).getState().equals(CardState.CORRECT));
@@ -96,6 +97,13 @@ public class BoardTest {
     }
 
 
+    @Test
+    public void testCreateIterator(){
+        assertTrue(board.createIterator().getCard().equals(board.getActiveCardList().get(0)));
+        assertTrue(boardFrenzy.createIterator().getCard().equals(boardFrenzy.getActiveCardList().get(0)));
+        assertTrue(boardSimonSays.createIterator().getCard().equals(boardSimonSays.getActiveCardList().get(0)));
+
+    }
 
 
 }
