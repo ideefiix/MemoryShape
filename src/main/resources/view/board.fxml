@@ -66,7 +66,7 @@
                      <children>
                         <AnchorPane layoutX="313.0" layoutY="21.0" onMouseClicked="#beginLevel" prefHeight="142.0" prefWidth="142.0" styleClass="displaySelectedCard" AnchorPane.leftAnchor="325.5" AnchorPane.rightAnchor="325.5">
                            <children>
-                              <ImageView fx:id="selectedCard" fitHeight="100.0" fitWidth="100.0" layoutX="27.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="cardDisplay" fitHeight="100.0" fitWidth="100.0" layoutX="27.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
                         <FlowPane fx:id="flowPane" alignment="CENTER" hgap="10.0" layoutX="3.0" layoutY="215.0" prefHeight="212.0" prefWidth="787.0" vgap="10.0">

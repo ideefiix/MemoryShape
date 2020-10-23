@@ -36,7 +36,7 @@ public class BoardController implements GameObserver {
     @FXML
     FlowPane flowPane;
     @FXML
-    ImageView selectedCard;
+    ImageView cardDisplay;
     @FXML
     AnchorPane gameOverAnchorPane;
     @FXML
@@ -59,7 +59,7 @@ public class BoardController implements GameObserver {
         if(newLevel) {
             //start_btn.setVisible(false);
             hideCards();
-            selectedCard.setVisible(true);
+            cardDisplay.setVisible(true);
             newLevel = false;
         }
         if(displayIterator != null && (displayIterator.hasCard())){
@@ -68,7 +68,7 @@ public class BoardController implements GameObserver {
             setDisplayImage(displayIterator.getCard());
             if(!displayIterator.hasNext()){
                 newLevel = false;
-                selectedCard.setImage(null);
+                cardDisplay.setImage(null);
                 turnOnCardPliancy();
             }
             displayIterator.step();
@@ -90,7 +90,7 @@ public class BoardController implements GameObserver {
 
 
     public void setDisplayImage(ICard card){
-        selectedCard.setImage(assignImage(card));
+        cardDisplay.setImage(assignImage(card));
     }
 
     public Image assignImage(ICard c){
@@ -228,7 +228,7 @@ public class BoardController implements GameObserver {
     private void newLevel(){
         newLevel = true;
         showCards();
-        selectedCard.setVisible(false);
+        cardDisplay.setVisible(false);
         //start_btn.setVisible(true);
     }
 
