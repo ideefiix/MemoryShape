@@ -1,5 +1,5 @@
 /**
- * Authors: Edenia
+ * Authors: Edenia, Filip
  * Test class for the different boards
  */
 package chalmers.app;
@@ -15,8 +15,10 @@ import chalmers.app.model.CardEnums.Shape;
 import chalmers.app.model.ICard;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import  static org.junit.Assert.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class BoardTest {
 
@@ -64,21 +66,6 @@ public class BoardTest {
       for(ICard card : board.getActiveCardList()){
           board.incorrectCard(card);
       }
-    }
-
-    @Test
-    public void testGenerateBoardFrenzy(){
-      assertTrue(isDuplicated());
-    }
-
-
-    public boolean isDuplicated(){
-      ICard card = boardFrenzy.getActiveCardList().get(1);
-      for(int i =0; i < boardFrenzy.getActiveCardList().size();i++){
-          if(card.equals(boardFrenzy.getActiveCardList().get(i))){
-              return true;
-          }
-      } return false;
     }
 
     @Test

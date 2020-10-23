@@ -1,5 +1,5 @@
 /**
- * Authors: Edenia, Kevin
+ * Authors: Edenia, Kevin, Nils
  * TestClass for the different CardDisplays
  */
 package chalmers.app;
