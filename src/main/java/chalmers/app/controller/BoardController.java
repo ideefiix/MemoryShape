@@ -108,7 +108,7 @@ public class BoardController implements GameObserver {
     }
 
 
-    public void hideCards () {
+    private void hideCards () {
         for (CardController cc : cardControllers) {
             cc.hideImage();
             cc.turnOnPliancy();
@@ -116,7 +116,7 @@ public class BoardController implements GameObserver {
     }
 
 
-    public void showCards(){
+    private void showCards(){
         for(CardController cc: cardControllers){
             cc.showImage();
             if(newLevel) {
@@ -126,7 +126,7 @@ public class BoardController implements GameObserver {
     }
 
 
-    public void turnOnCardPliancy(){
+    private void turnOnCardPliancy(){
         for(CardController cc: cardControllers){
             cc.turnOnPliancy();
         }
@@ -182,7 +182,7 @@ public class BoardController implements GameObserver {
 
 
 
-    public void removeLifeImage () {
+    private void removeLifeImage () {
         lives--;
         switch (lives) {
             case 2:
@@ -200,7 +200,7 @@ public class BoardController implements GameObserver {
     }
 
 
-    public void updateCardControllers(ICardIterator boardIterator){
+    private void updateCardControllers(ICardIterator boardIterator){
         int i = 0;
         while (boardIterator.hasCard()){
             ICard card = boardIterator.getCard();
@@ -220,7 +220,7 @@ public class BoardController implements GameObserver {
     }
 
 
-    public void updateCardDisplay(ICardIterator displayIterator){
+    private void updateCardDisplay(ICardIterator displayIterator){
             setDisplayImage(displayIterator.getCard());
         }
 
@@ -240,7 +240,7 @@ public class BoardController implements GameObserver {
     }
 
 
-    public void populateGameOverLabel () {
+    private void populateGameOverLabel () {
         gameOverLabel.setText(" You reached level " + String.valueOf(mainController.getLevel()) + " and you scored " + String.valueOf(mainController.getPlayer().getCurrentScore()) + " points ");
     }
 
