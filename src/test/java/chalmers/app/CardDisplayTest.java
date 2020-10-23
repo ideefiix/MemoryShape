@@ -1,9 +1,10 @@
 /**
- * Authors: Edenia
+ * Authors: Edenia, Kevin
  * TestClass for the different CardDisplays
  */
 package chalmers.app;
 
+import chalmers.app.model.Boards.FrenzyBoard;
 import chalmers.app.model.Card;
 import chalmers.app.model.CardDisplays.FrenzyCardDisplay;
 import chalmers.app.model.CardDisplays.SequenceCardDisplay;
@@ -12,6 +13,7 @@ import chalmers.app.model.CardEnums.CardState;
 import chalmers.app.model.CardEnums.Color;
 import chalmers.app.model.CardEnums.Shape;
 import chalmers.app.model.ICard;
+import chalmers.app.model.ICardIterator;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ public class CardDisplayTest {
     ICard card2 = new Card(Color.ORANGE, Shape.CIRCLE, CardState.FACEUP);
     ICard card3 = new Card(Color.GREEN, Shape.RECTANGLE, CardState.FACEUP);
     ICard card4 = new Card(Color.YELLOW, Shape.STAR, CardState.FACEUP);
-    ICard card5 = new Card(Color.PINK, Shape.DIAMOND, CardState.FACEUP);
+    ICard card5 = new Card(Color.PURPLE , Shape.TRIANGLE, CardState.FACEUP);
     List<ICard> cards = new ArrayList<>();
 
     public void fyllingList() {
@@ -66,10 +68,25 @@ public class CardDisplayTest {
 
     @Test
     public void testSortCardsToDisplay() {
-        fyllingList();
-        frenzyCardDisplay.setCardsToDisplay(cards);
+        FrenzyBoard frenzyBoard = new FrenzyBoard(10);
+        frenzyCardDisplay.loadCardsToDisplay(frenzyBoard.getActiveCardList());
         frenzyCardDisplay.sortCardsToDisplay();
-        assertTrue(frenzyCardDisplay.getCardsToDisplay().get(0).equals(frenzyCardDisplay.getCardsToDisplay().get(1)));
+        List<ICard> testList = frenzyCardDisplay.getCardsToDisplay();
+        List<ICard> shouldBeOneOfEach = new ArrayList<>();
+        boolean methodSucceded = true;
+        for(int i = 1; i < testList.size();i++){
+            if(!testList.get(i).equals(testList.get(i - 1))){
+                shouldBeOneOfEach.add(testList.get(i));
+            }
+        }
+        for (int i = 0; i < shouldBeOneOfEach.size(); i++){
+            for (int j = i + 1; j < shouldBeOneOfEach.size(); j++){
+                if(shouldBeOneOfEach.get(i).equals(shouldBeOneOfEach.get(j))){
+                    methodSucceded = false;
+                }
+            }
+        }
+        assertTrue(methodSucceded);
     }
 
     @Test
@@ -84,6 +101,10 @@ public class CardDisplayTest {
         sequenceCardDisplay.setExpectedCard(expectedCard);
         sequenceCardDisplay.cardSelected(selectedCard);
         assertTrue(sequenceCardDisplay.isCorrectCardSelected());
+        sequenceCardDisplay.setExpectedCard(card2);
+        sequenceCardDisplay.cardSelected(selectedCard);
+        assertFalse(sequenceCardDisplay.isCorrectCardSelected());
+        assertTrue(sequenceCardDisplay.getNextDisplayCards().get(0).equals(selectedCard));
     }
 
     @Test
@@ -101,9 +122,14 @@ public class CardDisplayTest {
         frenzyCardDisplay.setUp(cards);
         assertTrue(frenzyCardDisplay.createIterator().getCard().equals(frenzyCardDisplay.getNextDisplayCards().get(0)));
         sequenceCardDisplay.setUp(cards);
-        assertTrue(sequenceCardDisplay.createIterator().getCard().equals(sequenceCardDisplay.getNextDisplayCards().get(0)));
-
+        boolean iteratorDiffers = false;
+        ICardIterator sequenceIterator = sequenceCardDisplay.createIterator();
+        for (int i = 0;i < sequenceCardDisplay.getNextDisplayCards().size();i++){
+            if(!sequenceIterator.getCard().equals(sequenceCardDisplay.getNextDisplayCards().get(i))){
+                iteratorDiffers = true;
+            }
+            sequenceIterator.step();
+        }
+        assertFalse(iteratorDiffers);
     }
-
-
 }
