@@ -103,7 +103,7 @@
                               <Line endX="-9.72900390625" endY="-14.0" layoutX="467.0" layoutY="15.0" startX="-9.72900390625" startY="25.0" />
                            </children>
                         </Pane>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="60.0">
+                        <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="60.0">
                            <content>
                               <FlowPane fx:id="highscore_flwPane" />
                            </content>

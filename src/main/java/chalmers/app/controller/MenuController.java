@@ -9,6 +9,7 @@ package chalmers.app.controller;
 import chalmers.app.model.HighScore;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -46,6 +47,8 @@ public class MenuController implements Initializable {
     TextField name_textField;
     @FXML
     Text error_text;
+    @FXML
+    ScrollPane scrollPane;
 
 
 
@@ -62,6 +65,7 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillLeaderboard();
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
 
