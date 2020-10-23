@@ -33,9 +33,6 @@ public class JSONCommunicator {
             ObjectMapper mapper = new ObjectMapper();
             InputStream inputStream = new FileInputStream(new File("src/main/resources/highscores.json"));
             hList = mapper.readValue(inputStream, new TypeReference<List<HighScore>>() {});
-            for(int i = 0; i < hList.size(); i++){
-                System.out.println(hList.get(i).getName());
-            }
 
             inputStream.close();
 
